@@ -24,17 +24,16 @@ cd technothon-2025
 
 Open the project in your editor (e.g. VS Code / Cursor) and ensure you’re in the **project root**.
 
-**Option A — Team .env**  
-Create a file named `.env` in the **root** and paste the contents you received.
+**Use the team’s shared .env**  
+Get the `.env` contents and create a file named `.env` in the **root** of the repo and paste the contents. Everyone uses the same Supabase project and keys — do not create your own Supabase project.
+* Copy `.env.example` to `.env` and fill in the values (SUPABASE_URL, SUPABASE_ANON_KEY, JWT_SECRET_KEY).
 
-**Option B — Local development (your own Supabase)**  
-1. Copy the example env file:
-   - **Windows (PowerShell):** `Copy-Item .env.example .env`
-   - Or duplicate `.env.example` and rename the copy to `.env`
-2. Edit `.env` and set:
-   - **SUPABASE_URL** and **SUPABASE_ANON_KEY** — from [Supabase](https://supabase.com) → your project → Project Settings → API.
-   - **JWT_SECRET_KEY** — a long random string (e.g. 32+ characters) for local use.
-3. Optional variables can stay commented; defaults are API at `http://localhost:5000` and frontend at `http://localhost:3000`.
+## Repo rules
+
+- **Do not push directly to `main`.** Always use a branch.
+- **Create a branch first** for your work, then push the branch and open a Pull Request (PR) to merge into `main`.
+- Example: `git checkout -b feature/your-feature-name` or `git checkout -b fix/description`, then push and create a PR on GitHub.
+- Keep `main` stable; merge only after review or team approval.
 
 ## Running the application
 
