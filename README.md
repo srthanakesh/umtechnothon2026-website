@@ -14,8 +14,8 @@ Web application for **UM Technothon 2026**. It includes a React frontend and a N
 In a terminal (or File Explorer → right‑click → Open in Terminal):
 
 ```sh
-git clone https://github.com/PoisonDarterz/technothon-2025.git
-cd technothon-2025
+git clone https://github.com/srthanakesh/umtechnothon2026-website.git
+cd umtechnothon2026-website
 ```
 
 *(Rename the folder to something like `umtechnothon-2026` locally if you prefer.)*
