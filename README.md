@@ -1,34 +1,80 @@
-# Technothon 2025
+# UMTechnothon 2026
 
-This project is a web application for Technothon 2025. It includes a frontend built with React and a backend built with Node.js and Express, using Supabase for database interactions.
+Web application for **UM Technothon 2026**. It includes a React frontend and a Node.js/Express backend, with Supabase for the database.
 
 ## Prerequisites
 
-- Node.js (if you dont have it yet, install the latest LTS v22)
-- Git
+- **Node.js** — latest LTS (e.g. v22)
+- **Git**
 
 ## Getting Started
 
-### Clone the Repository
+### 1. Clone the repository
 
-Open File Explorer, create a folder in a place that you choose. Then right click -> Open in Terminal, then paste this:
+In a terminal (or File Explorer → right‑click → Open in Terminal):
 
 ```sh
 git clone https://github.com/PoisonDarterz/technothon-2025.git
+cd technothon-2025
 ```
 
-### Setup Environment Variables
+*(Rename the folder to something like `umtechnothon-2026` locally if you prefer.)*
 
-Open Visual Studio Code and get to the `technothon-2025` folder that you have just cloned.
+### 2. Environment variables
 
-Get the contents of .env from Discord and create a **new file** in the **root depository** by rightclicking in empty space on the left panel.
+Open the project in your editor (e.g. VS Code / Cursor) and ensure you’re in the **project root**.
+
+**Option A — Team .env**  
+Create a file named `.env` in the **root** and paste the contents you received.
+
+**Option B — Local development (your own Supabase)**  
+1. Copy the example env file:
+   - **Windows (PowerShell):** `Copy-Item .env.example .env`
+   - Or duplicate `.env.example` and rename the copy to `.env`
+2. Edit `.env` and set:
+   - **SUPABASE_URL** and **SUPABASE_ANON_KEY** — from [Supabase](https://supabase.com) → your project → Project Settings → API.
+   - **JWT_SECRET_KEY** — a long random string (e.g. 32+ characters) for local use.
+3. Optional variables can stay commented; defaults are API at `http://localhost:5000` and frontend at `http://localhost:3000`.
 
 ## Running the application
 
-### Start the backend and frontend
+### One command (Windows)
 
-Open a new terminal in the root directory, then type `./start_dev`. This will run the `start_dev.bat` file to start both the front end and back end in 2 terminal windows.
+From the project root:
 
-* This file will also run `npm install` before starting each time, so you guys can just fork and run straight away.
+```sh
+.\start_dev.bat
+```
 
-To shut down the front end and/or backend, just close the terminal window.
+This starts the backend and frontend in two terminal windows and runs `npm install` for both if needed.
+
+### Manual start
+
+- **Backend:**  
+  `cd server` → `npm install` → `npm run dev`  
+  (API runs at **http://localhost:5000**)
+
+- **Frontend:**  
+  `cd client` → `npm install` → `npm run dev` (or `npm start`)  
+  (App runs at **http://localhost:3000**)
+
+To stop: close the terminal window(s) for the backend and/or frontend.
+
+## Project structure
+
+| Path       | Description                    |
+|-----------|---------------------------------|
+| `client/` | React (Vite) frontend           |
+| `server/` | Node.js/Express API             |
+| `.env`    | Environment variables (root)    |
+| `.env.example` | Template for `.env`      |
+
+## Tech stack
+
+- **Frontend:** React, Vite, Tailwind CSS  
+- **Backend:** Node.js, Express  
+- **Database / auth:** Supabase  
+
+---
+
+**UMTechnothon 2026** — University of Malaya Technothon.

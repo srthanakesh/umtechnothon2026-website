@@ -1,6 +1,10 @@
-import { resolve } from "node:path";
+import { resolve, dirname } from "node:path";
+import { fileURLToPath } from "node:url";
 import { readFileSync } from "node:fs";
 import { defineConfig, loadEnv, createFilter, transformWithEsbuild } from "vite";
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
+const rootDir = resolve(__dirname, "..");
 import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 
@@ -24,7 +28,7 @@ export default defineConfig(({ mode }) => {
     };
 });
 function setEnv(mode) {
-    Object.assign(process.env, loadEnv(mode, ".", ["REACT_APP_", "NODE_ENV", "PUBLIC_URL"]));
+    Object.assign(process.env, loadEnv(mode, rootDir, ["VITE_", "REACT_APP_", "NODE_ENV", "PUBLIC_URL"]));
     process.env.NODE_ENV ||= mode;
     const { homepage } = JSON.parse(readFileSync("package.json", "utf-8"));
     process.env.PUBLIC_URL ||= homepage
@@ -40,7 +44,7 @@ function envPlugin() {
     return {
         name: "env-plugin",
         config(_, { mode }) {
-            const env = loadEnv(mode, ".", ["REACT_APP_", "NODE_ENV", "PUBLIC_URL"]);
+            const env = loadEnv(mode, rootDir, ["VITE_", "REACT_APP_", "NODE_ENV", "PUBLIC_URL"]);
             return {
                 define: Object.fromEntries(Object.entries(env).map(([key, value]) => [
                     `process.env.${key}`,
@@ -59,7 +63,7 @@ function devServerPlugin() {
     return {
         name: "dev-server-plugin",
         config(_, { mode }) {
-            const { HOST, PORT, HTTPS, SSL_CRT_FILE, SSL_KEY_FILE } = loadEnv(mode, ".", ["HOST", "PORT", "HTTPS", "SSL_CRT_FILE", "SSL_KEY_FILE"]);
+            const { HOST, PORT, HTTPS, SSL_CRT_FILE, SSL_KEY_FILE } = loadEnv(mode, rootDir, ["HOST", "PORT", "HTTPS", "SSL_CRT_FILE", "SSL_KEY_FILE"]);
             const https = HTTPS === "true";
             return {
                 server: {
@@ -85,7 +89,7 @@ function sourcemapPlugin() {
     return {
         name: "sourcemap-plugin",
         config(_, { mode }) {
-            const { GENERATE_SOURCEMAP } = loadEnv(mode, ".", [
+            const { GENERATE_SOURCEMAP } = loadEnv(mode, rootDir, [
                 "GENERATE_SOURCEMAP",
             ]);
             return {
@@ -102,7 +106,7 @@ function buildPathPlugin() {
     return {
         name: "build-path-plugin",
         config(_, { mode }) {
-            const { BUILD_PATH } = loadEnv(mode, ".", [
+            const { BUILD_PATH } = loadEnv(mode, rootDir, [
                 "BUILD_PATH",
             ]);
             return {
@@ -119,7 +123,7 @@ function basePlugin() {
     return {
         name: "base-plugin",
         config(_, { mode }) {
-            const { PUBLIC_URL } = loadEnv(mode, ".", ["PUBLIC_URL"]);
+            const { PUBLIC_URL } = loadEnv(mode, rootDir, ["PUBLIC_URL"]);
             return {
                 base: PUBLIC_URL || "",
             };
@@ -178,7 +182,7 @@ function svgrPlugin() {
 // Migration guide: Follow the guide below, you may need to rename your environment variable to a name that begins with VITE_ instead of REACT_APP_
 // https://vitejs.dev/guide/env-and-mode.html#html-env-replacement
 function htmlPlugin(mode) {
-    const env = loadEnv(mode, ".", ["REACT_APP_", "NODE_ENV", "PUBLIC_URL"]);
+    const env = loadEnv(mode, rootDir, ["VITE_", "REACT_APP_", "NODE_ENV", "PUBLIC_URL"]);
     return {
         name: "html-plugin",
         transformIndexHtml: {
