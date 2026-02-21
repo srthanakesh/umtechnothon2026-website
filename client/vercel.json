@@ -1,0 +1,10 @@
+{
+  "version": 2,
+    "buildCommand": "npm run build",
+    "outputDirectory": "build",
+    "routes": [
+      { "handle": "filesystem" },
+      { "src": "/(.+\\.[a-zA-Z0-9]+)$", "dest": "/$1" },
+      { "src": "/(.*)", "dest": "/index.html" }
+    ]
+}
