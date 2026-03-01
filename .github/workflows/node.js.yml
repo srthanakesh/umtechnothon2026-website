@@ -26,10 +26,10 @@ jobs:
         
     - name: Install dependencies
       working-directory: client
-      run: npm ci
+      run: |
+        rm -rf node_modules
+        npm install --no-optional
       
     - name: Build
       working-directory: client
-      env:
-        TAILWIND_DISABLE_OXIDE: true
       run: npm run build
