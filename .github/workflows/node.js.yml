@@ -26,9 +26,7 @@ jobs:
         
     - name: Install dependencies
       working-directory: client
-      run: |
-        rm -rf node_modules
-        npm install --no-optional
+      run: npm ci --include=optional
       
     - name: Build
       working-directory: client
