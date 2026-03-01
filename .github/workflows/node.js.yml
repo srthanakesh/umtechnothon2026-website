@@ -30,4 +30,6 @@ jobs:
       
     - name: Build
       working-directory: client
+      env:
+        TAILWIND_DISABLE_OXIDE: true
       run: npm run build
