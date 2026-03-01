@@ -32,4 +32,6 @@ jobs:
       
     - name: Build
       working-directory: ./client
+      env:
+        ROLLUP_DISABLE_NATIVE: true
       run: npm run build
