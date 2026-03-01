@@ -172,7 +172,7 @@ const Header = ({ isMobile }) => {
             } text-[#f5f5f5]`}
             style={{ fontFamily: "Saira Extra Condensed" }}
           >
-            {isMobile ? "UM TECHNOTHON '25" : "| UM TECHNOTHON 2025"}
+            {isMobile ? "UM TECHNOTHON '26" : "| UM TECHNOTHON 2026"}
           </p>
         </div>
 

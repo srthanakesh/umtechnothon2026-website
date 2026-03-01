@@ -18,7 +18,7 @@ const config = {
 
   // Application settings
   app: {
-    name: "Technothon 2025",
+    name: "Technothon 2026",
     env: import.meta.env.MODE || "development",
     isDev: import.meta.env.DEV === true,
     isProd: import.meta.env.PROD === true,

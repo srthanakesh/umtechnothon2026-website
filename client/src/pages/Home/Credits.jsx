@@ -34,7 +34,7 @@ const Credits = () => {
 		<div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 py-12 px-4">
 			<div className="w-full max-w-6xl mx-auto">
 				<h1 className="text-4xl font-bold mb-2 text-center text-[#1e2a4a]">Meet Our Development Team</h1>
-				<p className="text-center text-gray-600 mb-12">The awesome developers behind UM Technothon 2025's website</p>
+				<p className="text-center text-gray-600 mb-12">The awesome developers behind UM Technothon 2026's website</p>
 
 				<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
 					{teamMembers.map((member, index) => (

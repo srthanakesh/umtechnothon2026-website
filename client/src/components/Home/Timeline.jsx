@@ -1,257 +1,40 @@
-import { useState, useEffect, useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
-
 export default function Timeline() {
-  const [isMobile, setIsMobile] = useState(false);
-  const timelineRef = useRef(null);
-
-  // Track when the timeline enters and leaves the viewport
-  const { scrollYProgress } = useScroll({
-    target: timelineRef,
-    offset: ["start end", "end start"],
-  });
-
-  // Transform scrollYProgress to line height
-  const lineHeight = useTransform(scrollYProgress, [0, 0.9], ["0%", "100%"]);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768);
-    };
-
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
   const events = [
-    { date: "21st April 2025", description: "• Registration Start" },
-    { date: "4th May 2025", description: "• Registration Close" },
-    { date: "5th May 2025", description: "• Preliminary Round Idea Preparation" },
-    { date: "14th May 2025", description: "• Submission of Preliminary Round" },
-    { date: "15th May 2025", description: "• Judging of Preliminary Round Start" },
-    { date: "18th May 2025", description: "• Judging of Preliminary Round End" },
-    {
-      date: "19th May 2025",
-      description: "• Finalists Announcement <br /> • Final Round Prototype Building Start",
-    },
-    {
-      date: "13th June 2025",
-      description: "• Prototype Building End ",
-    },
-    { date: "14th June 2025", description: "• Final Round Pitching" },
+    { date: "9 March - 24 April 11:59PM", event: "Registration" },
+    { date: "25 April 12PM", event: "Domain Reveal & Preliminary Round Briefing" },
+    { date: "25 April - 3 May 11:59PM", event: "Preliminary Round - Idea and Video Building" },
+    { date: "1 - 3 May 11:59PM", event: "Preliminary Round - Submission" },
+    { date: "4 - 8 May", event: "Preliminary Round - Judging" },
+    { date: "9 May 12PM", event: "Finalist Announcement (20 Teams) + Final Round Briefing" },
+    { date: "9 May - 6 June", event: "Final Round - Prototype Building" },
+    { date: "1 - 6 June 11:59PM", event: "Final Round - Submission" },
+    { date: "6 June", event: "Physical Final Day - Mentoring Session" },
+    { date: "7 June", event: "Physical Final Day - Pitching Day" }
   ];
 
   return (
-    <div className="bg-gradient-to-b from-[#d0d2f0] via-[#e09af3] to-[#b7dcff] p-4 md:p-10 text-center">
-      <div className="w-full h-1 bg-black mx-auto mb-6 md:mb-10"></div>
-      <motion.h2
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        className="text-xl md:text-2xl font-bold text-black mb-6 md:mb-10"
-      >
-        Join Us On Our Journey
-      </motion.h2>
+    <section className="bg-gradient-to-b from-white to-slate-100 py-20">
+      <div className="max-w-4xl mx-auto px-6">
+        <h2 className="text-4xl font-bold text-grey-900 center mb-12 text-center">
+          Event Timeline
+        </h2>
 
-      <div ref={timelineRef} className="relative">
-        {/* Desktop Timeline */}
-        {!isMobile && (
-          <div className="relative">
-            {/* Vertical Line */}
-            <motion.div
-              style={{ height: lineHeight }}
-              className="absolute w-1 bg-white left-1/2 transform -translate-x-1/2 shadow-[0_0_15px_#ffffff] opacity-80 origin-top top-0 bottom-0 z-0"
-            />
+        <div className="relative border-l-4 border-primaryBlue ml-8">
+          {events.map((item, index) => (
+            <div key={index} className="mb-12 ml-10 relative">
+              <div className="absolute -left-6 top-2 w-5 h-5 bg-primaryBlue-900 rounded-full border-2 border-white shadow-lg shadow-blue-300/50"></div>
 
-            {/* Top Circle */}
-            <div className="flex justify-center mb-20 relative">
-              <motion.div
-                initial={{ scale: 0, opacity: 0 }}
-                whileInView={{ scale: 1, opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5 }}
-                className="w-4 h-4 bg-white rounded-full shadow-[0_0_20px_#ffffff] z-10"
-              />
+              <p className="text-sm text-primaryBlue text-base font-semibold mb-1 tracking-wide">
+                {item.date}
+              </p>
+
+              <h3 className="text-xl font-bold text-gray-900">
+                {item.event}
+              </h3>
             </div>
-
-            {/* Events */}
-            {events.map((event, index) => (
-              <motion.div
-                key={index}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.3 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="grid grid-cols-3 items-center w-full mb-20"
-              >
-                {/* Left Text */}
-                {index % 2 === 0 ? (
-                  <motion.div
-                    variants={{
-                      hidden: { opacity: 0, x: -50 },
-                      visible: { opacity: 1, x: 0 },
-                    }}
-                    className="text-right pr-8 col-span-1"
-                  >
-                    <h1 className="text-xl md:text-2xl font-bold text-[#371781]">
-                      {event.date}
-                    </h1>
-                    <h6
-                      className="text-xs md:text-sm font-bold text-[#371781]"
-                      dangerouslySetInnerHTML={{ __html: event.description }}
-                    ></h6>
-                  </motion.div>
-                ) : (
-                  <div className="col-span-1"></div>
-                )}
-
-                {/* Center Section */}
-                <div className="flex justify-center col-span-1 relative">
-                  {/* Left connector line */}
-                  {index % 2 === 0 && (
-                    <motion.div
-                      variants={{
-                        hidden: { width: 0, opacity: 0 },
-                        visible: { width: "50%", opacity: 1 },
-                      }}
-                      className="absolute top-1/2 left-0 h-[2px] bg-white shadow-[0_0_5px_#ffffff]"
-                    />
-                  )}
-
-                  {/* The circle */}
-                  <motion.div
-                    variants={{
-                      hidden: { scale: 0, opacity: 0 },
-                      visible: { scale: 1, opacity: 1 },
-                    }}
-                    className="w-8 h-8 bg-white rounded-full shadow-[0_0_20px_#ffffff] z-10"
-                  />
-
-                  {/* Right connector line */}
-                  {index % 2 !== 0 && (
-                    <motion.div
-                      variants={{
-                        hidden: { width: 0, opacity: 0 },
-                        visible: { width: "50%", opacity: 1 },
-                      }}
-                      className="absolute top-1/2 right-0 h-[2px] bg-white shadow-[0_0_5px_#ffffff]"
-                    />
-                  )}
-                </div>
-
-                {/* Right Text */}
-                {index % 2 !== 0 ? (
-                  <motion.div
-                    variants={{
-                      hidden: { opacity: 0, x: 50 },
-                      visible: { opacity: 1, x: 0 },
-                    }}
-                    className="text-left pl-8 col-span-1"
-                  >
-                    <h1 className="text-xl md:text-2xl font-bold text-[#371781]">
-                      {event.date}
-                    </h1>
-                    <h6
-                      className="text-xs md:text-sm font-bold text-[#371781]"
-                      dangerouslySetInnerHTML={{ __html: event.description }}
-                    ></h6>
-                  </motion.div>
-                ) : (
-                  <div className="col-span-1"></div>
-                )}
-              </motion.div>
-            ))}
-
-            {/* Bottom Circle */}
-            <div className="flex justify-center mt-20 relative">
-              <motion.div
-                initial={{ scale: 0, opacity: 0 }}
-                whileInView={{ scale: 1, opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-                className="w-4 h-4 bg-white rounded-full shadow-[0_0_20px_#ffffff] z-10"
-              />
-            </div>
-          </div>
-        )}
-
-        {/* Mobile Timeline */}
-        {isMobile && (
-          <div className="relative">
-            {/* Container to center the timeline */}
-            <div className="flex justify-center">
-              <div className="relative w-full max-w-[500px]">
-                {/* Vertical Line - Centered */}
-                <motion.div
-                  style={{ height: lineHeight }}
-                  className="absolute w-1 bg-white left-1/2 transform -translate-x-1/2 shadow-[0_0_15px_#ffffff] opacity-80 origin-top top-0 bottom-0 z-0"
-                />
-
-                {/* Top Circle */}
-                <div className="flex justify-center mb-16 relative">
-                  <motion.div
-                    initial={{ scale: 0, opacity: 0 }}
-                    whileInView={{ scale: 1, opacity: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5 }}
-                    className="w-6 h-6 bg-white rounded-full shadow-[0_0_20px_#ffffff] z-10"
-                  />
-                </div>
-
-                {/* Events */}
-                {events.map((event, index) => (
-                  <motion.div
-                    key={index}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, amount: 0.3 }}
-                    transition={{ duration: 0.6, delay: index * 0.1 }}
-                    className="flex flex-col items-center mb-16 relative"
-                  >
-                    {/* Circle */}
-                    <motion.div
-                      variants={{
-                        hidden: { opacity: 0, scale: 0 },
-                        visible: { opacity: 1, scale: 1 },
-                      }}
-                      className="w-6 h-6 bg-white rounded-full shadow-[0_0_15px_#ffffff] z-10 mb-4"
-                    />
-
-                    {/* Text Content */}
-                    <motion.div
-                      variants={{
-                        hidden: { opacity: 0, y: 20 },
-                        visible: { opacity: 1, y: 0 },
-                      }}
-                      className="text-center px-4"
-                    >
-                      <h1 className="text-lg font-bold text-[#371781]">
-                        {event.date}
-                      </h1>
-                      <h6
-                        className="text-xs font-bold text-[#371781]"
-                        dangerouslySetInnerHTML={{ __html: event.description }}
-                      ></h6>
-                    </motion.div>
-                  </motion.div>
-                ))}
-
-                {/* Bottom Circle */}
-                <div className="flex justify-center mt-16 relative">
-                  <motion.div
-                    initial={{ scale: 0, opacity: 0 }}
-                    whileInView={{ scale: 1, opacity: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: 0.2 }}
-                    className="w-6 h-6 bg-white rounded-full shadow-[0_0_20px_#ffffff] z-10"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
+          ))}
+        </div>
       </div>
-    </div>
+    </section>
   );
 }

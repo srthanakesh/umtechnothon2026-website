@@ -15,7 +15,7 @@ app.use(
   cors({
     origin: function (origin, callback) {
       const allowedOrigins = [
-        "https://technothon-2025.vercel.app",
+        "https://technothon-2026.vercel.app",
         "https://umtechnothon.com",
         "https://www.umtechnothon.com",
         "http://localhost:3000",

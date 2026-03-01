@@ -130,7 +130,7 @@ const FirstPage = () => {
             <div className="relative">
               <img
                 src="/logos/technothon-logo-transparent.png"
-                alt="Technothon 2025 Logo"
+                alt="Technothon 2026 Logo"
                 className="h-full max-h-120 mr-10 md:mr-20"
                 style={{
                   animation: "float 3s ease-in-out infinite",

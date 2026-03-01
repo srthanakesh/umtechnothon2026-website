@@ -88,7 +88,7 @@ const Register = () => {
               placeholder="Enter your course"
             />
             <p className="text-sm font-semibold text-[#4c5ab6]">
-              Please upload a proof to verify that you are currently an active undergraduate student in either public or private universities in Malaysia (preferably student card). Please note that failure to do so may result in your registration response being disqualified in Technothon 2025. Kindly upload it into your google drive first and submit the link at the space provided.
+              Please upload a proof to verify that you are currently an active undergraduate student in either public or private universities in Malaysia (preferably student card). Please note that failure to do so may result in your registration response being disqualified in Technothon 2026. Kindly upload it into your google drive first and submit the link at the space provided.
             </p>
             <AppInput
               type="url"

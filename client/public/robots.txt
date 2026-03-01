@@ -4,4 +4,4 @@ Allow: /
 
 Disallow: /api/
 
-Sitemap: https://technothon-2025.vercel.app/sitemap.xml
+Sitemap: https://technothon-2026.vercel.app/sitemap.xml

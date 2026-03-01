@@ -64,7 +64,7 @@ export default function Footer() {
               Meet our event website's awesome devs here!
             </Link>
             <p className="text-sm text-gray-300">
-              © UMTECHNOTHON 2025. All rights reserved.
+              © UMTECHNOTHON 2026. All rights reserved.
             </p>
           </div>
 

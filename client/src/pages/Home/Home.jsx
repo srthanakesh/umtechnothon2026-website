@@ -1,5 +1,7 @@
 import React from "react";
 import FirstPage from "../../components/Home/FirstPage";
+import Hero from "../../components/Hero";
+import About from "../../components/About";
 import Timeline from "../../components/Home/Timeline";
 import AboutUs from "../../components/Home/AboutUs";
 import Sponsor from "../../components/Home/Sponsor";
@@ -10,19 +12,21 @@ import MediaPartnersSlider from "../../components/Home/MediaPartner";
 const Home = () => {
   return (
     <div>
-      <FirstPage />
-      <div id="about-us">
-        <AboutUs />
-      </div>
-      <div id="timeline">
-        <Timeline />
-      </div>
-      <div id="sponsors">
-        <Sponsor />
-      </div>
+      <Hero />
+       <div className="h-px bg-gray-200 w-full" />
+      <About />
+       <div id="about-us">
+      <AboutUs />
+       </div>
+       <div id="timeline">
+      <Timeline />
+       </div>
+       <div id="sponsors">
+      <Sponsor />
+       </div>
       <Prize />
       <MediaPartnersSlider />
-      <div id="contact-us">
+       <div id="contact-us">
         <SocialMedia />
       </div>
     </div>
