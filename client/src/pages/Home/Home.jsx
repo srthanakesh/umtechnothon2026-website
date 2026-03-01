@@ -11,22 +11,22 @@ import MediaPartnersSlider from "../../components/Home/MediaPartner";
 
 const Home = () => {
   return (
-    <div>
+    <div className="bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 text-white">
       <Hero />
-       <div className="h-px bg-gray-200 w-full" />
+      <div className="h-px bg-slate-700 w-full" />
       <About />
-       <div id="about-us">
-      <AboutUs />
-       </div>
-       <div id="timeline">
-      <Timeline />
-       </div>
-       <div id="sponsors">
-      <Sponsor />
-       </div>
+      <div id="about-us">
+        <AboutUs />
+      </div>
+      <div id="event-timeline">
+        <Timeline />
+      </div>
+      <div id="sponsors">
+        <Sponsor />
+      </div>
       <Prize />
       <MediaPartnersSlider />
-       <div id="contact-us">
+      <div id="contact-us">
         <SocialMedia />
       </div>
     </div>
