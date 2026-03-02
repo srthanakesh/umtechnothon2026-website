@@ -153,7 +153,11 @@ const Header = ({ isMobile }) => {
   };
 
   return (
-    <header className="fixed top-0 w-full z-50 bg-[#4c5ab6] shadow">
+    <header className="fixed top-0 w-full z-50 
+    bg-gradient-to-r from-[#0f172a] via-[#1e293b] to-[#0f172a] 
+    backdrop-blur-md
+    shadow-xl shadow-black/40
+    border-b border-white/10">
       <nav
         aria-label="Global"
         className="mx-auto flex max-w-7xl items-center justify-between p-3"
@@ -181,7 +185,7 @@ const Header = ({ isMobile }) => {
           <div className="flex items-center">
             <button
               onClick={toggleMenu}
-              className="inline-flex items-center justify-center p-2 rounded-md text-[#f5f5f5] hover:bg-[#6373c9]"
+              className="inline-flex items-center justify-center p-2 rounded-md text-grey-200 hover:text-cyan-400 transition-color duration-200"
             >
               <span className="sr-only">Open main menu</span>
               {!menuOpen ? (
@@ -247,7 +251,7 @@ const Header = ({ isMobile }) => {
                   </svg>
                 </button>
                 {dropdownOpen && (
-                  <div className="absolute mt-2 w-48 rounded-md shadow-lg bg-[#5d6cc7] z-10">
+                  <div className="absolute mt-2 w-48 rounded-md shadow-lg bg-gray-800/90 backdrop-blur-md border-white/10 hover:bg-gray-700 z-10">
                     <div className="py-1">
                       <Link
                         to="/"
@@ -282,7 +286,7 @@ const Header = ({ isMobile }) => {
             {user ? (
               <button
                 onClick={logout}
-                className="font-semibold rounded-md py-2 px-6 border border-transparent text-center bg-[#9599d2] hover:bg-[#b7dcff] text-sm transition-all shadow-md hover:shadow-lg ml-2"
+                className="font-semibold rounded-md py-2 px-6 border border-transparent text-center bg-blue-600 hover:bg-blue-500 text-white text-sm transition-all shadow-md hover:shadow-lg ml-2"
               >
                 Logout
               </button>
@@ -383,7 +387,7 @@ const Header = ({ isMobile }) => {
                   logout();
                   setMenuOpen(false);
                 }}
-                className="block w-full px-3 py-2 mt-1 rounded-md text-base font-medium text-center bg-[#9599d2] text-white hover:bg-[#b7dcff]"
+                className="block w-full px-3 py-2 mt-1 rounded-md text-base font-medium text-center bg-cyan-500 text-white hover:bg-cyan-400 transition-all duration-200"
               >
                 Logout
               </button>
@@ -391,7 +395,7 @@ const Header = ({ isMobile }) => {
               <Link
                 to="/login"
                 onClick={() => setMenuOpen(false)}
-                className="block px-3 py-2 mt-1 rounded-md text-base font-medium text-center bg-[#9599d2] text-white hover:bg-[#b7dcff]"
+                className="block px-3 py-2 mt-1 rounded-md text-base font-medium text-center bg-cyan-500 text-white hover:bg-cyan-400 transition-all duration-200"
               >
                 Login
               </Link>

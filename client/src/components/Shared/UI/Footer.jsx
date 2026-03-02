@@ -4,9 +4,13 @@ import { Link } from "react-router-dom";
 export default function Footer() {
   return (
     // bg-[#464c92] bg-[#1e2a4a]
-    <div className="bg-[#464c92] text-white px-6 py-12 md:px-12 md:py-16">
-      <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+    <div className=" bg-gradient-to-r from-[#0f172a] via-[#1e293b] to-[#0f172a] 
+    border-t border-white/10 
+    shadow-inner
+    text-white">
+      <div className="max-w-7xl mx-auto px-8 py-10">
+        {/*Top Section*/}
+        <div className="grid grid-cols-1 md:grid-cols-2  mb-12">
           {/* Left Column - Logos and Info */}
           <div className="space-y-6">
             <div className="flex space-x-4">
@@ -54,9 +58,8 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Footer */}
-        <div className="flex flex-col md:flex-row justify-between items-center pt-6 border-t border-gray-300">
-          <div className="flex flex-col">
+        {/* Divider and Footer Info */}
+        <div className="flex flex-col md:flex-row justify-between items-center pt-9 border-t border-white/20">
             <Link
               to="/credits"
               className="text-sm text-gray-300 hover:text-white mb-2 transition-colors"
@@ -77,14 +80,13 @@ export default function Footer() {
               <Linkedin size={20} />
             </Link>
             <Link
-              to="https://www.instagram.com/um.technothon/"
+              to="https://www.instagram.com/umtechnothon/"
               target="_blank"
               className="text-white hover:text-gray-300 transition-colors"
             >
               <Instagram size={20} />
             </Link>
           </div>
-        </div>
       </div>
     </div>
   );

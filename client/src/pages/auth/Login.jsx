@@ -25,10 +25,10 @@ const Login = () => {
   return (
     <>
       {isPending && <Loading />}
-      <div className="flex justify-center items-center min-h-[70vh]">
+      <div className="flex justify-center items-center min-h-[85vh] bg-[#1a1d23] py-10 md:py-16 px-6 md:px-30 text-center">
         <div className="w-full max-w-sm p-2">
-          <h2 className="text-center text-2xl font-bold tracking-tight text-gray-900 mb-6">
-            Login to your account
+          <h2 className="text-center text-2xl font-bold tracking-tight text-[#fafdff] font-bold opacity-90"> 
+            Login to your account 
           </h2>
 
           <AppForm onSubmit={onSubmit} schema={loginSchema}>
@@ -54,7 +54,7 @@ const Login = () => {
             </button>
           </AppForm>
 
-          <p className="mt-4 text-center text-sm text-gray-500">
+          <p className="mt-4 text-center text-sm text-[#fafdff] opacity-90">
             Don't have an account?
             <Link
               to="/register"

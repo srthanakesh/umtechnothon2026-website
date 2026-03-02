@@ -86,7 +86,7 @@ const FirstPage = () => {
         }
       `}</style>
       <div
-        className={`flex flex-col items-center justify-center min-h-screen bg-gradient-to-b from-[#8a8fdb] to-[#d0d2f0] p-4 md:p-10 ${
+        className={`flex flex-col items-center justify-center min-h-screen bg-gradient-to-b from-[#0b0e14] to-[#1a1d23] p-4 md:p-10 ${
           !isMobile && "md:flex-row md:justify-between"
         }`}
       >
@@ -98,7 +98,7 @@ const FirstPage = () => {
             transition: "filter 0.2s ease-out, opacity 0.2s ease-out",
           }}
         >
-          <h2 className={`font-bold text-black mb-4 tracking-wider ${isMobile ? "text-5xl" : "text-2xl md:text-8xl"}`}>
+          <h2 className={`font-bold text-[#fafdff] mb-4 tracking-wider ${isMobile ? "text-5xl" : "text-2xl md:text-8xl"}`}>
             TURN
             <br />
             VIRTUAL
@@ -109,7 +109,7 @@ const FirstPage = () => {
           </h2>
           <button
             onClick={handleButtonClick}
-            className={`bg-[#6a6fa5] text-white border-none py-3 px-6 font-bold cursor-pointer rounded transition duration-300 ease-in-out transform hover:bg-[#585c8e] hover:scale-105 ${
+            className={`bg-[#2dcefb] text-[#0b0e14] border-none py-3 px-6 font-bold cursor-pointer rounded transition duration-300 ease-in-out transform hover:bg-[#5da4cf] hover:scale-105 ${
               isMobile ? "text-xl w-1/2 mt-4" : "text-lg"
             }`}
           >

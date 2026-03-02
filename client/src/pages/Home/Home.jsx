@@ -1,7 +1,5 @@
 import React from "react";
 import FirstPage from "../../components/Home/FirstPage";
-import Hero from "../../components/Hero";
-import About from "../../components/About";
 import Timeline from "../../components/Home/Timeline";
 import AboutUs from "../../components/Home/AboutUs";
 import Sponsor from "../../components/Home/Sponsor";
@@ -11,14 +9,12 @@ import MediaPartnersSlider from "../../components/Home/MediaPartner";
 
 const Home = () => {
   return (
-    <div className="bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 text-white">
-      <Hero />
-      <div className="h-px bg-slate-700 w-full" />
-      <About />
+    <div>
+      <FirstPage />
       <div id="about-us">
         <AboutUs />
       </div>
-      <div id="event-timeline">
+      <div id="timeline">
         <Timeline />
       </div>
       <div id="sponsors">
