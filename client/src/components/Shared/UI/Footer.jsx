@@ -77,7 +77,7 @@ export default function Footer() {
               <Linkedin size={20} />
             </Link>
             <Link
-              to="https://www.instagram.com/um.technothon/"
+              to="https://www.instagram.com/umtechnothon/"
               target="_blank"
               className="text-white hover:text-gray-300 transition-colors"
             >
