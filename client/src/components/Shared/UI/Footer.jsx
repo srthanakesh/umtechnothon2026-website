@@ -58,8 +58,9 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Divider and Footer Info */}
+        {/* Divider*/}
         <div className="flex flex-col md:flex-row justify-between items-center pt-9 border-t border-white/20">
+            {/* Footer */}
             <Link
               to="/credits"
               className="text-sm text-gray-300 hover:text-white mb-2 transition-colors"

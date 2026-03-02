@@ -21,7 +21,7 @@ const AppInput = ({
           {showLabel && (
             <label
               htmlFor={name}
-              className="block text-sm font-medium text-gray-900"
+              className="block text-sm font-medium text-white/80"
             >
               {label}
             </label>
@@ -47,9 +47,10 @@ const AppInput = ({
               id={name}
               placeholder={placeholder}
               disabled={disabled}
-              className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 
-                outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 
-                focus:outline-2 focus:-outline-offset-2 focus:outline-[#4c5ab6] sm:text-sm/6"
+              className="block w-full rounded-md bg-[#111827] px-3 py-2 text-base text-white 
+                border border-white/10 placeholder:text-white/40
+                focus:outline-none focus:ring-2 focus:ring-[#4c5ab6] 
+                sm:text-sm"
               value={field.value ?? ""}
             />
           )}
