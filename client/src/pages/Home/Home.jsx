@@ -14,7 +14,7 @@ const Home = () => {
       <div id="about-us">
         <AboutUs />
       </div>
-      <div id="event-timeline">
+      <div id="timeline">
         <Timeline />
       </div>
       <div id="sponsors">

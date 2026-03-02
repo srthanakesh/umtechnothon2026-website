@@ -25,7 +25,7 @@ const Login = () => {
   return (
     <>
       {isPending && <Loading />}
-      <div className="flex justify-center items-center min-h-[70vh] bg-[#1a1d23] py-10 md:py-16 px-6 md:px-30 text-center">
+      <div className="flex justify-center items-center min-h-[85vh] bg-[#1a1d23] py-10 md:py-16 px-6 md:px-30 text-center">
         <div className="w-full max-w-sm p-2">
           <h2 className="text-center text-2xl font-bold tracking-tight text-[#fafdff] font-bold opacity-90"> 
             Login to your account 

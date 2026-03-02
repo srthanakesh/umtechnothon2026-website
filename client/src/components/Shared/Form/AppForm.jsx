@@ -13,7 +13,7 @@ const AppForm = ({ onSubmit, children, schema }) => {
 
   return (
     <FormProvider {...methods}>
-      <form className="space-y-6 border-2 border-gray-400 rounded-lg p-4 bg-[#f1f1f1]" onSubmit={methods.handleSubmit(submit)}>
+      <form className="space-y-6 rounded-xl p-6 bg-[#1e293b] border border-white/10 shadow-[0_0_40px_rgba(76,90,182,0.25)]" onSubmit={methods.handleSubmit(submit)}>
         {children}
       </form>
     </FormProvider>
