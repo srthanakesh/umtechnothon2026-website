@@ -236,7 +236,7 @@ const Prize = () => {
   const floatingElements = generateFloatingElements(15)
 
   return (
-    <div className="relative bg-gradient-to-b from-[#1a237e] via-[#3949ab] to-[#5c6bc0] p-8 pt-12 pb-20 text-center flex flex-col items-center overflow-hidden min-h-screen">
+    <div className="relative bg-gradient-to-b from-[#0f172a] via-[#111827] to-[#0f172a] p-8 pt-12 pb-20 text-center flex flex-col items-center overflow-hidden min-h-screen">
       {/* Enhanced Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
         {/* Radial gradient overlay */}
@@ -337,17 +337,17 @@ const Prize = () => {
       {/* Main Prize Pool Announcement */}
       <div ref={prizeSectionRef} className="mb-8 md:mb-14 relative z-10">
         <div className="relative inline-block">
-          <h1 className="text-4xl md:text-6xl font-bold mb-3 text-white drop-shadow-lg relative z-10">
+          <h1 className="text-4xl md:text-6xl font-extrabold tracking-wider mb-3 text-white relative z-10">
             PRIZE POOL
-            <span className="absolute -inset-1 bg-blue-500 bg-opacity-30 blur-lg -z-10 rounded-lg"></span>
+            <span className="absolute -inset-1 bg-white-500 bg-opacity-30 blur-lg -z-10 rounded-lg"></span>
           </h1>
           <div className="absolute -inset-4 bg-blue-400 bg-opacity-20 blur-xl -z-20 rounded-full pulse-slow"></div>
         </div>
         <div className="text-lg md:text-2xl font-medium mb-2 text-white relative">
           Total prize pool:
           <span className="relative inline-block ml-2">
-            <span className="text-yellow-400 font-bold text-2xl md:text-4xl relative z-10">RM 5,000</span>
-            <span className="absolute -inset-2 bg-yellow-400 bg-opacity-30 blur-md -z-10 rounded-lg pulse-glow"></span>
+            <span className="text-yellow-400 font-extrabold text-3xl md:text-5xl tracking-wide relative z-10">RM 5,000</span>
+            <span className="absolute -inset-2 bg-yellow-400 bg-opacity-10 blur-md -z-10 rounded-lg pulse-glow"></span>
           </span>
         </div>
       </div>
@@ -356,7 +356,7 @@ const Prize = () => {
       <div className="w-full max-w-6xl mx-auto relative z-10 mb-8 md:mb-16">
         {/* First Place - Top Center */}
         <div
-          className={`w-full flex justify-center mb-8 md:mb-16 transition-all duration-1000 ${
+          className={`w-full flex justify-center mb-4 md:mb-10 -mt-6 md:-mt-10 transition-all duration-1000 ${
             isLoaded ? "opacity-100 transform-none" : "opacity-0 -translate-y-10"
           }`}
         >
@@ -378,7 +378,8 @@ const Prize = () => {
               <div className="absolute w-36 sm:w-48 h-8 sm:h-12 rounded-full bg-black/20 blur-md -bottom-6 left-1/2 transform -translate-x-1/2 -z-10"></div>
 
               {/* Glow effect */}
-              <div className="absolute -inset-4 bg-yellow-400 bg-opacity-30 blur-xl rounded-full z-0 trophy-glow"></div>
+              <div className="absolute -inset-6 bg-yellow-400/30 blur-3xl rounded-full z-0"></div>
+              <div className="absolute -inset-3 bg-yellow-300/40 blur-xl rounded-full z-0"></div>
 
               {/* Laurel Wreath with 3D effect */}
               <div className="absolute inset-0 w-full h-full" style={{ transform: "translateZ(5px)" }}>
@@ -660,14 +661,14 @@ const Prize = () => {
       </div>
 
       {/* Additional Info */}
-      <div className="max-w-2xl mx-auto bg-white/10 backdrop-blur-md p-5 rounded-2xl border-2 border-white/30 shadow-xl mt-16 relative z-10 glass-card">
+      <div className="max-w-2xl mx-auto bg-white/5 backdrop-blur-lg p-6 rounded-2xl border border-white/10 shadow-lg mt-20 relative z-10">
         <p className="text-lg font-medium text-white">Join our competition for a chance to win these amazing prizes!</p>
       </div>
 
       {/* CSS for styling */}
       <style jsx>{`
         .bg-radial-gradient {
-          background: radial-gradient(circle at 50% 0%, rgba(99, 102, 241, 0.5) 0%, rgba(30, 64, 175, 0.2) 50%, rgba(17, 24, 39, 0) 100%);
+          background: radial-gradient(circle at 50% 0%, rgba(79, 70, 229, 0.25) 0%, rgba(17, 24, 39, 0.2) 50%, rgba(15, 23, 42, 0) 100%);
         }
         
         .light-beam {

@@ -286,13 +286,15 @@ const Header = ({ isMobile }) => {
             {user ? (
               <button
                 onClick={logout}
-                className="font-semibold rounded-md py-2 px-6 border border-transparent text-center bg-blue-600 hover:bg-blue-500 text-white text-sm transition-all shadow-md hover:shadow-lg ml-2"
+                className="font-semibold rounded-md py-2 px-6 
+                border border-transparent text-center bg-blue-600 hover:bg-blue-500 text-white text-sm transition-all shadow-md hover:shadow-lg ml-2"
               >
                 Logout
               </button>
             ) : (
               <Link to="/login">
-                <button className="font-semibold rounded-md py-2 px-6 border border-transparent text-center bg-[#9599d2] hover:bg-[#b7dcff] text-sm transition-all shadow-md hover:shadow-lg ml-2">
+                <button className="font-semibold rounded-md py-2 px-6 bg-[#4c5ab6] text-white hover:bg-[#2e3b7f] 
+                text-sm transition-all shadow-md hover:shadow-lg ml-2">
                   Login
                 </button>
               </Link>
@@ -395,7 +397,7 @@ const Header = ({ isMobile }) => {
               <Link
                 to="/login"
                 onClick={() => setMenuOpen(false)}
-                className="block px-3 py-2 mt-1 rounded-md text-base font-medium text-center bg-cyan-500 text-white hover:bg-cyan-400 transition-all duration-200"
+                className="block px-3 py-2 mt-1 rounded-md text-base font-medium text-center bg-[#4c5ab6] text-white hover:bg-[#2e3b7f] shadow-md hover:shadow-lgtransition-all duration-200"
               >
                 Login
               </Link>
