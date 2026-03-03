@@ -8,7 +8,7 @@ const socialLinks = [
   {
     name: "UM Technothon", // First
     imgSrc: "logos/Logo border rounded.png",
-    instagram: "https://www.instagram.com/um.technothon?igsh=eXRhcmZsZng2Nnhl",
+    instagram: "https://www.instagram.com/umtechnothon?igsh=eXRhcmZsZng2Nnhl",
   },
   {
     name: "Google Developer Group On Campus Universiti Malaya", // Second
@@ -77,9 +77,11 @@ const SocialMedia = () => {
   }, [activeIndex, isTransitioning])
 
   return (
-    <div className="flex flex-col items-center bg-gradient-to-b from-[#9599d2] to-[#d0d2f0] py-10">
-      <div className="w-4/5 h-1 bg-black mx-auto mb-20"></div>
-      <h1 className="text-2xl text-center font-bold text-black mb-8 px-4">
+    <div className="flex flex-col items-center bg-gradient-to-b from-[#0f172a] via-[#111827] to-[#0f172a] py-20">
+      {/* Divider */}
+      <div className="w-4/5 h-[1px] bg-white/20 mx-auto mb-16"></div>
+      {/* Heading */}
+      <h1 className="text-3xl md:text-4xl text-center font-bold text-white mb-12 px-4 tracking-wide">
         Want to know more about us? <br />
         Follow our Instagram!
       </h1>
@@ -112,12 +114,12 @@ const SocialMedia = () => {
                     />
                   </a>
                 </div>
-                <p className="text-center text-lg font-semibold max-w-[250px] text-black">{account.name}</p>
+                <p className="text-center text-lg font-semibold max-w-[250px] text-gray-200">{account.name}</p>
                 <a
                   href={account.instagram}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-4 px-6 py-2 bg-[#9599d2] text-white rounded-full hover:bg-[#7a7fb8] transition-colors duration-300 flex items-center justify-center"
+                  className="mt-4 px-6 py-2 bg-[#4c5ab6] text-white rounded-full hover:bg-[#2e3b7f] transition-colors duration-300 flex items-center justify-center"
                 >
                   Read More
                 </a>
@@ -130,19 +132,19 @@ const SocialMedia = () => {
         <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 flex justify-between px-2 z-10">
           <button
             onClick={prevSlide}
-            className="bg-white/50 rounded-full p-2 shadow-md hover:bg-white/70 transition-colors duration-300"
+            className="bg-[#5da4cf] border-border-white/10 rounded-full p-2 shadow-md hover:bg-white/70 transition-colors duration-300"
             aria-label="Previous slide"
             disabled={isTransitioning}
           >
-            <ChevronLeft className="w-5 h-5 text-[#7a7fb8]" />
+            <ChevronLeft className="w-5 h-5 text-white" />
           </button>
           <button
             onClick={nextSlide}
-            className="bg-white/50 rounded-full p-2 shadow-md hover:bg-white/70 transition-colors duration-300"
+            className="bg-white/20 rounded-full p-2 shadow-md hover:bg-white/40 transition-colors duration-300"
             aria-label="Next slide"
             disabled={isTransitioning}
           >
-            <ChevronRight className="w-5 h-5 text-[#7a7fb8]" />
+            <ChevronRight className="w-5 h-5 text-white" />
           </button>
         </div>
 
@@ -153,7 +155,7 @@ const SocialMedia = () => {
               key={index}
               onClick={() => goToSlide(index)}
               className={`h-2.5 rounded-full transition-all duration-300 ${
-                index === activeIndex ? "w-6 bg-[#7a7fb8]" : "w-2.5 bg-gray-300 hover:bg-gray-400"
+                index === activeIndex ? "w-6 bg-[#4c5ab6]" : "w-2.5 bg-gray-300 hover:bg-gray-400"
               }`}
               aria-label={`Go to slide ${index + 1}`}
               disabled={isTransitioning}
@@ -166,7 +168,7 @@ const SocialMedia = () => {
       <div className="hidden md:flex md:flex-wrap md:justify-center md:gap-20">
         {socialLinks.map((account, index) => (
           <div key={index} className="flex flex-col items-center group">
-            <div className="w-40 h-40 mb-4 flex items-center justify-center overflow-hidden rounded-xl p-4 shadow-md transition-all duration-300 group-hover:shadow-lg">
+            <div className="w-40 h-40 mb-4 flex items-center justify-center overflow-hidden bg-[#1e293b] border border-white/10 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 group-hover:scale-105">
               <a
                 href={account.instagram}
                 target="_blank"
@@ -180,7 +182,7 @@ const SocialMedia = () => {
                 />
               </a>
             </div>
-            <p className="text-center mt-2 text-lg font-semibold max-w-[250px] text-black">{account.name}</p>
+            <p className="text-center mt-2 text-lg font-semibold max-w-[250px] text-gray-200">{account.name}</p>
             {/* Visit Instagram link removed as requested */}
           </div>
         ))}

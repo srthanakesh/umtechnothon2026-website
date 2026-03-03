@@ -116,8 +116,12 @@ const AddTask = () => {
   };
 
   return (
+    /* Outer wrapper forces the dark bg to fill the entire screen width and height */
+  <div className="min-h-screen bg-[#0b0e14] w-full text-[#fafdff]">
+    
+    {/* Inner container stays centered and constrained */}
     <div className="max-w-4xl mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold text-gray-800 mb-6">Add New Task</h1>
+      <h1 className="text-3xl font-bold text-[#fafdff] mb-6">Add New Task</h1>
 
       <form onSubmit={handleSubmit}>
         <TaskDetailsForm
@@ -175,6 +179,7 @@ const AddTask = () => {
       )}
 
     </div>
+  </div>
   );
 };
 

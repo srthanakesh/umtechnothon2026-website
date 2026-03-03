@@ -109,112 +109,115 @@ const TeamRegistration = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#696ea5] to-[#f8f7f7] py-12 px-4">
+    <div className="min-h-screen bg-[#0b0e14] py-12 px-4 text-[#fafdff]">
       <div className="max-w-2xl mx-auto">
-        <h1 className="text-4xl font-bold text-center text-white mb-8">Team Registration</h1>
+        <h1 className="text-4xl font-black text-center mb-2 uppercase tracking-tighter italic">
+          Team Registration
+        </h1>
+        <div className="w-5/6 h-1 bg-[#e151af] mx-auto mb-10 shadow-[0_0_10px_#e151af]"></div>
         
         {showMembers ? (
-          <div className="bg-white rounded-lg shadow-md p-8">
-            <h2 className="text-2xl font-bold text-center mb-6">Team Created Successfully!</h2>
-            <p className="text-center mb-6">Your team "{formData.teamName}" has been created with the following members:</p>
+          <div className="bg-[#111827] border border-[#2dcefb]/30 rounded-2xl shadow-2xl p-8 text-center animate-in fade-in zoom-in duration-300">
+            <div className="w-16 h-16 bg-[#2dcefb]/20 rounded-full flex items-center justify-center mx-auto mb-4 border border-[#2dcefb]">
+              <svg className="w-8 h-8 text-[#2dcefb]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7" />
+              </svg>
+            </div>
+            <h2 className="text-2xl font-bold mb-2 text-[#2dcefb]">Team Activated</h2>
+            <p className="text-white/60 mb-6 font-medium italic">
+              "{formData.teamName}" is ready for battle.
+            </p>
             
-            <ul className="space-y-2 mb-8">
+            <div className="space-y-2 mb-8">
               {registeredMembers.map((member, index) => (
-                <li key={index} className="bg-gray-100 p-3 rounded">
-                  {member.full_name} ({member.email})
-                </li>
+                <div key={index} className="bg-[#0b0e14] border border-white/5 p-3 rounded-xl flex justify-between items-center px-6">
+                  <span className="font-bold text-white">{member.full_name}</span>
+                  <span className="text-xs text-[#e151af] uppercase tracking-widest">{member.email}</span>
+                </div>
               ))}
-            </ul>
+            </div>
             
-            <p className="text-center text-gray-600">Redirecting to team page...</p>
+            <p className="text-sm text-white/30 animate-pulse uppercase tracking-[0.2em]">Redirecting to command center...</p>
           </div>
         ) : (
-          <div className="bg-white rounded-lg shadow-md p-8">
-            {successMessage && (
-              <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4">
-                {successMessage}
-              </div>
-            )}
-            
+          <div className="bg-[#111827] border border-white/10 rounded-2xl shadow-2xl p-8">
             {errors.submit && (
-              <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
-                {errors.submit}
+              <div className="bg-red-500/10 border border-red-500/50 text-red-500 px-4 py-3 rounded-xl mb-6 text-sm font-bold flex items-center gap-2">
+                <span>⚠️</span> {errors.submit}
               </div>
             )}
             
-            <form onSubmit={handleSubmit}>
-              <div className="mb-6">
-                <label htmlFor="teamName" className="block text-gray-700 font-semibold mb-2">Team Name</label>
+            <form onSubmit={handleSubmit} className="space-y-8">
+              {/* Team Name Section */}
+              <div>
+                <label htmlFor="teamName" className="block text-[#e151af] text-xs font-black uppercase tracking-widest mb-2">Team Name</label>
                 <input
                   type="text"
                   id="teamName"
                   name="teamName"
                   value={formData.teamName}
                   onChange={handleChange}
-                  className={`w-full p-3 border rounded-lg ${errors.teamName ? 'border-red-500' : 'border-gray-300'}`}
-                  placeholder="Enter your team name"
+                  className={`w-full bg-[#0b0e14] p-4 border rounded-xl outline-none focus:ring-2 transition-all font-bold tracking-tight text-xl ${
+                    errors.teamName ? 'border-red-500 focus:ring-red-500/20' : 'border-white/10 focus:ring-[#2dcefb]/50 focus:border-[#2dcefb]'
+                  }`}
+                  placeholder="The Cyber Warriors"
                 />
-                {errors.teamName && <p className="text-red-500 text-sm mt-1">{errors.teamName}</p>}
+                {errors.teamName && <p className="text-red-500 text-xs mt-2 font-bold uppercase">{errors.teamName}</p>}
               </div>
               
-              <div className="mb-6">
-                <h3 className="text-lg font-semibold mb-3">Team Members</h3>
-                <p className="text-gray-600 mb-4">Enter up to 4 email addresses of registered participants to add to your team. You (the team leader) will be automatically added.</p>
+              {/* Members Section */}
+              <div className="pt-4">
+                <h3 className="text-[#2dcefb] text-xs font-black uppercase tracking-[0.2em] mb-4">Roster Acquisition</h3>
+                <p className="text-white/40 text-xs mb-6 italic">Enter emails for up to 4 registered participants. You are added automatically as the leader.</p>
                 
-                {formData.memberEmails.map((email, index) => (
-                  <div key={index} className="mb-3">
-                    <label htmlFor={`email${index}`} className="block text-gray-700 mb-1">Member {index + 1} Email</label>
-                    <input
-                      type="email"
-                      id={`email${index}`}
-                      value={email}
-                      onChange={(e) => handleEmailChange(index, e.target.value)}
-                      className={`w-full p-3 border rounded-lg ${
-                        errors.invalidEmails?.some(e => e.index === index) ? 'border-red-500' : 'border-gray-300'
-                      }`}
-                      placeholder="participant@example.com"
-                    />
-                    {errors.invalidEmails?.some(e => e.index === index) && (
-                      <p className="text-red-500 text-sm mt-1">Invalid email format</p>
-                    )}
-                  </div>
-                ))}
-                
-                {errors.memberEmails && <p className="text-red-500 text-sm">{errors.memberEmails}</p>}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {formData.memberEmails.map((email, index) => (
+                    <div key={index}>
+                      <input
+                        type="email"
+                        id={`email${index}`}
+                        value={email}
+                        onChange={(e) => handleEmailChange(index, e.target.value)}
+                        className={`w-full bg-[#0b0e14] p-3 border rounded-xl outline-none focus:ring-1 transition-all text-sm ${
+                          errors.invalidEmails?.some(e => e.index === index) ? 'border-red-500' : 'border-white/5 focus:border-[#e151af]'
+                        }`}
+                        placeholder={`Member ${index + 1} Email`}
+                      />
+                    </div>
+                  ))}
+                </div>
+                {errors.memberEmails && <p className="text-red-500 text-xs mt-4 font-bold uppercase">{errors.memberEmails}</p>}
               </div>
 
-              <div className="mb-4">
-                <label className="flex items-start cursor-pointer">
+              {/* Checkbox Section */}
+              <div className="bg-[#0b0e14] p-4 rounded-xl border border-white/5">
+                <label className="flex items-center cursor-pointer group">
                   <input
                     type="checkbox"
-                    name="paymentConfirmation"
-                    className="mt-1 mr-2"
-                    checked={formData.paymentConfirmation}
+                    className="w-5 h-5 rounded border-white/10 bg-[#111827] text-[#2dcefb] focus:ring-offset-0 focus:ring-0 cursor-pointer"
+                    checked={formData.paymentConfirmation || false}
                     onChange={(e) => setFormData({...formData, paymentConfirmation: e.target.checked})}
                     required
                   />
-                  <span>
-                    I have paid for the deposit and team registration <a
-                    href="https://app.youths.asia/event/9L2QcsK8NvXFCUgB9UeE"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-blue-600 underline hover:text-blue-800"
-                  >
-                    here
-                  </a>.
+                  <span className="ml-3 text-xs text-white/60 group-hover:text-white transition-colors leading-relaxed">
+                    I confirm the deposit and registration fee has been finalized 
+                    <a href="https://app.youths.asia/event/9L2QcsK8NvXFCUgB9UeE" target="_blank" rel="noopener noreferrer" className="text-[#2dcefb] hover:underline ml-1 font-bold">
+                      here
+                    </a>.
                   </span>
                 </label>
-                {errors.paymentConfirmation && <p className="text-red-500 text-sm mt-1">{errors.paymentConfirmation}</p>}
               </div>
               
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className={`w-full bg-[#696ea5] text-white py-3 rounded-lg font-semibold text-lg transition ${
-                  isSubmitting ? 'opacity-70 cursor-not-allowed' : 'hover:bg-[#5a5f95]'
-                }`}
+                className={`w-full py-4 rounded-xl font-black uppercase tracking-[0.2em] text-sm transition-all shadow-lg
+                  ${isSubmitting 
+                    ? 'bg-white/5 text-white/20 cursor-not-allowed' 
+                    : 'bg-[#2dcefb] hover:bg-[#2dcefb]/90 text-[#0b0e14] hover:shadow-[0_0_20px_rgba(45,206,251,0.4)] active:scale-95'
+                  }`}
               >
-                {isSubmitting ? 'Creating Team...' : 'Create Team'}
+                {isSubmitting ? 'Initializing Team...' : 'Create Team'}
               </button>
             </form>
           </div>
