@@ -189,8 +189,8 @@ const ViewSubmission = () => {
   };
 
   return (
-    <div className="bg-[#b7dcff] min-h-screen p-6">
-      <h1 className="text-2xl font-bold mb-6 text-center">Submission Marking</h1>
+    <div className="bg-[#0b0e14] min-h-screen p-6 text-[#fafdff]">
+      <h1 className="text-2xl font-bold mb-6 text-center text-[#fafdff]">Submission Marking</h1>
 
       <div className="flex flex-col md:flex-row gap-6">
         {/* Left Section - View Submission */}

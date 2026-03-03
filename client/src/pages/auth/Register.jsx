@@ -30,9 +30,9 @@ const Register = () => {
   return (
     <>
       {isPending && <Loading />}
-      <div className="flex justify-center items-center min-h-[70vh]">
+      <div className="flex justify-center items-center min-h-[70vh] bg-[#1a1d23]">
         <div className="w-full max-w-sm p-2">
-          <h2 className="text-center text-2xl font-bold tracking-tight text-gray-900 my-6">
+          <h2 className="text-center text-[#fafdff] text-2xl font-bold tracking-tight my-6">
             Create a new account
           </h2>
 
@@ -126,7 +126,7 @@ const Register = () => {
             </button>
           </AppForm>
 
-          <p className="my-6 text-center text-sm text-gray-500">
+          <p className="my-6 text-center text-sm text-[#fafdff]">
             Already have an account?
             <Link
               to="/login"

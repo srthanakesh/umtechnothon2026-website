@@ -8,7 +8,7 @@ const socialLinks = [
   {
     name: "UM Technothon", // First
     imgSrc: "logos/Logo border rounded.png",
-    instagram: "https://www.instagram.com/um.technothon?igsh=eXRhcmZsZng2Nnhl",
+    instagram: "https://www.instagram.com/umtechnothon?igsh=eXRhcmZsZng2Nnhl",
   },
   {
     name: "Google Developer Group On Campus Universiti Malaya", // Second

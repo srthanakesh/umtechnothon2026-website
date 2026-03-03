@@ -5,7 +5,7 @@ import Leaderboard from '../../components/Leaderboard/Leaderboard'
 
 const Team = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#696ea5] to-[#f8f7f7]">
+    <div className="min-h-screen bg-gradient-to-b from-[#0b0e14] via-[#111827] to-[#0f1721] ">
       <div className="flex flex-col md:flex-row">
         <div className="w-full md:w-1/2">
           <IndividualProfile />

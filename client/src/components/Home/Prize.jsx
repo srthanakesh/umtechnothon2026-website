@@ -346,7 +346,7 @@ const Prize = () => {
         <div className="text-lg md:text-2xl font-medium mb-2 text-white relative">
           Total prize pool:
           <span className="relative inline-block ml-2">
-            <span className="text-yellow-400 font-extrabold text-3xl md:text-5xl tracking-wide relative z-10">RM 5,000</span>
+            <span className="text-yellow-400 font-extrabold text-3xl md:text-5xl tracking-wide relative z-10">RM ?</span>
             <span className="absolute -inset-2 bg-yellow-400 bg-opacity-10 blur-md -z-10 rounded-lg pulse-glow"></span>
           </span>
         </div>
@@ -422,7 +422,7 @@ const Prize = () => {
                 style={{ transform: "translateZ(10px)" }}
               >
                 <div className="ribbon-blue-3d w-full h-full flex items-center justify-center">
-                  <span className="text-white font-bold text-xl sm:text-2xl">RM2,000</span>
+                  <span className="text-white font-bold text-xl sm:text-2xl">RM?</span>
                 </div>
               </div>
             </div>
@@ -499,7 +499,7 @@ const Prize = () => {
                   style={{ transform: "translateZ(10px)" }}
                 >
                   <div className="ribbon-blue-3d w-full h-full flex items-center justify-center">
-                    <span className="text-white font-bold text-xl sm:text-2xl">RM1,500</span>
+                    <span className="text-white font-bold text-xl sm:text-2xl">RM?</span>
                   </div>
                 </div>
               </div>
@@ -574,7 +574,7 @@ const Prize = () => {
                   style={{ transform: "translateZ(10px)" }}
                 >
                   <div className="ribbon-blue-3d w-full h-full flex items-center justify-center">
-                    <span className="text-white font-bold text-xl sm:text-2xl">RM1,000</span>
+                    <span className="text-white font-bold text-xl sm:text-2xl">RM?</span>
                   </div>
                 </div>
               </div>
@@ -652,7 +652,7 @@ const Prize = () => {
                 style={{ transform: "translateZ(10px)" }}
               >
                 <div className="ribbon-blue-3d w-full h-full flex items-center justify-center">
-                  <span className="text-white font-bold text-lg sm:text-xl">RM500</span>
+                  <span className="text-white font-bold text-lg sm:text-xl">RM?</span>
                 </div>
               </div>
             </div>
