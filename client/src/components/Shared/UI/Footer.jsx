@@ -43,17 +43,17 @@ export default function Footer() {
           {/* Right Column - Contact Persons */}
           <div className="text-right space-y-8">
             <div className="space-y-1">
-              <p className="font-semibold">TEO JING YING</p>
+              <p className="font-semibold">CHUA PEI YING</p>
               <p className="text-xs text-gray-300">
-                HEAD OF FINANCE & SPONSORSHIP
+                HEAD OF FINANCE
               </p>
-              <p className="text-sm">010-2109332</p>
+              <p className="text-sm">016-4985040</p>
             </div>
 
             <div className="space-y-1">
-              <p className="font-semibold">OOI CHIN MING</p>
+              <p className="font-semibold">THEN FUNG MAYE</p>
               <p className="text-xs text-gray-300">DIRECTOR</p>
-              <p className="text-sm">010-4507617</p>
+              <p className="text-sm">011-51731170</p>
             </div>
           </div>
         </div>
