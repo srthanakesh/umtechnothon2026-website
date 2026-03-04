@@ -20,31 +20,54 @@ const Leaderboard = () => {
   }, []);
 
   return (
-    <div className="bg-[#ffffff00] p-12 text-center" id="leaderboard">
-      <h2 className="text-3xl font-bold text-[#4c5ab6] mb-8">LEADERBOARD</h2>
-      <div className="w-5/6 h-1 bg-[#7f8bcb] rounded mx-auto mb-10"></div>
-      <div className="max-w-5xl mx-auto bg-white p-5 rounded-2xl border-4 border-[#7f8bcb] shadow-lg">
-        <table className="table-auto mx-auto border-collapse w-full">
+    <div className="bg-[#0b0e14] min-h-screen p-6 md:p-12 text-center" id="leaderboard">
+      <h2 className="text-4xl font-black text-[#fafdff] mb-4 tracking-tighter italic uppercase">
+        Leaderboard
+      </h2>
+      <div className="w-5/6 h-1.5 bg-[#e151af] rounded-full mx-auto mb-12 shadow-[0_0_15px_#e151af]"></div>
+      
+      <div className="max-w-4xl mx-auto bg-[#111827] rounded-3xl border border-white/10 shadow-2xl overflow-hidden">
+        <table className="w-full border-collapse">
           <thead>
-            <tr>
-              <th className="px-4 py-2 text-center">Rank</th>
-              <th className="px-4 py-2 text-left">Group Name</th>
-              <th className="px-4 py-2 text-center">Total Score</th>
+            <tr className="bg-[#2dcefb]/10 text-[#2dcefb] uppercase text-sm tracking-widest">
+              <th className="px-6 py-5 text-center font-black">Rank</th>
+              <th className="px-6 py-5 text-left font-black">Group Name</th>
+              <th className="px-6 py-5 text-center font-black">Total Score</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody className="divide-y divide-white/5">
             {leaderboard.map((team, index) => (
               <tr
                 key={index}
-                className={`${index % 2 === 0 ? "bg-gray-100" : "bg-gray-200"}`}
+                className={`transition-colors hover:bg-white/5 group ${
+                  index === 0 ? "bg-[#e151af]/5" : ""
+                }`}
               >
-                <td className="px-4 py-2 text-center">{index + 1}</td>
-                <td className="px-4 py-2 text-left">{team.team_name}</td>
-                <td className="px-4 py-2 text-center">{team.total_score}</td>
+                <td className="px-6 py-5 text-center">
+                  <span className={`inline-flex items-center justify-center w-8 h-8 rounded-full font-bold ${
+                    index === 0 ? "bg-[#e151af] text-white shadow-[0_0_10px_#e151af]" : 
+                    index === 1 ? "bg-slate-400 text-[#0b0e14]" :
+                    index === 2 ? "bg-amber-600 text-[#0b0e14]" : "text-white/40"
+                  }`}>
+                    {index + 1}
+                  </span>
+                </td>
+                <td className="px-6 py-5 text-left font-semibold text-[#fafdff]">
+                  {team.team_name}
+                </td>
+                <td className="px-6 py-5 text-center font-mono text-xl text-[#2dcefb] group-hover:scale-110 transition-transform">
+                  {team.total_score}
+                </td>
               </tr>
             ))}
           </tbody>
         </table>
+        
+        {leaderboard.length === 0 && (
+          <div className="p-10 text-white/20 italic">
+            Waiting for scores to be finalized...
+          </div>
+        )}
       </div>
     </div>
   );

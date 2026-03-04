@@ -22,6 +22,10 @@ export const useUserLogin = () => {
     mutationFn: async (userData) => await loginUser(userData),
     onSuccess: (data) => {
       toast.success("Login successful!");
+
+      if(data.mustSetPassword) {
+        window.location.href = "/set-password"; // Redirect to set password page
+      }
     },
     onError: (error) => {
       toast.error(error.message || "Login failed");

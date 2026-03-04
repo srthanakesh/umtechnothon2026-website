@@ -64,17 +64,17 @@ const IndividualTeamDashboard = () => {
   };
 
   if (!user) {
-    return <p className="text-center text-lg mt-8">Loading user data...</p>;
+    return <p className="text-center text-lg mt-8 text-white">Loading user data...</p>;
   }
 
   if (!user.team_id) {
-    return <p className="text-center text-lg mt-8">You are not assigned to any team. <br></br>
+    return <p className="text-center text-lg mt-8 text-white">You are not assigned to any team. <br></br>
       If you just registered a team, <br></br>
       you may need to log out and re-login again.</p>;
   }
 
   if (loading) {
-    return <p className="text-center text-lg mt-8">Loading team data...</p>;
+    return <p className="text-center text-lg mt-8 text-white">Loading team data...</p>;
   }
 
   if (error) {
@@ -82,32 +82,32 @@ const IndividualTeamDashboard = () => {
   }
 
   return (
-    <div className="flex flex-col justify-center items-center min-h-screen bg-[#ffffff00]">
-      {/* Title Outside the White Rectangle */}
-      <h2 className="text-4xl font-bold text-black mb-6">TEAM DASHBOARD</h2>
+    <div className="flex flex-col items-center">
+      <h2 className="text-3xl font-black text-[#fafdff] mb-6 uppercase tracking-tighter italic">
+        Team Dashboard
+      </h2>
 
-      {/* White Rectangle */}
-      <div className="bg-[#efece6] shadow-md rounded-lg p-8 max-w-xl w-full mt-4">
+      <div className="bg-[#111827] border border-white/10 shadow-2xl rounded-2xl p-8 w-full">
         <div className="space-y-6">
           {/* Team Name */}
           <div>
-            <p className="text-gray-700 font-semibold">Team Name:</p>
-            <div className="bg-white shadow-md rounded-lg p-4 max-w-xl w-full h-12 flex items-center">
+            <p className="text-[#2dcefb] text-xs font-bold uppercase tracking-widest mb-2">Team Identity</p>
+            <div className="bg-[#0b0e14] border border-white/5 rounded-xl p-4 text-white text-xl font-bold italic tracking-tight">
               {team?.team_name || "Not available"}
             </div>
           </div>
-          {/* Rank */}
-          <div>
-            <p className="text-gray-700 font-semibold">Rank:</p>
-            <div className="bg-white shadow-md rounded-lg p-4 max-w-xl w-full h-12 flex items-center">
-              {getTeamRank()}
+
+          <div className="grid grid-cols-2 gap-4">
+            {/* Rank Display */}
+            <div className="bg-[#0b0e14] border border-white/5 rounded-xl p-6 text-center">
+              <p className="text-[#e151af] text-xs font-bold uppercase mb-2">Current Rank</p>
+              <div className="text-4xl font-black text-[#fafdff]">{getTeamRank()}</div>
             </div>
-          </div>
-          {/* Total Score */}
-          <div>
-            <p className="text-gray-700 font-semibold">Total Score:</p>
-            <div className="bg-white shadow-md rounded-lg p-4 max-w-xl w-full h-12 flex items-center">
-              {getTeamScore()}
+
+            {/* Score Display */}
+            <div className="bg-[#2dcefb]/5 border border-[#2dcefb]/20 rounded-xl p-6 text-center shadow-[0_0_15px_rgba(45,206,251,0.1)]">
+              <p className="text-[#2dcefb] text-xs font-bold uppercase mb-2">Total Points</p>
+              <div className="text-4xl font-black text-[#2dcefb]">{getTeamScore()}</div>
             </div>
           </div>
         </div>

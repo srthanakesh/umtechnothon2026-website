@@ -16,7 +16,7 @@ const getAllParticipants = async (req, res) => {
 };
 
 // REGISTER a new participant
-const registerUser = async (req, res) => {
+/*const registerUser = async (req, res) => {
   const { full_name, university, password, team_id, email,
           ic_number, gender, study_year, study_course, nationality, verification_link, resume_link } = req.body;
 
@@ -105,23 +105,76 @@ const registerUser = async (req, res) => {
     console.error("Register Error:", err);
     return res.status(500).json({ error: "Internal server error" });
   }
+};*/
+
+// NEW: Set password for the first time (For invited users)
+const setPassword = async (req, res) => {
+  const { email, newPassword } = req.body;
+  console.log("1. Request received for email:", email);
+  const cleanEmail = email ? email.trim() : null;
+
+  if (!cleanEmail || !newPassword) {
+    return res.status(400).json({ error: "Email and new password are required" });
+  }
+
+  try {
+    // 1. Check if the participant exists and is NOT yet verified
+    const result = await participantModel.getParticipantByEmail(cleanEmail, true);
+
+    if (!result.data) {
+      return res.status(404).json({ error: "Participant not found or not approved." });
+    }
+
+    const user = result.data;
+
+    if (user.is_verified) {
+      return res.status(400).json({ error: "Password has already been set for this account." });
+    }
+
+    // 2. Hash the new password
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(newPassword, salt);
+
+    // 3. Update the participant in the database
+    const { data: updatedUser, updateError } = await participantModel.updateParticipant(user.participant_id, {
+      password_hash: hashedPassword,
+      is_verified: true
+    });
+
+    if (updateError) throw updateError;
+
+    return res.status(200).json({ message: "Password set successfully! You can now log in." });
+  } catch (err) {
+    console.error("Set Password Error:", err);
+    return res.status(500).json({ error: "Internal server error" });
+  }
 };
 
 // LOGIN an existing participant
 const loginUser = async (req, res) => {
   const { email, password } = req.body;
+  const cleanEmail = email ? email.trim() : null;
 
   // Check if both email and password are provided
-  if (!email || !password) {
+  if (!cleanEmail || !password) {
     return res.status(400).json({ error: "Email and password are required" });
   }
 
   try {
     const { data: participantData, error } =
-      await participantModel.getParticipantByEmail(email, true);
+      await participantModel.getParticipantByEmail(cleanEmail, true);
 
     if (error || !participantData) {
-      return res.status(404).json({ error: "Participant not found" });
+      return res.status(404).json({ error: "Team not found" });
+    }
+
+    // NEW LOGIC: Check if they need to set a password first
+    if (!participantData.is_verified) {
+        return res.status(403).json({ 
+            error: "Account not verified.", 
+            mustSetPassword: true,
+            message: "Please set your password first." 
+        });
     }
 
     // Check password using password_hash
@@ -237,8 +290,8 @@ const refreshAccessToken = async (req, res) => {
 
 module.exports = {
   getAllParticipants,
-  registerUser,
   loginUser,
   getParticipantById,
   refreshAccessToken,
+  setPassword,
 };

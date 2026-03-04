@@ -25,22 +25,22 @@ export default function Timeline() {
   }, []);
 
   const events = [
-    { date: "9th March - 24 April", description: "• Registration Start" },
-    { date: "25 April 12PM", description: "• Domain Reveal & Preliminary Round Briefing" },
-    { date: "25 April - 3 May 11:59 PM", description: "• Preliminary Round - Idea And Video Building" },
-    { date: "1 - 3 May 11:59 PM", description: "• Preliminary Round - Submission" },
-    { date: "4 - 8 May", description: "• Preliminary Round - Judging" },
-    { date: "9 May 12 PM", description: "• Finalists Announcement (20 Teams) <br /> • Final Round Briefing" },
+    { date: "9 March - 24 April 2026", description: "• Registration" },
+    { date: "25 April 2026", description: "• Domain Reveal & Preliminary Round Briefing" },
+    { date: "25 April - 3 May 2026", description: "• Preliminary Round - Idea And Video Building" },
+    { date: "1 - 3 May 2026", description: "• Preliminary Round - Submission" },
+    { date: "4 - 8 May 2026", description: "• Preliminary Round - Judging" },
+    { date: "9 May 2026", description: "• Finalists Announcement (20 Teams) <br /> • Final Round Briefing" },
     {
-      date: "9 May - 6 June",
+      date: "9 May - 6 June 2026",
       description: "• Final Round Prototype Building",
     },
     {
-      date: "1 - 6 June 11:59 PM",
+      date: "1 - 6 June 2026",
       description: "• Final Round Submission",
     },
-    { date: "6 June", description: "• Physical Final Day - Mentoring Session" },
-    { date: "7 June", description: "• Physical Final Day - Pitching Day" }
+    { date: "6 June 2026", description: "• Physical Final Day - Mentoring Session" },
+    { date: "7 June 2026", description: "• Physical Final Day - Pitching Day" }
   ];
 
   return (

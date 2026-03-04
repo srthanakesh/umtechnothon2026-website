@@ -54,12 +54,12 @@ const FirstPage = () => {
     if (!user) {
       return {
         buttontext: "JOIN US NOW!",
-        destination: "/register"
+        // destination: "/register"
       }
     } else if (!user.team_id) {
       return {
         buttontext: "REGISTER TEAM",
-        destination: "/register-team"
+        // destination: "/register-team"
       }
     } else {
       return {
