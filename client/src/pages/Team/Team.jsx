@@ -5,16 +5,23 @@ import Leaderboard from '../../components/Leaderboard/Leaderboard'
 
 const Team = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#0b0e14] via-[#111827] to-[#0f1721] ">
-      <div className="flex flex-col md:flex-row">
-        <div className="w-full md:w-1/2">
+    <div className="min-h-screen bg-[#0a0c1b] p-4 md:p-8">
+      {/* Removed the flex-row split. 
+          The dashboard will now take up the full container width.
+      */}
+      <div className="max-w-7xl mx-auto">
+        {/* Hiding IndividualProfile*/}
+        {/* <div className="w-full md:w-1/2">
           <IndividualProfile />
-        </div>
-        <div className="w-full md:w-1/2">
+        </div> */}
+
+        <div className="w-full">
           <IndividualTeamDashboard />
         </div>
       </div>
-{/*       <Leaderboard /> */}
+
+      {/* Leaderboard remains commented out as per your original file */}
+      {/* <Leaderboard /> */}
     </div>
   )
 }
