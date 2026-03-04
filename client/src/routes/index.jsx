@@ -12,6 +12,7 @@ import NotFound from "../pages/404/NotFound";
 import Leaderboard from "../components/Leaderboard/Leaderboard";
 import ContactUs from "../pages/ContactUs/ContactUs";
 import Login from "../pages/auth/Login";
+import SetPassword from "../pages/auth/SetPassword";
 import Credits from "../pages/Home/Credits";
 
 export const routesConfig = [
@@ -23,6 +24,7 @@ export const routesConfig = [
   { path: "/login", element: <Login /> },
   { path: "/register", element: <Register /> },
   { path: "/contact-us", element: <ContactUs /> },
+  { path: "/set-password", element: <SetPassword /> },
 
   // User routes
   {

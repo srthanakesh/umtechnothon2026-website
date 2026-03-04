@@ -86,16 +86,18 @@ const Header = ({ isMobile }) => {
   const defaultItems = [
     { label: "About Us", action: () => scrollToSection("about-us") },
     { label: "Timeline", action: () => scrollToSection("timeline") },
+    { label: "Judges & Mentors", action: () => scrollToSection("judges-mentors") },
     { label: "Sponsors", action: () => scrollToSection("sponsors") },
     { label: "Contact Us", action: () => scrollToSection("contact-us") },
+    { label: "FAQ", action: () => scrollToSection("faq") },
   ];
 
   const participantItems = [
     { label: "Tasks", path: "/tasks" },
     // { label: "Leaderboard", action: () => scrollToLeaderboard("leaderboard") },
     { label: "Profile", path: "/team" },
-    // Only show "Register Team" if user doesn't have a team_id
-    ...(user && !user.team_id ? [{ label: "Register Team", path: "/register-team" }] : [])
+    // Only show "Register Team" if user doesn't have a team_id 
+    // ...(user && !user.team_id ? [{ label: "Register Team", path: "/register-team" }] : []) (hide it first to avoid confusion, can add back later if needed)
   ];
 
   const adminItems = [
@@ -132,7 +134,7 @@ const Header = ({ isMobile }) => {
         <Link
           key={index}
           to={item.path}
-          className="rounded-lg font-medium text-[#f5f5f5] hover:text-[#b4fff9] cursor-pointer"
+          className="rounded-lg font-medium text-[#f5f5f5] hover:text-[#b4fff9] text-left cursor-pointer whitespace-nowrap"
           onClick={() => setMenuOpen(false)}
         >
           {item.label}
