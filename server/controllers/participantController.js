@@ -107,7 +107,7 @@ const getAllParticipants = async (req, res) => {
   }
 };*/
 
-// NEW: Set password for the first time (For invited users)
+//Set password for the first time (For invited users)
 const setPassword = async (req, res) => {
   const { email, newPassword } = req.body;
   console.log("1. Request received for email:", email);

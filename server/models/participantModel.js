@@ -24,12 +24,11 @@ const insertParticipant = async (participant) => {
   }
 };
 
-// --- UPDATED: Added updateParticipant function ---
 const updateParticipant = async (id, updates) => {
   try {
     const { data, error } = await supabase
       .from("participants")
-      .update(updates) // This takes an object like { password_hash: '...', is_verified: true }
+      .update(updates) //{ password_hash: '...', is_verified: true }
       .eq("participant_id", id)
       .select()
       .single();
@@ -52,12 +51,12 @@ const getParticipantByEmail = async (email, includePassword = false) => {
     const { data, error } = await supabase
       .from("participants")
       .select(fields)
-      .ilike("email", email.trim()) // Added .trim() to ignore accidental spaces
+      .ilike("email", email.trim()) 
       .maybeSingle();
 
     if (error) throw error;
     
-    // This returns the actual user object
+    //returns the actual user object
     return { data }; 
   } catch (err) {
     console.error("DB Error:", err);
@@ -98,5 +97,5 @@ module.exports = {
   insertParticipant,
   getParticipantByEmail,
   getParticipantById,
-  updateParticipant, // Export the new update function
+  updateParticipant, 
 };
