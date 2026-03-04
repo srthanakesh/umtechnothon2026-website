@@ -25,7 +25,7 @@ export default function Timeline() {
   }, []);
 
   const events = [
-    { date: "9 March - 24 April 2026", description: "• Registration Start" },
+    { date: "9 March - 24 April 2026", description: "• Registration" },
     { date: "25 April 2026", description: "• Domain Reveal & Preliminary Round Briefing" },
     { date: "25 April - 3 May 2026", description: "• Preliminary Round - Idea And Video Building" },
     { date: "1 - 3 May 2026", description: "• Preliminary Round - Submission" },
