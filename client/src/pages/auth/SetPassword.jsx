@@ -1,11 +1,15 @@
 import React, { useState } from "react";
 import AppForm from "../../components/Shared/Form/AppForm";
 import AppInput from "../../components/Shared/Form/AppInput";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
+import axiosInstance from "../../lib/axiosInstance";
 
 const SetPassword = () => {
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
   const [error, setError] = useState("");
+
+  const emailFromUrl = searchParams.get("email");
 
   const onSubmit = async (data) => {
     // Reset error first
@@ -17,10 +21,29 @@ const SetPassword = () => {
       return;
     }
 
-    // No alert, just proceed
-    console.log("Success! Redirecting...");
-    navigate("/login");
-  };
+    if(!emailFromUrl){
+      setError("Invalid invitation link. No email found.");
+      return;
+    }
+
+    try {
+      // This sends the "Link" (email) and the "New Secret" (password) to the backend
+      const response = await axiosInstance.put("/participants/set-password", {
+        email: emailFromUrl, 
+        newPassword: data.password 
+      });
+
+      if (response.status === 200) {
+        console.log("Password linked and saved!");
+        navigate("/login");
+      }
+    } catch (err) {
+      // Show backend error (e.g., "Account already verified")
+      setError(err.response?.data?.error || "Failed to update password.");
+    }
+};
+    
+  
 
   return (
     <div className="flex justify-center items-center min-h-[85vh] bg-[#1a1d23] py-10 md:py-16 px-6 md:px-30 text-center">
