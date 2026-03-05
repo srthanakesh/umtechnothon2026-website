@@ -168,14 +168,13 @@ const Header = ({ isMobile }) => {
           <Link to="/" className="-m-1.5 p-1.5">
             <img
               alt="Technothon Logo"
-              src="/logos/technothon-logo-transparent.png"
+              src="/logos/technothon-2026-logov2.png"
               className="h-8 md:h-12 w-auto"
             />
           </Link>
           <p
-            className={`ml-2 ${
-              isMobile ? "text-3xl" : "text-3xl"
-            } text-[#f5f5f5]`}
+            className={`ml-2 ${isMobile ? "text-3xl" : "text-3xl"
+              } text-[#f5f5f5]`}
             style={{ fontFamily: "Saira Extra Condensed" }}
           >
             {isMobile ? "UM TECHNOTHON '26" : "| UM TECHNOTHON 2026"}
@@ -236,9 +235,8 @@ const Header = ({ isMobile }) => {
                 >
                   Homepage
                   <svg
-                    className={`ml-1 h-4 w-4 transition-transform ${
-                      dropdownOpen ? "rotate-180" : ""
-                    }`}
+                    className={`ml-1 h-4 w-4 transition-transform ${dropdownOpen ? "rotate-180" : ""
+                      }`}
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 24 24"
@@ -319,9 +317,8 @@ const Header = ({ isMobile }) => {
                   >
                     Homepage
                     <svg
-                      className={`ml-1 h-4 w-4 transition-transform ${
-                        dropdownOpen ? "rotate-180" : ""
-                      }`}
+                      className={`ml-1 h-4 w-4 transition-transform ${dropdownOpen ? "rotate-180" : ""
+                        }`}
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
                       viewBox="0 0 24 24"

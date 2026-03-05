@@ -86,9 +86,8 @@ const FirstPage = () => {
         }
       `}</style>
       <div
-        className={`flex flex-col items-center justify-center min-h-screen bg-gradient-to-b from-[#0b0e14] to-[#1a1d23] p-4 md:p-10 ${
-          !isMobile && "md:flex-row md:justify-between"
-        }`}
+        className={`flex flex-col items-center justify-center min-h-screen bg-gradient-to-b from-[#0b0e14] to-[#1a1d23] p-4 md:p-10 ${!isMobile && "md:flex-row md:justify-between"
+          }`}
       >
         <div
           className={`text-center p-4 ${isMobile ? "mt-0 w-full" : "ml-10 md:ml-40 md:p-8"}`}
@@ -109,9 +108,8 @@ const FirstPage = () => {
           </h2>
           <button
             onClick={handleButtonClick}
-            className={`bg-[#2dcefb] text-[#0b0e14] border-none py-3 px-6 font-bold cursor-pointer rounded transition duration-300 ease-in-out transform hover:bg-[#5da4cf] hover:scale-105 ${
-              isMobile ? "text-xl w-1/2 mt-4" : "text-lg"
-            }`}
+            className={`bg-[#2dcefb] text-[#0b0e14] border-none py-3 px-6 font-bold cursor-pointer rounded transition duration-300 ease-in-out transform hover:bg-[#5da4cf] hover:scale-105 ${isMobile ? "text-xl w-1/2 mt-4" : "text-lg"
+              }`}
           >
             {buttontext}
           </button>
@@ -120,7 +118,7 @@ const FirstPage = () => {
         {/* Logo section - only visible on desktop */}
         {!isMobile && (
           <div
-            className="flex items-center justify-center h-full"
+            className="flex items-center justify-end h-full flex-1 mr-12 md:mr-20"
             style={{
               filter: `blur(${blurAmount}px)`,
               opacity: opacity,
@@ -129,9 +127,9 @@ const FirstPage = () => {
           >
             <div className="relative">
               <img
-                src="/logos/technothon-logo-transparent.png"
+                src="/logos/technothon-2026-logov3.png"
                 alt="Technothon 2026 Logo"
-                className="h-full max-h-120 mr-10 md:mr-20"
+                className="w-[18rem] md:w-[18rem] lg:w-[44rem] h-auto"
                 style={{
                   animation: "float 3s ease-in-out infinite",
                 }}

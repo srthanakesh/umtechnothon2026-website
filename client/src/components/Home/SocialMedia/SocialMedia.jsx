@@ -7,7 +7,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react"
 const socialLinks = [
   {
     name: "UM Technothon", // First
-    imgSrc: "logos/Logo border rounded.png",
+    imgSrc: "logos/technothon-2026-logov2.png",
     instagram: "https://www.instagram.com/umtechnothon?igsh=eXRhcmZsZng2Nnhl",
   },
   {
@@ -154,9 +154,8 @@ const SocialMedia = () => {
             <button
               key={index}
               onClick={() => goToSlide(index)}
-              className={`h-2.5 rounded-full transition-all duration-300 ${
-                index === activeIndex ? "w-6 bg-[#4c5ab6]" : "w-2.5 bg-gray-300 hover:bg-gray-400"
-              }`}
+              className={`h-2.5 rounded-full transition-all duration-300 ${index === activeIndex ? "w-6 bg-[#4c5ab6]" : "w-2.5 bg-gray-300 hover:bg-gray-400"
+                }`}
               aria-label={`Go to slide ${index + 1}`}
               disabled={isTransitioning}
             />
