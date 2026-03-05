@@ -3,6 +3,7 @@ import AppForm from "../../components/Shared/Form/AppForm";
 import AppInput from "../../components/Shared/Form/AppInput";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import axiosInstance from "../../lib/axiosInstance";
+import { setPasswordSchema } from "../../schemas/auth.schema";
 
 const SetPassword = () => {
   const navigate = useNavigate();
@@ -16,11 +17,6 @@ const SetPassword = () => {
     setError("");
 
     // Simple manual frontend check
-    if (data.password !== data.confirmPassword) {
-      setError("Passwords do not match");
-      return;
-    }
-
     if(!emailFromUrl){
       setError("Invalid invitation link. No email found.");
       return;
@@ -55,7 +51,7 @@ const SetPassword = () => {
           This is your first login. Please create a secure password to continue.
         </p>
 
-        <AppForm onSubmit={onSubmit}>
+        <AppForm onSubmit={onSubmit} schema={setPasswordSchema}>
           <AppInput
             type="password"
             name="password"
