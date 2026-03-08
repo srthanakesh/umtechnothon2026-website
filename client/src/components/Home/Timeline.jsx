@@ -25,7 +25,7 @@ export default function Timeline() {
   }, []);
 
   const events = [
-    { date: "9 March - 24 April 2026", description: "• Registration" },
+    { date: "16 March - 24 April 2026", description: "• Registration" },
     { date: "25 April 2026", description: "• Domain Reveal & Preliminary Round Briefing" },
     { date: "25 April - 3 May 2026", description: "• Preliminary Round - Idea And Video Building" },
     { date: "1 - 3 May 2026", description: "• Preliminary Round - Submission" },
@@ -39,7 +39,7 @@ export default function Timeline() {
       date: "1 - 6 June 2026",
       description: "• Final Round Submission",
     },
-    { date: "6 June 2026", description: "• Physical Final Day - Mentoring Session" },
+    { date: "6 June 2026", description: "• Online - Mentoring Session" },
     { date: "7 June 2026", description: "• Physical Final Day - Pitching Day" }
   ];
 

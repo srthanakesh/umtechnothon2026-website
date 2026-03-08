@@ -25,18 +25,20 @@ const ViewSubmission = () => {
   // Fetch teams and tasks on component mount
   useEffect(() => {
     const fetchTeamsAndTasks = async () => {
+      // Fetch teams independently
       try {
-        // Fetch teams
-        const teamsResponse = await axiosInstance.get(`${import.meta.env.VITE_API_URL}/teams`);
-        const teamsData = await teamsResponse.data;
-        setTeams(teamsData);
-
-        // Fetch tasks
-        const tasksResponse = await axiosInstance.get(`${import.meta.env.VITE_API_URL}/tasks/getAll`);
-        const tasksData = await tasksResponse.data;
-        setTasks(tasksData);
+        const teamsResponse = await axiosInstance.get(`/teams`);
+        setTeams(teamsResponse.data || []);
       } catch (error) {
-        console.error('Error fetching data:', error);
+        console.error('Error fetching teams:', error);
+      }
+
+      // Fetch tasks independently
+      try {
+        const tasksResponse = await axiosInstance.get(`/tasks/getAll`);
+        setTasks(tasksResponse.data || []);
+      } catch (error) {
+        console.error('Error fetching tasks:', error);
       }
     };
 
@@ -48,16 +50,10 @@ const ViewSubmission = () => {
     if (selectedTeam && selectedTask) {
       const fetchSubmission = async () => {
         try {
-
-          window.alert(`Selected Team: ${selectedTeam}, Selected Task: ${selectedTask}`);
           const response = await axiosInstance.get(
-            `${import.meta.env.VITE_API_URL}/deliverables/team/${selectedTeam}/task/${selectedTask}`
+            `/deliverables/team/${selectedTeam}/task/${selectedTask}`
           );
-
-          window.alert(response);
-
-          const data = await response.data;
-          setSubmission(data);
+          setSubmission(response.data);
         } catch (error) {
           console.error('Error fetching submission:', error);
           setSubmission(null);
@@ -75,7 +71,7 @@ const ViewSubmission = () => {
         try {
           // Fetch rubric
           const rubricResponse = await axiosInstance.get(
-            `${import.meta.env.VITE_API_URL}/rubrics?task_id=${selectedTask}`
+            `/rubrics?task_id=${selectedTask}`
           );
 
           const rubricData = await rubricResponse.data;
@@ -87,7 +83,7 @@ const ViewSubmission = () => {
           if (firstRubric && firstRubric.rubric_id) {
             // Fetch criteria
             const criteriaResponse = await axiosInstance.get(
-              `${import.meta.env.VITE_API_URL}/criteria?rubric_id=${firstRubric.rubric_id}`
+              `/criteria?rubric_id=${firstRubric.rubric_id}`
             );
 
             const criteriaData = await criteriaResponse.data;
@@ -167,24 +163,12 @@ const ViewSubmission = () => {
         }))
       };
 
-      const response = await fetch(`${import.meta.env.VITE_API_URL}/scores`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(scoreData),
-      });
-
-      if (response.ok) {
-        alert('Marking submitted successfully!');
-        // Reset form or redirect as needed
-      } else {
-        const errorData = await response.json();
-        alert(`Error submitting marks: ${errorData.error || 'Unknown error'}`);
-      }
+      await axiosInstance.post('/scores', scoreData);
+      alert('Marking submitted successfully!');
     } catch (error) {
       console.error('Error submitting marks:', error);
-      alert('An error occurred while submitting marks. Please try again.');
+      const errorMessage = error.response?.data?.error || 'An error occurred while submitting marks. Please try again.';
+      alert(`Error submitting marks: ${errorMessage}`);
     }
   };
 

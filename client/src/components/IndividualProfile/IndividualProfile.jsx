@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useUser } from "../../context/UserProvider";
+import envConfig from '../../config/envConfig';
 
 const IndividualProfile = () => {
   const [profile, setProfile] = useState(null);
@@ -16,7 +17,7 @@ const IndividualProfile = () => {
     // Fetch the participant data from the backend
     const fetchProfile = async () => {
       try {
-        const response = await fetch(`${import.meta.env.VITE_API_URL}/participants/${user._id}`);
+        const response = await fetch(`${envConfig.serverBaseApi}/participants/${user._id}`);
 
         if (!response.ok) {
           throw new Error(`Error: ${response.status} ${response.statusText}`);

@@ -1,40 +1,36 @@
 import React, { useEffect, useState } from "react";
 import { useUser } from "../../context/UserProvider";
+import axiosInstance from "../../lib/AxiosInstance";
 
 const IndividualTeamDashboard = () => {
   const [team, setTeam] = useState(null);
   const [leaderboard, setLeaderboard] = useState([]);
+  const [teamMembers, setTeamMembers] = useState([]);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(true);
   const { user } = useUser();
 
   useEffect(() => {
-    console.log("User in TeamDashboard:", user);
     // Only proceed with fetch when user data is available
     if (!user || !user.team_id) {
       return;
     }
 
-    // Fetch the team and leaderboard data
+    // Fetch the team, leaderboard, and members data
     const fetchData = async () => {
       try {
         // Fetch team data
-        const teamResponse = await fetch(`${import.meta.env.VITE_API_URL}/teams/${user.team_id}`);
-        if (!teamResponse.ok) {
-          throw new Error(`Error fetching team: ${teamResponse.status}`);
-        }
-        const teamData = await teamResponse.json();
+        const teamResponse = await axiosInstance.get(`/teams/${user.team_id}`);
+        setTeam(teamResponse.data);
 
         // Fetch leaderboard data
-        const leaderboardResponse = await fetch(`${import.meta.env.VITE_API_URL}/scores/leaderboard`);
-        if (!leaderboardResponse.ok) {
-          throw new Error(`Error fetching leaderboard: ${leaderboardResponse.status}`);
-        }
-        const leaderboardData = await leaderboardResponse.json();
+        const leaderboardResponse = await axiosInstance.get(`/scores/leaderboard`);
+        setLeaderboard(leaderboardResponse.data);
 
-        // Set the states
-        setTeam(teamData);
-        setLeaderboard(leaderboardData);
+        // Fetch team members
+        const membersResponse = await axiosInstance.get(`/teams/${user.team_id}/members`);
+        setTeamMembers(membersResponse.data);
+
         setError("");
       } catch (err) {
         setError(`Failed to fetch data: ${err.message}`);
@@ -97,7 +93,7 @@ const IndividualTeamDashboard = () => {
             </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {/* Rank Display */}
             <div className="bg-[#0b0e14] border border-white/5 rounded-xl p-6 text-center">
               <p className="text-[#e151af] text-xs font-bold uppercase mb-2">Current Rank</p>
@@ -108,6 +104,39 @@ const IndividualTeamDashboard = () => {
             <div className="bg-[#2dcefb]/5 border border-[#2dcefb]/20 rounded-xl p-6 text-center shadow-[0_0_15px_rgba(45,206,251,0.1)]">
               <p className="text-[#2dcefb] text-xs font-bold uppercase mb-2">Total Points</p>
               <div className="text-4xl font-black text-[#2dcefb]">{getTeamScore()}</div>
+            </div>
+          </div>
+
+          {/* Team Members List */}
+          <div className="mt-8">
+            <p className="text-[#2dcefb] text-xs font-bold uppercase tracking-widest mb-3">Team Members</p>
+            <div className="bg-[#0b0e14] border border-white/5 rounded-xl overflow-hidden">
+              {teamMembers && teamMembers.length > 0 ? (
+                <div className="divide-y divide-white/10">
+                  {teamMembers.map((member) => (
+                    <div key={member.participant_id} className="p-4 flex items-center justify-between hover:bg-white/5 transition-colors">
+                      <div>
+                        <p className="text-white font-semibold flex items-center gap-2">
+                          {member.full_name}
+                          {member.is_leader && (
+                            <span className="bg-[#e151af] text-white text-[10px] uppercase font-bold px-2 py-0.5 rounded-full tracking-wider">
+                              Leader
+                            </span>
+                          )}
+                        </p>
+                        <p className="text-white/50 text-sm">{member.email}</p>
+                      </div>
+                      <div className="text-right">
+                        <p className="text-white/70 text-sm whitespace-nowrap">{member.university}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <div className="p-6 text-center text-white/50 italic">
+                  No members found for this team.
+                </div>
+              )}
             </div>
           </div>
         </div>

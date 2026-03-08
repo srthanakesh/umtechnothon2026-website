@@ -45,8 +45,8 @@ const updateParticipant = async (id, updates) => {
 const getParticipantByEmail = async (email, includePassword = false) => {
   try {
     const fields = includePassword
-      ? "participant_id, full_name, email, password_hash, is_verified, role, team_id"
-      : "participant_id, email, is_verified";
+      ? "participant_id, full_name, email, password_hash, is_verified, role, team_id, is_leader"
+      : "participant_id, email, is_verified, is_leader";
 
     const { data, error } = await supabase
       .from("participants")

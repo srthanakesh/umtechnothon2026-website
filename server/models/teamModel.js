@@ -135,7 +135,7 @@ const createTeam = async (teamData, leaderId) => {
 const getTeamMembers = async (teamId) => {
   const { data, error } = await supabase
     .from('participants')
-    .select('participant_id, full_name, email, university')
+    .select('participant_id, full_name, email, university, is_leader')
     .eq('team_id', teamId);
     
   if (error) throw error;

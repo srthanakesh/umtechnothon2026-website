@@ -4,6 +4,7 @@ import axios from 'axios';
 import TaskDetailsForm from '../../components/Admin/TaskDetailsForm';
 import RubricDetailsForm from '../../components/Admin/RubricDetailsForm';
 import CriteriaForm from '../../components/Admin/CriteriaForm';
+import envConfig from '../../config/envConfig';
 
 const AddTask = () => {
   const navigate = useNavigate();
@@ -67,7 +68,7 @@ const AddTask = () => {
     try {
       // Step 1: Create the task
       const taskResponse = await axios.post(
-        `${import.meta.env.VITE_API_URL}/tasks`,
+        `${envConfig.serverBaseApi}/tasks`,
         {
           task_name: taskName,
           task_description: taskDescription
@@ -77,7 +78,7 @@ const AddTask = () => {
 
       // Step 2: Create the rubric for this task
       const rubricResponse = await axios.post(
-        `${import.meta.env.VITE_API_URL}/rubrics`,
+        `${envConfig.serverBaseApi}/rubrics`,
         {
           task_id: taskId,
           rubric_name: rubricName,
@@ -87,7 +88,7 @@ const AddTask = () => {
       const rubricId = rubricResponse.data.rubric.rubric_id;
 
       // Step 3: Create each criteria for this rubric
-      const criteriaPromises = criteria.map(c => axios.post(`${import.meta.env.VITE_API_URL}/criteria`, {
+      const criteriaPromises = criteria.map(c => axios.post(`${envConfig.serverBaseApi}/criteria`, {
         rubric_id: rubricId,
           criteria_name: c.name,
           criteria_description: c.description,

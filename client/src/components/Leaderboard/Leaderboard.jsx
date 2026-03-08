@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import envConfig from '../../config/envConfig';
 
 const Leaderboard = () => {
   const [leaderboard, setLeaderboard] = useState([]);
@@ -7,10 +8,16 @@ const Leaderboard = () => {
     const fetchLeaderboard = async () => {
       try {
         const response = await fetch(
-          `${import.meta.env.VITE_API_URL}/scores/leaderboard`
+          `${envConfig.serverBaseApi}/scores/leaderboard`
         );
+        if (!response.ok) {
+          console.error("Leaderboard API error:", response.status);
+          return;
+        }
         const data = await response.json();
-        setLeaderboard(data);
+        if (Array.isArray(data)) {
+          setLeaderboard(data);
+        }
       } catch (error) {
         console.error("Error fetching leaderboard:", error);
       }

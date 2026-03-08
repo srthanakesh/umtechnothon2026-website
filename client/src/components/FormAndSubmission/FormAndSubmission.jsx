@@ -1,27 +1,36 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useUser } from "../../context/UserProvider";
+import envConfig from '../../config/envConfig';
 
 const FormAndSubmission = () => {
-  const [isExpanded, setIsExpanded] = useState(false);
-  const [taskDescription, setTaskDescription] = useState('');
-  const [deliverables, setDeliverables] = useState('');
   const [task, setTask] = useState(null); 
   const [criteria, setCriteria] = useState([]); 
   const [isLoading, setIsLoading] = useState(true);
   const { user } = useUser();
 
-  const taskId = 7;
-  const API_URL = import.meta.env.VITE_API_URL;
+  const API_URL = envConfig.serverBaseApi;
 
   useEffect(() => {
     const fetchTaskAndCriteria = async () => {
       setIsLoading(true);
       try {
-        const taskResponse = await axios.get(`${API_URL}/tasks/${taskId}`);
-        setTask(taskResponse.data);
+        // Fetch all tasks and use the latest one
+        const allTasksResponse = await axios.get(`${API_URL}/tasks`);
+        const allTasks = allTasksResponse.data;
 
-        const rubricResponse = await axios.get(`${API_URL}/rubrics?task_id=${taskId}`);
+        if (!allTasks || allTasks.length === 0) {
+          setTask(null);
+          setCriteria([]);
+          setIsLoading(false);
+          return;
+        }
+
+        const latestTask = allTasks[allTasks.length - 1];
+        setTask(latestTask);
+        const currentTaskId = latestTask.task_id;
+
+        const rubricResponse = await axios.get(`${API_URL}/rubrics?task_id=${currentTaskId}`);
         if (rubricResponse.data && rubricResponse.data.length > 0) {
           const rubricId = rubricResponse.data[0].rubric_id;
           const criteriaResponse = await axios.get(`${API_URL}/criteria?rubric_id=${rubricId}`);
@@ -37,58 +46,9 @@ const FormAndSubmission = () => {
       }
     };
     fetchTaskAndCriteria();
-  }, [taskId, API_URL]);
+  }, [API_URL]);
 
-  const handleSubmit = async () => {
-    if (!taskDescription || !deliverables) {
-      alert("Both 'Describe your Task' and 'Deliverables' fields are required.");
-      return;
-    }
 
-    const urlPattern = new RegExp(
-      '^(https?:\\/\\/)?' + 
-        '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.?)+[a-z]{2,}|' + 
-        '((\\d{1,3}\\.){3}\\d{1,3}))' + 
-        '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*' + 
-        '(\\?[;&a-z\\d%_.~+=-]*)?' + 
-        '(\\#[-a-z\\d_]*)?$',
-      'i'
-    ); 
-
-    if (!urlPattern.test(deliverables)) {
-      alert("The 'Deliverables' field must be a valid URL.");
-      return;
-    }
-
-    const confirmed = window.confirm(
-      "Are you sure you want to submit this task?\nYou can only submit it once."
-    );
-    if (!confirmed) return;
-
-    try {
-      // FIX 1: Added optional chaining to prevent crash if user or task is null
-      await axios.post(`${API_URL}/deliverables`, {
-        description: taskDescription,
-        submission_link: deliverables,
-        team_id: user?.team_id,
-        task_id: task?.task_id,
-      });
-
-      alert('Deliverable submitted successfully!');
-      setTaskDescription('');
-      setDeliverables('');
-      setIsExpanded(false);
-    } catch (error) {
-      if (error.response && error.response.status === 409) {
-        alert(error.response.data.error || 'Your team already has a submission for this task.');
-      } else {
-        alert('Failed to submit deliverable. Please try again.');
-      }
-    }
-  };
-
-  const toggleExpand = () => setIsExpanded(!isExpanded);
-  const closeExpand = () => setIsExpanded(false);
 
   // FIX 2: Early return if user context isn't ready
   if (!user) return <div className="p-8 text-center text-white">Loading session...</div>;
@@ -158,38 +118,17 @@ const FormAndSubmission = () => {
         </div>
         
         <div className="mt-4 md:mt-0 w-full md:w-1/3">
-          <div className={`w-full transition-all duration-300 ease-in-out bg-[#161b33] border border-cyan-500/30 rounded-2xl shadow-lg ${isExpanded ? 'p-4 md:p-6' : 'p-2 md:p-4'}`}>
-            {isExpanded ? (
-              <div className="relative">
-                <button onClick={closeExpand} className="absolute top-0 right-0 text-red-500 text-xl font-bold p-2 hover:bg-red-500/10 rounded">X</button>
-                <h3 className="text-xl md:text-2xl font-bold text-white text-center mb-4 mt-2">Submission</h3>
-                <div className="mb-4">
-                  <label htmlFor="taskDescription" className="block text-cyan-400 font-medium mb-2 text-sm uppercase">Describe your Task:</label>
-                  <textarea
-                    id="taskDescription"
-                    className="p-2 bg-black/40 border border-white/10 rounded-lg w-full h-32 md:h-40 text-white outline-none focus:border-cyan-500"
-                    value={taskDescription}
-                    onChange={(e) => setTaskDescription(e.target.value)}
-                    placeholder="Describe your task here..."
-                  />
-                </div>
-                <div className="mb-6">
-                  <label htmlFor="deliverables" className="block text-cyan-400 font-medium mb-2 text-sm uppercase">Deliverables:</label>
-                  <textarea
-                    id="deliverables"
-                    className="p-2 bg-black/40 border border-white/10 rounded-lg w-full h-20 text-white outline-none focus:border-cyan-500"
-                    value={deliverables}
-                    onChange={(e) => setDeliverables(e.target.value)}
-                    placeholder="Insert link"
-                  />
-                </div>
-                <div className="flex justify-center mt-4">
-                  <button onClick={handleSubmit} className="bg-gradient-to-r from-cyan-500 to-purple-600 text-white border-none py-3 px-6 text-lg font-bold rounded-2xl w-full hover:opacity-90 transition-all uppercase tracking-widest">SUBMIT</button>
-                </div>
-              </div>
-            ) : (
-              <button onClick={toggleExpand} className="w-full text-lg font-bold px-4 py-2 rounded-2xl bg-gradient-to-r from-cyan-500 to-purple-600 text-white hover:opacity-90 transition-all uppercase tracking-tight">Ready to Submit?</button>
-            )}
+          <div className="w-full transition-all duration-300 ease-in-out bg-[#161b33] border border-cyan-500/30 rounded-2xl shadow-lg p-4 md:p-6 text-center">
+            <h3 className="text-xl md:text-2xl font-bold text-white mb-4 mt-2">Submission</h3>
+            <p className="text-gray-400 mb-6 text-sm">
+              Task submissions are handled via Google Forms. Click the button below to submit your deliverables.
+            </p>
+            <button 
+              onClick={() => {}} 
+              className="w-full text-lg font-bold px-4 py-3 rounded-2xl bg-gradient-to-r from-cyan-500 to-purple-600 text-white hover:opacity-90 transition-all uppercase tracking-tight"
+            >
+              Ready to Submit?
+            </button>
           </div>
         </div>
       </div>

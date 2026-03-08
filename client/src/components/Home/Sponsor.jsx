@@ -143,8 +143,12 @@ const SponsorSlider = () => {
         {/* Support CTA */}
         <div className="mt-28 max-w-3xl mx-auto px-6">
           <div className="flex items-center justify-center p-10 rounded-3xl bg-white/5 border border-white/10 backdrop-blur-xl group min-h-[160px]">
-            <p className="text-[#fafdff] text-lg md:text-xl font-medium relative z-10 max-w-lg">
-              We are currently seeking sponsorship opportunities. <br className="hidden md:block" /> If you are interested, please contact us for more details.
+            <p className="text-[#fafdff] text-lg md:text-xl font-medium relative z-10 max-w-xl text-center">
+              We are currently seeking sponsorship opportunities. <br className="hidden md:block" /> 
+              If you are interested, please contact us for more details: <br className="hidden md:block" />
+              <a href="mailto:umtechnothon.sponsorship@gmail.com" className="text-[#2dcefb] hover:text-white transition-colors">
+                umtechnothon.sponsorship@gmail.com
+              </a>
             </p>
           </div>
         </div>

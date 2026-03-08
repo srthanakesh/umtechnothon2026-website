@@ -195,6 +195,7 @@ const loginUser = async (req, res) => {
         email: participantData.email,
         role: participantData.role,
         team_id: participantData.team_id,
+        is_leader: participantData.is_leader,
       },
       process.env.JWT_SECRET_KEY,
       { expiresIn: "24h" }
@@ -207,6 +208,7 @@ const loginUser = async (req, res) => {
         email: participantData.email,
         role: participantData.role,
         team_id: participantData.team_id,
+        is_leader: participantData.is_leader,
       },
       process.env.JWT_SECRET_KEY,
       { expiresIn: "7d" }
@@ -271,7 +273,8 @@ const refreshAccessToken = async (req, res) => {
         full_name: participant.full_name,
         email: participant.email,
         role: participant.role,
-        team_id: participant.team_id
+        team_id: participant.team_id,
+        is_leader: participant.is_leader
       },
       JWT_SECRET_KEY,
       { expiresIn: "24h" }

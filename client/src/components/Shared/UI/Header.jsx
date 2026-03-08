@@ -146,7 +146,7 @@ const Header = ({ isMobile }) => {
         <button
           key={index}
           onClick={item.action}
-          className="rounded-lg font-medium text-[#f5f5f5] hover:text-[#b4fff9] text-left cursor-pointer"
+          className="rounded-lg font-medium text-[#f5f5f5] hover:text-[#b4fff9] text-left cursor-pointer whitespace-nowrap"
         >
           {item.label}
         </button>

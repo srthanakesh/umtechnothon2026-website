@@ -4,7 +4,7 @@ const faqs = [
   {
     question: "Who is eligible to participate?",
     answer:
-      "UM Technothon 2026 is open to all university students across Malaysia. Participants must form a team of 3–5 members.",
+      "UM Technothon 2026 is open to all university students across Malaysia. Participants must form a team of 1–5 members.",
   },
   {
     question: "How does the registration process work?",
