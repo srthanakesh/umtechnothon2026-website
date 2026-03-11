@@ -17,6 +17,7 @@ app.use(
     origin: function (origin, callback) {
       const allowedOrigins = [
         "https://technothon-2026.vercel.app",
+        "https://technothon-web.vercel.app",
         "https://umtechnothon.com",
         "https://www.umtechnothon.com",
         "http://localhost:3000",
