@@ -15,164 +15,24 @@ class MediaPartnersSlider extends React.Component {
   mediaPartners = [
     {
       id: 1,
-      name: "Engineering Society Universiti Malaya",
-      logo: "/logos/ESUM_Logo_transparentBG.png",
+      name: "name",
+      logo: "/logos/placeholder.jpeg",
       description:
-        "ESUM is the umbrella engineering society at UM, representing over 700 students across all engineering disciplines with industrial visits, talks, and networking events.",
+        "description",
     },
     {
       id: 2,
-      name: "Institution of Mechanical Engineers Universiti Malaya Student Chapter (IMechE UM SC)",
-      logo: "/logos/Organisation Logo  (png format & transparent background) (File responses)/IMechE UM SC - IMechE UM PRM.png",
+      name: "name",
+      logo: "/logos/placeholder.jpeg",
       description:
-        "IMechE UM SC hosts industrial visits, technical talks, and competitions to develop mechanical engineers’ skills and professionalism.",
+        "description",
     },
     {
       id: 3,
-      name: "Angkatan Kejuruteraan Islam Universiti Malaya (AKIUM)",
-      logo: "/logos/Organisation Logo  (png format & transparent background) (File responses)/LOGO AKIUM24 - akiumofficial.png",
+      name: "name",
+      logo: "/logos/placeholder.jpeg",
       description:
-        "AKIUM guides UM engineering students in academics, entrepreneurship, and welfare while nurturing Islamic spiritual values through workshops and community events.",
-    },
-    {
-      id: 4,
-      name: "Developer Student Club Utem",
-      logo: "/logos/Organisation Logo  (png format & transparent background) (File responses)/Logo DSC UTeM - Sharveena 0710.png",
-      description:
-        "DSC Utem empowers students with hands-on coding workshops, hackathons, and networking opportunities to build real-world projects.",
-    },
-    {
-      id: 5,
-      name: "Malaya Electrical Students Association (MESA)",
-      logo: "/logos/Organisation Logo  (png format & transparent background) (File responses)/MESA_Logo-removebg-preview - MESA.png",
-      description:
-        "MESA is the official association for UM Electrical Engineering students, coordinating academic and extracurricular activities for all members.",
-    },
-    {
-      id: 6,
-      name: "DaXiang Universiti Malaya",
-      logo: "/logos/Organisation Logo  (png format & transparent background) (File responses)/IMG_3497 - JUN JIE TANG.png",
-      description:
-        "The Crosstalk Performance Night (DAXIANG) was organized and held by the crosstalk group from PBCUM, with the members also serving as performers for the event.",
-    },
-    {
-      id: 7,
-      name: "Google Developer Group on Campus Universiti Sains Malaysia (GDGoC USM)",
-      logo: "/logos/Organisation Logo  (png format & transparent background) (File responses)/GDG USM logo (centered) - Chi San.png",
-      description:
-        "GDGoC USM connects students to Google technologies through peer learning, tech events, and professional development opportunities.",
-    },
-    {
-      id: 8,
-      name: "Biomedical Engineering Student Club Universiti Malaya (BMESC UM)",
-      logo: "/logos/Organisation Logo  (png format & transparent background) (File responses)/BME Club Logo transparent 1 - Aisar Iqbal.png",
-      description:
-        "BMESC UM bridges biomedical engineering students and faculty, organizing academic and industry-related activities to enhance student experience.",
-    },
-    {
-      id: 9,
-      name: "Persatuan Mahasiswa Fakulti Teknologi dan Sains Maklumat (PERTAMA)",
-      logo: "/logos/Organisation Logo  (png format & transparent background) (File responses)/LOGO PERTAMA - MUHAMMAD NUR AMJADH BIN ASABDEEN.png",
-      description:
-        "PERTAMA at UKM organizes welfare, academic, and community activities, serving as a link between students and faculty administration.",
-    },
-    {
-      id: 10,
-      name: "Robotics Engineering Community (REC)",
-      logo: "/logos/Organisation Logo  (png format & transparent background) (File responses)/REC LOGO - Rec 2425.PNG",
-      description:
-        "REC UM is a platform for robotics enthusiasts to collaborate, learn, and compete in robotics through hands-on projects and knowledge sharing.",
-    },
-    {
-      id: 11,
-      name: "Taylor's American Degree Program Engineering Society (Taylor's ADP Engineering Society)",
-      logo: "/logos/Organisation Logo  (png format & transparent background) (File responses)/Trans Logo (Black) - Taylors Engineering Society 2021.png",
-      description:
-        "Taylor's ADP Engineering Society inspires innovation and problem-solving through workshops, projects, and networking for engineering students.",
-    },
-    {
-      id: 12,
-      name: " AMERICAN SOCIETY OF HEATING, REFRIGERATING AND AIR-CONDITIONING ENGINEERS (ASHRAE)",
-      logo: "/logos/Organisation Logo  (png format & transparent background) (File responses)/ASHRAE - XUAN LI TOH.png",
-      description:
-        "ASHRAE UM Student Branch offers students industry exposure and technical growth in HVAC&R through research, networking, and projects.",
-    },
-    {
-      id: 13,
-      name: "UM MAKERS CLUB",
-      logo: "/logos/Organisation Logo  (png format & transparent background) (File responses)/Screenshot_2025-04-04_233254-removebg-preview - UM Makers Club 2025.png",
-      description:
-        "UM Makers Club promotes STEAM through hands-on, collaborative learning and empowers students to innovate and create.",
-    },
-    {
-      id: 14,
-      name: "Google Developer Group On Campus(GDGoC) SEGi X TarUMT",
-      logo: "/logos/Organisation Logo  (png format & transparent background) (File responses)/DSC SEGi University Horizontal color - GDSC SEGi University.png",
-      description:
-        "GDG SEGi X TarUMT is a student-led tech community focused on learning, collaboration, and building impactful solutions.",
-    },
-    {
-      id: 15,
-      name: "Google Developer Student Club UTP (GDSC-UTP)",
-      logo: "/logos/Organisation Logo  (png format & transparent background) (File responses)/LOGO GDSC-UTP - Putriani Azlar.png",
-      description:
-        "GDSC-UTP connects students through workshops, tech talks, and collaborative projects to foster growth and innovation.",
-    },
-    {
-      id: 16,
-      name: "Developer Student Clubs Universiti Kuala Lumpur",
-      logo: "/logos/Organisation Logo  (png format & transparent background) (File responses)/DSC UNIKL LOGO - Marissa Jamili.png",
-      description:
-        "DSC UniKL supports students in web/mobile development, machine learning, and tech skills through resources and community events.",
-    },
-    {
-      id: 17,
-      name: "MYTECH Career Fair 2025",
-      logo: "/logos/Organisation Logo  (png format & transparent background) (File responses)/MyTech Logo - Elysia Yung.png",
-      description:
-        "MYTECH Career Fair 2025 connects students with tech companies, offering industry insights and internship opportunities.",
-    },
-    {
-      id: 18,
-      name: "Programming League National (PLN)",
-      logo: "/logos/Organisation Logo  (png format & transparent background) (File responses)/478bca8f-27cb-4df3-9f34-7f36ba826478 - Programming League National.jpeg",
-      description:
-        "PLN is a premier national programming competition for university students to showcase coding skills and compete with peers.",
-    },
-    {
-      id: 19,
-      name: "Malaysian Youth FinTech Association (MYFintT)",
-      logo: "/logos/Organisation Logo  (png format & transparent background) (File responses)/MYFinT Logo - MYFinT External Relations.png",
-      description:
-        "MYFinT empowers Malaysian youth in FinTech through networking, education, and industry events to foster innovation.",
-    },
-    {
-      id: 20,
-      name: "Institute of Electrical and Electronics Engineering University of Nottingham Student Branch (IEEE UNM SB)",
-      logo: "/logos/Organisation Logo  (png format & transparent background) (File responses)/IEEE_UNM_SB_LOGO - Marcus Yew.png",
-      description:
-        "IEEE UNM SB fosters innovation and leadership among engineering students through hands-on projects, workshops, and industry engagement.",
-    },
-    {
-      id: 21,
-      name: "IEEE Student Branch Universiti Putra Malaysia",
-      logo: "/logos/Organisation Logo  (png format & transparent background) (File responses)/IEEESB_LATEST - LEE YI LIN _ UPM.png",
-      description:
-        "IEEE SB UPM advances technology for humanity with skill-building activities, networking, and partnerships with industry.",
-    },
-    {
-      id: 22,
-      name: "UNIVERSITI MALAYA STUDENT UNION FACULTY COMPUTER SCIENCE AND INFORMATION TECHNOLOGY",
-      logo: "/logos/Organisation Logo  (png format & transparent background) (File responses)/UMSU_FCSIT_20242025_Letter_Head-removebg-preview - UMSU FCSIT.png",
-      description:
-        "UMSU FCSIT advocates for student interests and autonomy, bridging students and administration with initiatives and advocacy.",
-    },
-    {
-      id: 23,
-      name: "The Computer Science & Information Technology Faculty Representative Council (ComCil)",
-      logo: "/logos/Organisation Logo  (png format & transparent background) (File responses)/Official Comcil Logo 2023 - NITESH A_L PRAKASH _ UPM.png",
-      description:
-        "ComCil UPM promotes academic and personal growth in FCSIT through leadership activities, events, and student support.",
+        "description",
     },
   ];
 

@@ -7,8 +7,8 @@ import { ChevronLeft, ChevronRight } from "lucide-react"
 const socialLinks = [
   {
     name: "UM Technothon", // First
-    imgSrc: "logos/Logo border rounded.png",
-    instagram: "https://www.instagram.com/um.technothon?igsh=eXRhcmZsZng2Nnhl",
+    imgSrc: "logos/technothon-2026-logov2.png",
+    instagram: "https://www.instagram.com/umtechnothon?igsh=eXRhcmZsZng2Nnhl",
   },
   {
     name: "Google Developer Group On Campus Universiti Malaya", // Second
@@ -16,14 +16,9 @@ const socialLinks = [
     instagram: "https://www.instagram.com/gdg.um?igsh=bjNuY3B1ZDFwdXQz",
   },
   {
-    name: "Engineering Society of University Malaya", // Third (original order)
-    imgSrc: "logos/ESUM_Logo_transparentBG.png",
-    instagram: "https://www.instagram.com/esum_official?igsh=YXFmYjhsNTJjcDR6",
-  },
-  {
-    name: "IEM-UM Student Section", // Fourth (original order)
-    imgSrc: "logos/IEM UM SS colour version(transparent).png",
-    instagram: "https://www.instagram.com/esum_official?igsh=YXFmYjhsNTJjcDR6",
+    name: "Robotic Engineering Community", 
+    imgSrc: "logos/recLogo.png",
+    instagram: "https://www.instagram.com/rec_um/?hl=en",
   },
 ]
 
@@ -100,7 +95,7 @@ const SocialMedia = () => {
                 className="flex-shrink-0 w-full flex flex-col items-center justify-center snap-center p-8 backdrop-blur-sm"
                 style={{ height: "320px" }}
               >
-                <div className="w-40 h-40 mb-6 flex items-center justify-center">
+                <div className="w-48 h-48 mb-6 flex items-center justify-center">
                   <a
                     href={account.instagram}
                     target="_blank"
@@ -154,9 +149,8 @@ const SocialMedia = () => {
             <button
               key={index}
               onClick={() => goToSlide(index)}
-              className={`h-2.5 rounded-full transition-all duration-300 ${
-                index === activeIndex ? "w-6 bg-[#4c5ab6]" : "w-2.5 bg-gray-300 hover:bg-gray-400"
-              }`}
+              className={`h-2.5 rounded-full transition-all duration-300 ${index === activeIndex ? "w-6 bg-[#4c5ab6]" : "w-2.5 bg-gray-300 hover:bg-gray-400"
+                }`}
               aria-label={`Go to slide ${index + 1}`}
               disabled={isTransitioning}
             />
@@ -168,7 +162,7 @@ const SocialMedia = () => {
       <div className="hidden md:flex md:flex-wrap md:justify-center md:gap-20">
         {socialLinks.map((account, index) => (
           <div key={index} className="flex flex-col items-center group">
-            <div className="w-40 h-40 mb-4 flex items-center justify-center overflow-hidden bg-[#1e293b] border border-white/10 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 group-hover:scale-105">
+            <div className="w-48 h-48 mb-4 flex items-center justify-center overflow-hidden bg-[#1e293b] border border-white/10 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 group-hover:scale-105">
               <a
                 href={account.instagram}
                 target="_blank"

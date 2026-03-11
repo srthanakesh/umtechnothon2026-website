@@ -8,8 +8,8 @@ const sponsorTiers = [
     title: "Platinum Sponsors",
     direction: "ltr",
     sponsors: [
-      { name: "Verdant Solar", logo: "/logos/Platinum/verdant_logo.7fca20fe.png", url: "https://verdantsolar.my/" },
-      { name: "Verdant Solar", logo: "/logos/Platinum/verdant_logo.7fca20fe.png", url: "https://verdantsolar.my/" },
+      { name: "Sponsor name", logo: "/logos/placeholder.jpeg", url: "" },
+      { name: "Sponsor name", logo: "/logos/placeholder.jpeg", url: "" },
     ],
     speed: 60,
     titleColor: "#2dcefb", 
@@ -21,9 +21,9 @@ const sponsorTiers = [
     title: "Gold Sponsors",
     direction: "rtl",
     sponsors: [
-      { name: "Li-Zainal", logo: "/logos/Gold/lizainal_logo.jpg", url: "https://www.li-zainal.com/" },
-      { name: "BASF", logo: "/logos/Gold/BASF_Logo.jpg", url: "https://www.basf.com/my/en" },
-      { name: "MoneyLion", logo: "/logos/Gold/MoneyLion_Logo_RGB_Vertical_Solid_Black.png", url: "https://www.moneylion.com/" },
+      { name: "Sponsor name", logo: "/logos/placeholder.jpeg", url: "" },
+      { name: "Sponsor name", logo: "/logos/placeholder.jpeg", url: "" },
+      { name: "Sponsor name", logo: "/logos/placeholder.jpeg", url: "" },
     ],
     speed: 50,
     titleColor: "#fafdff",
@@ -35,10 +35,10 @@ const sponsorTiers = [
     title: "Silver Sponsors",
     direction: "ltr",
     sponsors: [
-      { name: "Youth OS", logo: "/logos/Silver/YouthOS logo.jpeg", url: "https://youths.asia/" },
-      { name: "Xenber", logo: "/logos/Silver/Xenber Logo 220x70.png", url: "https://xenber.com/" },
-      { name: "Youth OS", logo: "/logos/Silver/YouthOS logo.jpeg", url: "https://youths.asia/" },
-      { name: "Xenber", logo: "/logos/Silver/Xenber Logo 220x70.png", url: "https://xenber.com/" },
+      { name: "Sponsor name", logo: "/logos/placeholder.jpeg", url: "" },
+      { name: "Sponsor name", logo: "/logos/placeholder.jpeg", url: "" },
+      { name: "Sponsor name", logo: "/logos/placeholder.jpeg", url: "" },
+      { name: "Sponsor name", logo: "/logos/placeholder.jpeg", url: "" },
     ],
     speed: 55,
     titleColor: "#fafdff",
@@ -50,8 +50,8 @@ const sponsorTiers = [
     title: "Benefit-in-Kind",
     direction: "rtl",
     sponsors: [
-      { name: "Cytron", logo: "/logos/Benefit inkind/logo cytron blue (BIG).png", url: "https://my.cytron.io/" },
-      { name: "F.Works", logo: "/logos/Benefit inkind/F.Works_logo.png", url: "" },
+      { name: "Sponsor name", logo: "/logos/placeholder.jpeg", url: "" },
+      { name: "Sponsor name", logo: "/logos/placeholder.jpeg", url: "" },
     ],
     speed: 65,
     titleColor: "#9ca3af",
@@ -143,8 +143,12 @@ const SponsorSlider = () => {
         {/* Support CTA */}
         <div className="mt-28 max-w-3xl mx-auto px-6">
           <div className="flex items-center justify-center p-10 rounded-3xl bg-white/5 border border-white/10 backdrop-blur-xl group min-h-[160px]">
-            <p className="text-[#fafdff] text-lg md:text-xl font-medium relative z-10 max-w-lg">
-              We are currently seeking sponsorship opportunities. <br className="hidden md:block" /> If you are interested, please contact us for more details.
+            <p className="text-[#fafdff] text-lg md:text-xl font-medium relative z-10 max-w-xl text-center">
+              We are currently seeking sponsorship opportunities. <br className="hidden md:block" /> 
+              If you are interested, please contact us for more details: <br className="hidden md:block" />
+              <a href="mailto:umtechnothon.sponsorship@gmail.com" className="text-[#2dcefb] hover:text-white transition-colors">
+                umtechnothon.sponsorship@gmail.com
+              </a>
             </p>
           </div>
         </div>

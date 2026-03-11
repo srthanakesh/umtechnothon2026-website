@@ -38,3 +38,16 @@ export const forgotPasswordSchema = z.object({
     .string({ message: "Email is required" })
     .email("Invalid email format"),
 });
+
+export const setPasswordSchema = z.object({
+  password: z
+    .string({ message: "Password is required" })
+    .min(8, "Password must be at least 8 characters") // Higher than login to be safe
+    .regex(/[A-Z]/, "Password must contain at least one uppercase letter")
+    .regex(/[0-9]/, "Password must contain at least one number"),
+  confirmPassword: z
+    .string({ message: "Please confirm your password" }),
+}).refine((data) => data.password === data.confirmPassword, {
+  message: "Passwords do not match",
+  path: ["confirmPassword"], // This ensures the error appears under the second input
+});

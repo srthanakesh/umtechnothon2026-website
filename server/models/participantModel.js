@@ -24,24 +24,42 @@ const insertParticipant = async (participant) => {
   }
 };
 
+const updateParticipant = async (id, updates) => {
+  try {
+    const { data, error } = await supabase
+      .from("participants")
+      .update(updates) //{ password_hash: '...', is_verified: true }
+      .eq("participant_id", id)
+      .select()
+      .single();
+
+    if (error) throw error;
+    return { data };
+  } catch (err) {
+    console.error("Error updating participant:", err);
+    return { error: err.message };
+  }
+};
+
 // Check is participant exists or not
 const getParticipantByEmail = async (email, includePassword = false) => {
   try {
     const fields = includePassword
-      ? "participant_id, full_name, university, email, password_hash, team_id, role"
-      : "participant_id"; // Only need ID for registration
+      ? "participant_id, full_name, email, password_hash, is_verified, role, team_id, is_leader"
+      : "participant_id, email, is_verified, is_leader";
 
     const { data, error } = await supabase
       .from("participants")
       .select(fields)
-      .eq("email", email)
+      .ilike("email", email.trim()) 
       .maybeSingle();
 
     if (error) throw error;
-
-    return { data };
+    
+    //returns the actual user object
+    return { data }; 
   } catch (err) {
-    console.error("Error checking email in DB:", err);
+    console.error("DB Error:", err);
     return { error: err.message };
   }
 };
@@ -79,4 +97,5 @@ module.exports = {
   insertParticipant,
   getParticipantByEmail,
   getParticipantById,
+  updateParticipant, 
 };

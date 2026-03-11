@@ -10,18 +10,18 @@ const SubmissionViewer = ({
   submission
 }) => {
   return (
-    <div className="flex-1 bg-white rounded-lg shadow-md p-6">
-      <h2 className="text-xl font-semibold mb-4">Team Submission</h2>
+    <div className="flex-1 bg-[#111827] border border-white/10 rounded-2xl shadow-2xl p-6">
+      <h2 className="text-xl font-semibold mb-4 ">Team Submission</h2>
 
       {/* Team Selection Dropdown */}
       <div className="mb-4">
-        <label className="block text-sm font-medium text-gray-700 mb-1">
+        <label className="block text-[#2dcefb] text-sm font-bold mb-2">
           Select Team
         </label>
         <select
           value={selectedTeam}
           onChange={(e) => setSelectedTeam(e.target.value)}
-          className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          className="w-full bg-[#0b0e14] text-white border border-white/10 rounded-lg p-3 focus:ring-2 focus:ring-[#2dcefb] outline-none transition-all appearance-none"
         >
           <option value="">-- Select Team --</option>
           {teams.map(team => (
@@ -34,13 +34,13 @@ const SubmissionViewer = ({
 
       {/* Task Selection Dropdown */}
       <div className="mb-6">
-        <label className="block text-sm font-medium text-gray-700 mb-1">
+        <label className="block text-[#2dcefb] text-sm font-bold mb-2">
           Select Task
         </label>
         <select
           value={selectedTask}
           onChange={(e) => setSelectedTask(e.target.value)}
-          className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          className="w-full bg-[#0b0e14] text-white border border-white/10 rounded-lg p-3 focus:ring-2 focus:ring-[#2dcefb] outline-none transition-all appearance-none"
         >
           <option value="">-- Select Task --</option>
           {tasks.map(task => (
@@ -53,11 +53,11 @@ const SubmissionViewer = ({
 
       {/* Task Details and Submission */}
       {selectedTask && tasks.length > 0 && (
-        <div className="mb-6 p-4 bg-gray-50 rounded-md">
-          <h3 className="text-lg font-medium mb-2">Task Details</h3>
+        <div className="mb-6 p-4 bg-[#0b0e14] border border-white/5 rounded-xl">
+          <h3 className="text-lg font-medium mb-2 text-[#e151af]">Task Details</h3>
           {tasks.find(t => t.task_id == selectedTask)?.task_description && (
             <div className="mb-4">
-              <p className="text-gray-700 whitespace-pre-wrap">
+              <p className="text-white/70 whitespace-pre-wrap text-sm italic">
                 {tasks.find(t => t.task_id == selectedTask)?.task_description}
               </p>
             </div>
@@ -67,13 +67,13 @@ const SubmissionViewer = ({
 
       {/* Submission Details */}
       {submission ? (
-        <div className="mb-4 p-4 bg-gray-50 rounded-md">
-          <h3 className="text-lg font-medium mb-2">Team's Submission</h3>
+        <div className="mt-6 p-4 bg-[#0b0e14] border border-[#2dcefb]/20 rounded-xl">
+          <h3 className="text-[#2dcefb] font-bold mb-2 uppercase text-xs tracking-widest">Team's Submission</h3>
           <p className="mb-2 text-sm text-gray-500">
             Submitted on: {new Date(submission.submitted_at).toLocaleString()}
           </p>
           <div className="mb-4">
-            <p className="font-medium mb-1">Submission Link:</p>
+            <p className="text-white/80 font-medium mb-3">Submission Link:</p>
             <a
               href={submission.submission_link}
               target="_blank"

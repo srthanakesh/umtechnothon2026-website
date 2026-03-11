@@ -63,7 +63,8 @@ export const getCurrentUser = () => {
       full_name: decodedToken?.full_name,
       email: decodedToken?.email,
       role: decodedToken?.role,
-      team_id: decodedToken?.team_id
+      team_id: decodedToken?.team_id,
+      is_leader: decodedToken?.is_leader
     };
   }
 

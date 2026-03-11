@@ -23,7 +23,7 @@ export default function Footer() {
               </div>
               <div className="w-20 h-20 flex items-center justify-center">
                 <img
-                  src="/logos/technothon-logo-transparent.png"
+                  src="/logos/technothon-2026-logov2.png"
                   alt="Technothon Logo"
                   className="w-full h-full object-contain"
                 />
@@ -40,54 +40,53 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Right Column - Contact Persons */}
           <div className="text-right space-y-8">
             <div className="space-y-1">
-              <p className="font-semibold">TEO JING YING</p>
-              <p className="text-xs text-gray-300">
-                HEAD OF FINANCE & SPONSORSHIP
-              </p>
-              <p className="text-sm">010-2109332</p>
+              <p className="font-semibold">THEN FUNG MAYE</p>
+              <p className="text-xs text-gray-300">DIRECTOR</p>
+              <p className="text-sm">011-51731170</p>
             </div>
 
             <div className="space-y-1">
-              <p className="font-semibold">OOI CHIN MING</p>
-              <p className="text-xs text-gray-300">DIRECTOR</p>
-              <p className="text-sm">010-4507617</p>
+              <p className="font-semibold">CHUA PEI YING</p>
+              <p className="text-xs text-gray-300">
+                HEAD OF FINANCE
+              </p>
+              <p className="text-sm">016-4985040</p>
             </div>
           </div>
         </div>
 
         {/* Divider*/}
-        <div className="flex flex-col md:flex-row justify-between items-center pt-9 border-t border-white/20">
-            {/* Footer */}
-            <Link
+        <div className="flex flex-col md:flex-row justify-end pt-9 border-t border-white/20">
+          {/* Footer */}
+          {/* <Link
               to="/credits"
               className="text-sm text-gray-300 hover:text-white mb-2 transition-colors"
             >
               Meet our event website's awesome devs here!
-            </Link>
-            <p className="text-sm text-gray-300">
-              © UMTECHNOTHON 2026. All rights reserved.
-            </p>
-          </div>
+            </Link> */}
+          <p className="text-sm text-gray-300">
+            © UMTECHNOTHON 2026. All rights reserved.
+          </p>
+        </div>
 
-          <div className="flex gap-4">
-            <Link
-              to="https://www.linkedin.com/company/gdg-university-of-malaya/posts/?feedView=all"
-              target="_blank"
-              className="text-white hover:text-gray-300 transition-colors"
-            >
-              <Linkedin size={20} />
-            </Link>
-            <Link
-              to="https://www.instagram.com/umtechnothon/"
-              target="_blank"
-              className="text-white hover:text-gray-300 transition-colors"
-            >
-              <Instagram size={20} />
-            </Link>
-          </div>
+        <div className="flex gap-4">
+          <Link
+            to="https://www.linkedin.com/company/gdg-university-of-malaya/posts/?feedView=all"
+            target="_blank"
+            className="text-white hover:text-gray-300 transition-colors"
+          >
+            <Linkedin size={20} />
+          </Link>
+          <Link
+            to="https://www.instagram.com/umtechnothon/"
+            target="_blank"
+            className="text-white hover:text-gray-300 transition-colors"
+          >
+            <Instagram size={20} />
+          </Link>
+        </div>
       </div>
     </div>
   );

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useUser } from "../../context/UserProvider";
+import envConfig from '../../config/envConfig';
 
 const IndividualProfile = () => {
   const [profile, setProfile] = useState(null);
@@ -16,7 +17,7 @@ const IndividualProfile = () => {
     // Fetch the participant data from the backend
     const fetchProfile = async () => {
       try {
-        const response = await fetch(`${import.meta.env.VITE_API_URL}/participants/${user._id}`);
+        const response = await fetch(`${envConfig.serverBaseApi}/participants/${user._id}`);
 
         if (!response.ok) {
           throw new Error(`Error: ${response.status} ${response.statusText}`);
@@ -38,11 +39,11 @@ const IndividualProfile = () => {
   }, [user]); // This will re-run when user changes from null to populated
 
   if (!user) {
-    return <p className="text-center text-lg mt-8">Loading user data...</p>;
+    return <p className="text-center text-lg mt-8 text-white">Loading user data...</p>;
   }
 
   if (loading) {
-    return <p className="text-center text-lg mt-8">Loading profile data...</p>;
+    return <p className="text-center text-lg mt-8 text-white">Loading profile data...</p>;
   }
 
   if (error) {
@@ -50,31 +51,33 @@ const IndividualProfile = () => {
   }
 
   return (
-    <div className="flex flex-col justify-center items-center min-h-screen bg-[#d1d1d100]">
-      {/* Title Outside the White Rectangle */}
-      <h2 className="text-4xl font-bold text-black mb-6">INDIVIDUAL PROFILE</h2>
+    <div className="flex flex-col items-center">
+      <h2 className="text-3xl font-black text-[#fafdff] mb-6 uppercase tracking-tighter italic">
+        Individual Profile
+      </h2>
 
-      {/* White Rectangle */}
-      <div className="bg-[#efece6] shadow-md rounded-lg p-8 max-w-xl w-full mt-4">
+      <div className="bg-[#111827] border border-white/10 shadow-2xl rounded-2xl p-8 w-full">
         <div className="space-y-6">
-          {/* Display Name */}
+          {/* Name Field */}
           <div>
-            <p className="text-gray-700 font-semibold">Name:</p>
-            <div className="bg-white shadow-md rounded-lg p-4 max-w-xl w-full h-12 flex items-center">
+            <p className="text-[#e151af] text-xs font-bold uppercase tracking-widest mb-2">Full Name</p>
+            <div className="bg-[#0b0e14] border border-white/5 rounded-xl p-4 text-[#fafdff] font-medium shadow-inner">
               {profile?.full_name || user?.full_name || "Not available"}
             </div>
           </div>
-          {/* Display Personal Info */}
+
+          {/* Email Field */}
           <div>
-            <p className="text-gray-700 font-semibold">Personal Info:</p>
-            <div className="bg-white shadow-md rounded-lg p-4 max-w-xl w-full h-12 flex items-center">
+            <p className="text-[#e151af] text-xs font-bold uppercase tracking-widest mb-2">Email Address</p>
+            <div className="bg-[#0b0e14] border border-white/5 rounded-xl p-4 text-[#fafdff] font-medium shadow-inner">
               {profile?.email || user?.email || "Not available"}
             </div>
           </div>
-          {/* Display University/Institution */}
+
+          {/* University Field */}
           <div>
-            <p className="text-gray-700 font-semibold">University/Institution:</p>
-            <div className="bg-white shadow-md rounded-lg p-4 max-w-xl w-full h-12 flex items-center">
+            <p className="text-[#e151af] text-xs font-bold uppercase tracking-widest mb-2">University / Institution</p>
+            <div className="bg-[#0b0e14] border border-white/5 rounded-xl p-4 text-[#2dcefb] font-semibold shadow-inner">
               {profile?.university || "Not specified"}
             </div>
           </div>

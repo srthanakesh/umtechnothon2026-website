@@ -5,7 +5,8 @@ const JWT_SECRET_KEY = process.env.JWT_SECRET_KEY;
 const auth = (...requireRoles) => {
   return async (req, res, next) => {
     try {
-      const token = req.headers.authorization;
+      const authHeader = req.headers.authorization;
+      const token = authHeader && authHeader.split(" ")[1];
 
       // Check if token is provided
       if (!token) {
