@@ -43,27 +43,28 @@ export default function Timeline() {
   ];
 
   return (
-    <div className="bg-gradient-to-b from-[#1a1d23] via-[#0b0e14] to-[#0b0e14] p-4 md:p-10 text-center">
-      {/* Divider: Changed from black to a Vivid Azure gradient glow */}
-      <div className="w-full h-px bg-gradient-to-r from-transparent via-[#2dcefb] to-transparent mx-auto mb-8 md:mb-12 opacity-50"></div>
+    <div className="bg-gradient-to-b from-[#0a0a0a] via-[#111111] to-[#0a0a0a] p-4 md:p-10 text-center font-sans min-h-screen">
+      
+      {/* Divider - Now a subtle blue gradient matching the image */}
+      <div className="w-full h-px bg-gradient-to-r from-transparent via-[#3b82f6] to-transparent mx-auto mb-8 md:mb-12 opacity-60"></div>
       
       <motion.h2
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className="text-xl md:text-4xl font-bold text-[#2dcefb] mb-6 md:mb-10"
+        className="text-xl md:text-4xl font-bold text-white mb-6 md:mb-12"
       >
         Join Us On Our Journey
       </motion.h2>
 
       <div ref={timelineRef} className="relative">
-        {/* Desktop Timeline */}
+        {/* DESKTOP TIMELINE (Alternating Left/Right) */}
         {!isMobile && (
           <div className="relative">
-            {/* Vertical Line */}
+            {/* Vertical Line - Dark Pink to Dark Indigo */}
             <motion.div
               style={{ height: lineHeight }}
-              className="absolute w-1 bg-gradient-to-b from-[#2dcefb] via-[#e151af] to-[#2dcefb] left-1/2 transform -translate-x-1/2 shadow-[0_0_15px_rgba(45, 206, 251, 0.3)] origin-top top-0 bottom-0 z-0"
+              className="absolute w-1 bg-gradient-to-b from-[#9d174d] via-[#5b21b6] to-[#9d174d] left-1/2 transform -translate-x-1/2 origin-top top-0 bottom-0 z-0"
             />
 
             {/* Top Circle */}
@@ -73,7 +74,7 @@ export default function Timeline() {
                 whileInView={{ scale: 1, opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5 }}
-                className="w-5 h-5 bg-[#2dcefb] rounded-full shadow-[0_0_20px_#2dcefb] z-10"
+                className="w-5 h-5 bg-white rounded-full shadow-[0_0_8px_rgba(157,23,77,0.4)] z-10"
               />
             </div>
 
@@ -96,11 +97,11 @@ export default function Timeline() {
                     }}
                     className="text-right pr-8 col-span-1"
                   >
-                    <h1 className="text-xl md:text-2xl font-black text-[#2dcefb] mb-2">
+                    <h1 className="text-xl md:text-2xl font-black text-[#7dd3fc] mb-2">
                       {event.date}
                     </h1>
                     <h6
-                      className="text-xs md:text-sm font-bold text-[#fafdff]"
+                      className="text-xs md:text-sm font-medium text-[#9ca3af]"
                       dangerouslySetInnerHTML={{ __html: event.description }}
                     ></h6>
                   </motion.div>
@@ -117,7 +118,7 @@ export default function Timeline() {
                         hidden: { width: 0, opacity: 0 },
                         visible: { width: "50%", opacity: 1 },
                       }}
-                      className="absolute top-1/2 left-0 h-[2px] bg-white shadow-[0_0_5px_#ffffff]"
+                      className="absolute top-1/2 left-0 h-[2px] bg-[#701a75] opacity-50"
                     />
                   )}
 
@@ -127,7 +128,7 @@ export default function Timeline() {
                       hidden: { scale: 0, opacity: 0 },
                       visible: { scale: 1, opacity: 1 },
                     }}
-                    className="w-8 h-8 bg-white rounded-full shadow-[0_0_20px_#ffffff] z-10"
+                    className="w-6 h-6 bg-white rounded-full shadow-[0_0_8px_rgba(157,23,77,0.4)] z-10"
                   />
 
                   {/* Right connector line */}
@@ -137,7 +138,7 @@ export default function Timeline() {
                         hidden: { width: 0, opacity: 0 },
                         visible: { width: "50%", opacity: 1 },
                       }}
-                      className="absolute top-1/2 right-0 h-[2px] bg-white shadow-[0_0_5px_#ffffff]"
+                      className="absolute top-1/2 right-0 h-[2px] bg-[#701a75] opacity-50"
                     />
                   )}
                 </div>
@@ -151,11 +152,11 @@ export default function Timeline() {
                     }}
                     className="text-left pl-8 col-span-1"
                   >
-                    <h1 className="text-xl md:text-2xl font-black text-[#2dcefb] mb-2">
+                    <h1 className="text-xl md:text-2xl font-black text-[#7dd3fc] mb-2">
                       {event.date}
                     </h1>
                     <h6
-                      className="text-xs md:text-sm font-bold text-[#fafdff]"
+                      className="text-xs md:text-sm font-medium text-[#9ca3af]"
                       dangerouslySetInnerHTML={{ __html: event.description }}
                     ></h6>
                   </motion.div>
@@ -172,84 +173,70 @@ export default function Timeline() {
                 whileInView={{ scale: 1, opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.2 }}
-                className="w-5 h-5 bg-[#2dcefb] rounded-full shadow-[0_0_20px_#2dcefb] z-10"
+                className="w-5 h-5 bg-white rounded-full shadow-[0_0_8px_rgba(157,23,77,0.4)] z-10"
               />
             </div>
           </div>
         )}
 
-        {/* Mobile Timeline */}
+        {/* MOBILE TIMELINE (Centered: Date -> Node -> Description) */}
         {isMobile && (
-          <div className="relative">
-            {/* Container to center the timeline */}
-            <div className="flex justify-center">
-              <div className="relative w-full max-w-[500px]">
-                {/* Vertical Line - Centered */}
+          <div className="relative max-w-[600px] mx-auto pt-4">
+            {/* Vertical Line */}
+            <motion.div
+              style={{ height: lineHeight }}
+              className="absolute w-1 bg-gradient-to-b from-[#9d174d] via-[#5b21b6] to-[#9d174d] left-1/2 transform -translate-x-1/2 origin-top top-0 bottom-0 z-0"
+            />
+
+            {events.map((event, index) => (
+              <motion.div
+                key={index}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.5 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="flex flex-col items-center mb-20 relative"
+              >
+                {/* Top Date - Sky Blue */}
+                <motion.h2
+                  variants={{
+                    hidden: { opacity: 0, y: 10 },
+                    visible: { opacity: 1, y: 0 },
+                  }}
+                  className="text-[#7dd3fc] text-xl font-bold mb-5 text-center z-10 bg-[#0a0a0a] px-4 py-1 rounded-md"
+                >
+                  {event.date}
+                </motion.h2>
+
+                {/* Soft Glowing White Dot */}
                 <motion.div
-                  style={{ height: lineHeight }}
-                  className="absolute w-1 bg-gradient-to-b from-[#2dcefb] via-[#e151af] to-[#2dcefb] left-1/2 transform -translate-x-1/2 shadow-[0_0_15px_rgba(45, 206, 251, 0.3)] origin-top top-0 bottom-0 z-0"
+                  variants={{
+                    hidden: { scale: 0, opacity: 0 },
+                    visible: { scale: 1, opacity: 1 },
+                  }}
+                  className="w-5 h-5 bg-white rounded-full shadow-[0_0_8px_rgba(157,23,77,0.4)] z-10 mb-5"
                 />
 
-                {/* Top Circle */}
-                <div className="flex justify-center mb-16 relative">
-                  <motion.div
-                    initial={{ scale: 0, opacity: 0 }}
-                    whileInView={{ scale: 1, opacity: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5 }}
-                    className="w-5 h-5 bg-[#2dcefb] rounded-full shadow-[0_0_20px_#2dcefb] z-10"
-                  />
-                </div>
+                {/* Bottom Description - Light Gray */}
+                <motion.div
+                  variants={{
+                    hidden: { opacity: 0, y: -10 },
+                    visible: { opacity: 1, y: 0 },
+                  }}
+                  className="text-[#9ca3af] text-sm font-medium text-center z-10 bg-[#0a0a0a] px-3 py-1 rounded-md"
+                  dangerouslySetInnerHTML={{ __html: event.description }}
+                />
+              </motion.div>
+            ))}
 
-                {/* Events */}
-                {events.map((event, index) => (
-                  <motion.div
-                    key={index}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, amount: 0.3 }}
-                    transition={{ duration: 0.6, delay: index * 0.1 }}
-                    className="flex flex-col items-center mb-16 relative"
-                  >
-                    {/* Circle */}
-                    <motion.div
-                      variants={{
-                        hidden: { opacity: 0, scale: 0 },
-                        visible: { opacity: 1, scale: 1 },
-                      }}
-                      className="w-6 h-6 bg-white rounded-full shadow-[0_0_15px_#ffffff] z-10 mb-4"
-                    />
-
-                    {/* Text Content */}
-                    <motion.div
-                      variants={{
-                        hidden: { opacity: 0, y: 20 },
-                        visible: { opacity: 1, y: 0 },
-                      }}
-                      className="text-center px-4"
-                    >
-                      <h1 className="text-xl md:text-2xl font-black text-[#2dcefb] mb-2">
-                        {event.date}
-                      </h1>
-                      <h6
-                        className="text-xs md:text-sm font-bold text-[#fafdff]"
-                        dangerouslySetInnerHTML={{ __html: event.description }}
-                      ></h6>
-                    </motion.div>
-                  </motion.div>
-                ))}
-
-                {/* Bottom Circle */}
-                <div className="flex justify-center mt-16 relative">
-                  <motion.div
-                    initial={{ scale: 0, opacity: 0 }}
-                    whileInView={{ scale: 1, opacity: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: 0.2 }}
-                    className="w-5 h-5 bg-[#2dcefb] rounded-full shadow-[0_0_20px_#2dcefb] z-10"
-                  />
-                </div>
-              </div>
+            {/* Final trailing dot at the very bottom */}
+            <div className="flex justify-center mt-10 relative">
+              <motion.div
+                initial={{ scale: 0, opacity: 0 }}
+                whileInView={{ scale: 1, opacity: 1 }}
+                viewport={{ once: true }}
+                className="w-5 h-5 bg-white rounded-full shadow-[0_0_8px_rgba(157,23,77,0.4)] z-10"
+              />
             </div>
           </div>
         )}
