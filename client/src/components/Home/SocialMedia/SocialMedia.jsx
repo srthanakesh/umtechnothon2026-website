@@ -92,7 +92,7 @@ const SocialMedia = () => {
           >
             {socialLinks.map((account, index) => (
               <div
-                key={index}
+                key={account.instagram}
                 className="flex-shrink-0 w-full flex flex-col items-center justify-center snap-center p-8 backdrop-blur-sm"
                 style={{ height: "320px" }}
               >
@@ -105,6 +105,7 @@ const SocialMedia = () => {
                   >
 
                     <img
+                      key={account.imgSrc}
                       src={account.imgSrc || "/placeholder.svg"}
                       alt={account.name}
                       className="w-full h-full object-contain"
@@ -163,7 +164,7 @@ const SocialMedia = () => {
       {/* Desktop Layout */}
       <div className="hidden md:flex md:flex-wrap md:justify-center md:gap-20">
         {socialLinks.map((account, index) => (
-          <div key={index} className="flex flex-col items-center group">
+          <div key={account.instagram} className="flex flex-col items-center group">
             <div className="w-48 h-48 mb-4 flex items-center justify-center overflow-hidden bg-[#1e293b] border border-white/10 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 group-hover:scale-105">
               <a
                 href={account.instagram}

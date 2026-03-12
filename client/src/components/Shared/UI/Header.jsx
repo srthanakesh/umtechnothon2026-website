@@ -168,7 +168,7 @@ const Header = ({ isMobile }) => {
           <Link to="/" className="-m-1.5 p-1.5">
             <img
               alt="Technothon Logo"
-              src="/logos/technothon-2026-logov2.png"
+              src="/logos/technothon-2026-logov3.png"
               className="h-8 md:h-12 w-auto"
             />
           </Link>

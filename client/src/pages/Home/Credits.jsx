@@ -37,7 +37,7 @@ const Credits = () => {
 			github: "https://github.com/SiowJingYuakaJonathan"
 		},
 		{
-			name:"Syakir", 
+			name:"Nik Muhammad Syakir", 
 			role:"Frontend Member", 
 			github:"https://github.com/niksyakir"
 		},
