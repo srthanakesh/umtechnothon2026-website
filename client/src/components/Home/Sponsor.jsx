@@ -146,8 +146,8 @@ const SponsorSlider = () => {
             <p className="text-[#fafdff] text-lg md:text-xl font-medium relative z-10 max-w-xl text-center">
               We are currently seeking sponsorship opportunities. <br className="hidden md:block" /> 
               If you are interested, please contact us for more details: <br className="hidden md:block" />
-              <a href="mailto:umtechnothon.sponsorship@gmail.com" className="text-[#2dcefb] hover:text-white transition-colors">
-                umtechnothon.sponsorship@gmail.com
+              <a href="mailto:umtechnothon@gmail.com" className="text-[#2dcefb] hover:text-white transition-colors">
+                umtechnothon@gmail.com
               </a>
             </p>
           </div>

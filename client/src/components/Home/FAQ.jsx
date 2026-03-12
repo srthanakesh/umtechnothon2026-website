@@ -9,7 +9,7 @@ const faqs = [
   {
     question: "How does the registration process work?",
     answer:
-      "Teams must create an account, register their team members, and submit required information before the deadline.",
+      "Teams must register via Google Form and submit required information before the deadline.",
   },
   {
     question: "Are there any participation fees?",
