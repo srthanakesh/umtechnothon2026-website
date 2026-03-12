@@ -54,7 +54,7 @@ const FirstPage = () => {
     if (!user) {
       return {
         buttontext: "JOIN US NOW!",
-        // destination: "/register"
+        action: () => window.open("https://forms.gle/y8nRrq2j5xtosMTM8", "_blank")
       }
     } else if (!user.team_id) {
       return {
@@ -69,10 +69,14 @@ const FirstPage = () => {
     }
   }
 
-  const { buttontext, destination } = getButtonProps()
+  const { buttontext, destination, action } = getButtonProps()
 
   const handleButtonClick = () => {
-    navigate(destination)
+    if (action) {
+      action()
+    } else if (destination) {
+      navigate(destination)
+    }
   }
 
   return (

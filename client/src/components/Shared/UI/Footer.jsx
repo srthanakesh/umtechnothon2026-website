@@ -23,7 +23,7 @@ export default function Footer() {
               </div>
               <div className="w-20 h-20 flex items-center justify-center">
                 <img
-                  src="/logos/technothon-2026-logov2.png"
+                  src="/logos/technothon-2026-logov3.png"
                   alt="Technothon Logo"
                   className="w-full h-full object-contain"
                 />
@@ -47,13 +47,7 @@ export default function Footer() {
               <p className="text-sm">011-51731170</p>
             </div>
 
-            <div className="space-y-1">
-              <p className="font-semibold">CHUA PEI YING</p>
-              <p className="text-xs text-gray-300">
-                HEAD OF FINANCE
-              </p>
-              <p className="text-sm">016-4985040</p>
-            </div>
+
           </div>
         </div>
 
