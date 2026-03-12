@@ -25,7 +25,7 @@ const ContactUs = () => {
             <ContactButton
               icon={Phone}
               label="WhatsApp"
-              href="https://chat.whatsapp.com/IILTwGce3rmIizjJHYltpf"
+              href="#"
               // UPDATED: Subtle Glow Colors
               color="bg-green-500"
               hoverColor="hover:bg-green-600"
@@ -34,7 +34,7 @@ const ContactUs = () => {
             <ContactButton
               icon={MessageSquare}
               label="Discord"
-              href="https://discord.gg/5PwNWZb7tC"
+              href="https://discord.gg/5TBuDHhcP9"
               // UPDATED: Subtle Glow Colors
               color="bg-indigo-500"
               hoverColor="hover:bg-indigo-600"

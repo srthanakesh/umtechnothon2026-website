@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import AppForm from "../../components/Shared/Form/AppForm";
 import AppInput from "../../components/Shared/Form/AppInput";
 import { useNavigate, useSearchParams } from "react-router-dom";
-import axiosInstance from "../../lib/axiosInstance";
+import axiosInstance from "../../lib/AxiosInstance";
 import { setPasswordSchema } from "../../schemas/auth.schema";
 
 const SetPassword = () => {
