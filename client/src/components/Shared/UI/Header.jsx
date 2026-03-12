@@ -86,7 +86,7 @@ const Header = ({ isMobile }) => {
   const defaultItems = [
     { label: "About Us", action: () => scrollToSection("about-us") },
     { label: "Event Timeline", action: () => scrollToSection("timeline") },
-    // { label: "Judges & Mentors", action: () => scrollToSection("judges-mentors") },
+    { label: "Judges & Mentors", action: () => scrollToSection("judges-mentors") },
     { label: "Sponsors", action: () => scrollToSection("sponsors") },
     { label: "Contact Us", action: () => scrollToSection("contact-us") },
     { label: "FAQ", action: () => scrollToSection("faq") },
@@ -177,7 +177,7 @@ const Header = ({ isMobile }) => {
               } text-[#f5f5f5]`}
             style={{ fontFamily: "Saira Extra Condensed" }}
           >
-            {isMobile ? "UM TECHNOTHON '26" : "| UM TECHNOTHON 2026"}
+            {isMobile ? "UM TECHNOTHON 2026" : "| UM TECHNOTHON 2026"}
           </p>
         </div>
 
@@ -186,7 +186,7 @@ const Header = ({ isMobile }) => {
           <div className="flex items-center">
             <button
               onClick={toggleMenu}
-              className="inline-flex items-center justify-center p-2 rounded-md text-grey-200 hover:text-cyan-400 transition-color duration-200"
+              className="inline-flex items-center justify-center p-2 rounded-md text-white hover:text-cyan-400 transition-color duration-200"
             >
               <span className="sr-only">Open main menu</span>
               {!menuOpen ? (

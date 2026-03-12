@@ -2,34 +2,44 @@ import { useState } from "react";
 
 const faqs = [
   {
-    question: "Who is eligible to participate?",
+    question: "Who can participate?",
     answer:
-      "UM Technothon 2026 is open to all university students across Malaysia. Participants must form a team of 1–5 members.",
+      "UM Technothon 2026 is open to all undergraduate university students, including diploma students.",
   },
   {
-    question: "How does the registration process work?",
+    question: "How many members can a team have?",
     answer:
-      "Teams must register via Google Form and submit required information before the deadline.",
+      "Each team can consist of 1–5 members.",
   },
   {
-    question: "Are there any participation fees?",
+    question: "When will the competition take place?",
     answer:
-      "There is no registration fee. However, selected finalists may need to commit to attending all final round sessions.",
+      "25th April – 7th June 2026. The competition runs across several phases, ending with the physical final round on 7th June 2026.",
   },
   {
-    question: "What are the submission requirements?",
+    question: "Is the competition online or physical?",
     answer:
-      "Teams must submit a project proposal, demo video, and technical documentation before the submission deadline.",
+      "The competition will be conducted in both formats. The preliminary round and mentoring sessions will be held online, while the final pitching day will be conducted physically at Universiti Malaya.",
   },
   {
-    question: "How will projects be evaluated?",
+    question: "Is UM Technothon 2026 free to join?",
     answer:
-      "Projects will be judged based on innovation, technical complexity, feasibility, presentation quality, and impact.",
+      "Yes. A RM25 commitment fee is required, but it will be fully refunded after completing the competition.",
   },
   {
-    question: "Where will the event be held?",
+    question: "What do teams need to submit for the preliminary round?",
     answer:
-      "The final round will be held physically at University of Malaya. Further details will be announced soon.",
+      "Teams must submit a pitch deck and a video presentation. Optional submissions include a visual prototype (such as Figma) and a GitHub repository.",
+  },
+  {
+    question: "Do teams need to build a working prototype?",
+    answer:
+      "Yes. Finalist teams will need to develop their prototype during the building phase before presenting in the physical final day.",
+  },
+  {
+    question: "Who can join in terms of background/discipline?",
+    answer:
+      "No. Students from any discipline are welcome, as the competition encourages multidisciplinary collaboration and diverse perspectives.",
   },
 ];
 
