@@ -86,7 +86,7 @@ const Header = ({ isMobile }) => {
   const defaultItems = [
     { label: "About Us", action: () => scrollToSection("about-us") },
     { label: "Event Timeline", action: () => scrollToSection("timeline") },
-    { label: "Judges & Mentors", action: () => scrollToSection("judges-mentors") },
+    // { label: "Judges & Mentors", action: () => scrollToSection("judges-mentors") },
     { label: "Sponsors", action: () => scrollToSection("sponsors") },
     { label: "Contact Us", action: () => scrollToSection("contact-us") },
     { label: "FAQ", action: () => scrollToSection("faq") },

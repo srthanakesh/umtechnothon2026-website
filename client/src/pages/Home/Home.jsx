@@ -19,14 +19,14 @@ const Home = () => {
       <div id="timeline">
         <Timeline />
       </div>
-      <div id="judges-mentors">
+      {/* <div id="judges-mentors">
         <JudgesMentors />
-      </div>
+      </div> */}
       <div id="sponsors">
         <Sponsor />
       </div>
       <Prize />
-      <MediaPartnersSlider />
+      {/* <MediaPartnersSlider /> */}
       <div id="contact-us">
         <SocialMedia />
       </div>
