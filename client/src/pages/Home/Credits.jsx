@@ -29,6 +29,29 @@ const Credits = () => {
 		{ name: "Poo Wei Shen", role: "Backend Member", github: "https://github.com/shaunn27" },
 		{ name: "Tang Yvone", role: "Backend Member", github: "https://github.com/Tyvone05" }
 	];
+	const team2026 = [
+		{
+			name: "Siow Jing Yu", 
+			role: "Frontend Lead", 
+			github: "https://github.com/SiowJingYuakaJonathan"
+		},
+		{
+			name:"Syakir", 
+			role:"Frontend Member", 
+			github:""
+		},
+		{
+			name:"Goh Ching Yee", 
+			role:"Backend Lead", 
+			github:""
+		},
+		{
+			name:"Thanakesh Sri Rau", 
+			role:"Content/UX Lead & Integration/QA Lead", 
+			github:" https://github.com/srthanakesh?tab=overview&from=2026-03-01&to=2026-03-12"
+		}
+
+	]
 
 	return (
 		<div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 py-12 px-4">
