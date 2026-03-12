@@ -40,6 +40,7 @@ const SocialMedia = () => {
 
       setTimeout(() => {
         setIsTransitioning(false)
+        setActiveIndex(index)
       }, 500)
     }
   }
@@ -97,11 +98,12 @@ const SocialMedia = () => {
               >
                 <div className="w-48 h-48 mb-6 flex items-center justify-center">
                   <a
-                    href={account.instagram}
+                    href={socialLinks[activeIndex].instagram}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full h-full overflow-hidden hover:scale-110 transition-transform duration-300 flex items-center justify-center"
+                    className="mt-4 px-6 py-2 bg-[#4c5ab6] text-white rounded-full hover:bg-[#2e3b7f]"
                   >
+
                     <img
                       src={account.imgSrc || "/placeholder.svg"}
                       alt={account.name}
@@ -109,9 +111,9 @@ const SocialMedia = () => {
                     />
                   </a>
                 </div>
-                <p className="text-center text-lg font-semibold max-w-[250px] text-gray-200">{account.name}</p>
+                <p className="text-center text-lg font-semibold max-w-[250px] text-gray-200">{socialLinks[activeIndex].name}</p>
                 <a
-                  href={account.instagram}
+                  href={socialLinks[activeIndex].instagram}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="mt-4 px-6 py-2 bg-[#4c5ab6] text-white rounded-full hover:bg-[#2e3b7f] transition-colors duration-300 flex items-center justify-center"
