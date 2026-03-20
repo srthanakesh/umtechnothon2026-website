@@ -147,14 +147,15 @@ const ViewSubmission = () => {
   };
 
   const handleSubmit = async () => {
-    if (!selectedTeam || !selectedTask || !submission) {
-      alert('Please select a team, task, and ensure there is a submission to mark.');
+    if (!selectedTeam || !selectedTask) {
+      alert('Please select a team and task.');
       return;
     }
 
     try {
       const scoreData = {
-        deliverable_id: submission.deliverable_id,
+        team_id: selectedTeam,
+        task_id: selectedTask,
         admin_id: user._id,
         criteria_scores: criteriaScores.map(score => ({
           criteria_id: score.criteria_id,
