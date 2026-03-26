@@ -15,24 +15,122 @@ class MediaPartnersSlider extends React.Component {
   mediaPartners = [
     {
       id: 1,
-      name: "name",
-      logo: "/logos/placeholder.jpeg",
-      description:
-        "description",
+      name: "APU Forensics and Cyber Security Research Center - Student Section (FSeC-SS)",
+      logo: "/logos/MediaPartner2026/FSEC LOGO - Natasha Najwa.png",
+      
     },
     {
       id: 2,
-      name: "name",
-      logo: "/logos/placeholder.jpeg",
-      description:
-        "description",
+      name: "Chemical Engineering Undergraduate Club (CEUC)",
+      logo: "/logos/MediaPartner2026/CEUC Logo (4) - CEUC Universiti Malaya.png",
+      
     },
     {
       id: 3,
-      name: "name",
-      logo: "/logos/placeholder.jpeg",
-      description:
-        "description",
+      name: "Robotics Engineering Community (REC)",
+      logo: "/logos/MediaPartner2026/REC LOGO - TAN YIN JIE JACQLINE.png",
+      
+    },
+    {
+      id: 4,
+      name: "ASHRAE UM Student Branch",
+      logo: "/logos/MediaPartner2026/ASHRAE - ASHRAE UM.png",
+      
+    },
+    {
+      id: 5,
+      name: "Developer Student Clubs UniKL (DSC UNIKL)",
+      logo: "/logos/MediaPartner2026/DSC UNIKL LOGO copy - DSC UniKL.png",
+      
+    },
+    {
+      id: 6,
+      name: "IMechE UM Student Chapter",
+      logo: "/logos/MediaPartner2026/IMechE UMSC Logo - Transparent Bg - Cheah Ui Zhe.png",
+      
+    },
+    {
+      id: 7,
+      name: "UMHackathon 2026 (UMH2026)",
+      logo: "/logos/MediaPartner2026/UMH2026 LOGO - UMHackathon.png",
+      
+    },
+    {
+      id: 8,
+      name: "UM Cybersecurity Summit 2026",
+      logo: "/logos/MediaPartner2026/UMCS_logo_TransparentBG - Khoo Yeak Xuan.png",
+      
+    },
+    {
+      id: 9,
+      name: "Nuclear Engineering Student Society Universiti Teknologi Malaysia (NESS UTM) ",
+      logo: "/logos/MediaPartner2026/NESS (Transparent) - syahindah salikin.png",
+      
+    },{
+      id: 10,
+      name: "The Institution of Engineers Malaysia Students Section UTHM (IEMSS UTHM)",
+      logo: "/logos/MediaPartner2026/IEM UTHM - Ting En Koay.jpg",
+      
+    },
+    {
+      id: 11,
+      name: "UM Makersclub",
+      logo: "/logos/MediaPartner2026/Makers Club PNG - See x.png",
+      
+    },
+    {
+      id: 12,
+      name: "Developer Student Club UTeM",
+      logo: "/logos/MediaPartner2026/DSC UTeM Background Free - Haris Suresh.png",
+      
+    },
+    {
+      id: 13,
+      name: "Google Developer Group on Campus Universiti Sains Malaysia (GDGoC USM)",
+      logo: "/logos/MediaPartner2026/GDG On Campus USM.png",
+      
+    },
+    {
+      id: 14,
+      name: "IT Society MMU Cyberjaya (ITS)",
+      logo: "/logos/MediaPartner2026/ITS_logo.png",
+      
+    },
+    {
+      id: 15,
+      name: "UNIVERISITI MALAYA STUDENT UNION FACULTY OF ENGINEERING ",
+      logo: "/logos/MediaPartner2026/UMSU.png",
+      
+    },
+    {
+      id: 16,
+      name: "SYNTECH Organization ",
+      logo: "/logos/MediaPartner2026/SYNTECH.png",
+      
+    },
+    {
+      id: 17,
+      name: "Universiti Malaya Shell Eco Marathon Team",
+      logo: "/logos/MediaPartner2026/UMSEM.png",
+      
+    },
+    {
+      id: 18,
+      name: "Society of Petroleum Engineer UiTM Students Chapter (SPE-UiTM SC)",
+      logo: "/logos/MediaPartner2026/SPE-UiTM.png",
+      
+    },
+    {
+      id: 19,
+      name: "Taylor's ADP Engineering Society",
+      logo: "/logos/MediaPartner2026/TES Logo.png",
+      
+    },
+    {
+      id: 20,
+      name: "Google Developer Student Club Segi University (GDSC Segi)",
+      logo: "/logos/MediaPartner2026/GDSC Segi.png",
+      
     },
   ];
 
@@ -330,15 +428,24 @@ class MediaPartnersSlider extends React.Component {
           }
           
           .partner-logo-container {
-            background-color: white;
+            background: linear-gradient(135deg, rgba(76, 90, 182, 0.25), rgba(30, 41, 59, 0.8)); 
+            background-filter: blur(12px);
+            filter: drop-shadow(0 0 12px rgba(76, 90, 182, 0.5));
             border-radius: 1.5rem;
+            border:1px solid rgba(76, 90, 182, 0.5);
             padding: 1.5rem;
             width: 16rem;
             height: 12rem;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            box-shadow: 
+                   0 0 20px rgba(76, 90, 182, 0.9);
+                   0 0 40px rgba(76, 90, 182, 0.7);
+                   0 0 80px rgba(76, 90, 182, 0.4);
+                   inset 0 0 25px rgba(255, 255, 255, 0.08);
+            transition:all 0.3s ease;
+            transform: scale(1.08);
             margin-bottom: 2rem;
             opacity: 0;
           }
@@ -361,7 +468,10 @@ class MediaPartnersSlider extends React.Component {
         `}</style>
 
         <div style={{ 
-          backgroundColor: "black", 
+          background:`
+            radial-gradient(circle at center, rgba(76, 90, 182, 0.15), transparent 60%),
+            linear-gradient(135deg, #0f172a, #1e293b, #020617)
+            `,
           color: "white", 
           padding: "4rem 1rem",
           width: "100%",

@@ -749,17 +749,26 @@ Please change the parent <Route path="${N}"> to <Route path="${N==="/"?"*":`${N}
           }
           
           .partner-logo-container {
-            background-color: white;
+            background: linear-gradient(
+              145deg,
+             rgba(76, 90, 182, 0.45), /*brighter blue*/
+             rgba(30, 41, 59, 0.85) /*dark base*/
+             );
+
             border-radius: 1.5rem;
             padding: 1.5rem;
-            width: 16rem;
-            height: 12rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            margin-bottom: 2rem;
-            opacity: 0;
+
+            border:1px solid rgba(120, 140, 255, 0.6);
+            
+            backdrop-filter: blur(14px);
+
+            box-shadow:
+             0 0 20px rgba(76, 90, 182, 0.9), /* subtle outer glow */
+             0 0 40px rgba(76, 90, 182, 0.6), /* softer outer glow */
+             0 0 80px rgba(76, 90, 182, 0.3); /* very soft outer glow */
+             inset 0 0 25px rgba(255, 255, 255, 0.08); /* inner highlight */
+
+            transition: all 0.3s ease;
           }
           
           .partner-logo {
