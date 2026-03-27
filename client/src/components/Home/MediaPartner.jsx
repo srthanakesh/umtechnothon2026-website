@@ -16,121 +16,142 @@ class MediaPartnersSlider extends React.Component {
     {
       id: 1,
       name: "APU Forensics and Cyber Security Research Center - Student Section (FSeC-SS)",
-      logo: "/logos/MediaPartner2026/FSEC LOGO - Natasha Najwa.png",
-      
+      logo: "/logos/Organisation Logo  (png format & transparent background) (File responses)/FSEC LOGO - Natasha Najwa.png",
+      description:
+        "FSeC-SS connects students with industry experts to develop essential skills in cybersecurity and digital forensics through collaborative research and networking.",
     },
     {
       id: 2,
       name: "Chemical Engineering Undergraduate Club (CEUC)",
-      logo: "/logos/MediaPartner2026/CEUC Logo (4) - CEUC Universiti Malaya.png",
-      
+      logo: "/logos/Organisation Logo  (png format & transparent background) (File responses)/CEUC Logo (4) - CEUC Universiti Malaya.png",
+      description:
+        "CEUC is the official Chemical Engineering student club at UM, dedicated to supporting undergraduates through inclusive events, resources, and student-department communication.",
     },
     {
       id: 3,
       name: "Robotics Engineering Community (REC)",
-      logo: "/logos/MediaPartner2026/REC LOGO - TAN YIN JIE JACQLINE.png",
-      
+      logo: "/logos/Organisation Logo  (png format & transparent background) (File responses)/REC LOGO - TAN YIN JIE JACQLINE.png",
+      description:
+        "REC is UM’s student-led robotics club, focusing on robot design and programming through competitive projects like Robocon.",
     },
     {
       id: 4,
       name: "ASHRAE UM Student Branch",
-      logo: "/logos/MediaPartner2026/ASHRAE - ASHRAE UM.png",
-      
+      logo: "/logos/Organisation Logo  (png format & transparent background) (File responses)/ASHRAE - ASHRAE UM.PNG",
+      description:
+        "ASHRAE UM develops engineering talent in sustainable building technologies and HVAC&R through professional talks, competitions, and hands-on industry exposure.",
     },
     {
       id: 5,
       name: "Developer Student Clubs UniKL (DSC UNIKL)",
-      logo: "/logos/MediaPartner2026/DSC UNIKL LOGO copy - DSC UniKL.png",
-      
+      logo: "/logos/Organisation Logo  (png format & transparent background) (File responses)/DSC UNIKL LOGO copy - DSC UniKL.png",
+      description:
+        "DSC UniKL empowers students in AI and emerging technologies through hands-on workshops and industry-linked innovation projects.",
     },
     {
       id: 6,
       name: "IMechE UM Student Chapter",
-      logo: "/logos/MediaPartner2026/IMechE UMSC Logo - Transparent Bg - Cheah Ui Zhe.png",
-      
+      logo: "/logos/Organisation Logo  (png format & transparent background) (File responses)/IMechE UMSC Logo - Transparent Bg - Cheah Ui Zhe.png",
+      description:
+        "IMechE UMSC is a large-scale student chapter at UM that prepares future mechanical engineers for global careers through industry networking and high-impact technical events.",
     },
     {
       id: 7,
       name: "UMHackathon 2026 (UMH2026)",
-      logo: "/logos/MediaPartner2026/UMH2026 LOGO - UMHackathon.png",
-      
+      logo: "/logos/Organisation Logo  (png format & transparent background) (File responses)/UMH2026 LOGO - UMHackathon.png",
+      description:
+        "UMHackathon is a PEKOM-led competition where teams build data science and machine learning MVPs to solve technical challenges.",
     },
     {
       id: 8,
       name: "UM Cybersecurity Summit 2026",
-      logo: "/logos/MediaPartner2026/UMCS_logo_TransparentBG - Khoo Yeak Xuan.png",
-      
+      logo: "/logos/Organisation Logo  (png format & transparent background) (File responses)/UMCS Logo Dark.png",
+      description:
+        "UMCS 2026 is a joint-effort cybersecurity event on May 16th at UM, featuring technical workshops and CTF competitions.",
     },
     {
       id: 9,
-      name: "Nuclear Engineering Student Society Universiti Teknologi Malaysia (NESS UTM) ",
-      logo: "/logos/MediaPartner2026/NESS (Transparent) - syahindah salikin.png",
-      
-    },{
+      name: "Nuclear Engineering Student Society Universiti Teknologi Malaysia (NESS UTM)",
+      logo: "/logos/Organisation Logo  (png format & transparent background) (File responses)/NESS (Transparent) - syahindah salikin.png",
+      description:
+        "NESS is a student-led nuclear engineering chapter at UTM that advances professional skills through global programs, industry visits, and technical debates.",
+    },
+    {
       id: 10,
       name: "The Institution of Engineers Malaysia Students Section UTHM (IEMSS UTHM)",
-      logo: "/logos/MediaPartner2026/IEM UTHM - Ting En Koay.jpg",
-      
+      logo: "/logos/Organisation Logo  (png format & transparent background) (File responses)/SAVE_20260317_240041 - Ting En Koay.jpg",
+      description:
+        "IEM-SS UTHM is a student-led organization dedicated to professional growth and community engagement for future engineers.",
     },
     {
       id: 11,
       name: "UM Makersclub",
-      logo: "/logos/MediaPartner2026/Makers Club PNG - See x.png",
-      
+      logo: "/logos/Organisation Logo  (png format & transparent background) (File responses)/Makers Club PNG - See x.png",
+      description:
+        "UM Makers Club is a student-led community that turns ideas into reality through rapid prototyping and digital fabrication workshops.",
     },
     {
       id: 12,
       name: "Developer Student Club UTeM",
-      logo: "/logos/MediaPartner2026/DSC UTeM Background Free - Haris Suresh.png",
-      
+      logo: "/logos/Organisation Logo  (png format & transparent background) (File responses)/DSC UTeM Background Free - Haris Suresh.png",
+      description:
+        "DSC is a university-based community for students interested in developer technologies. It provides a peer-to-peer learning environment where members build real-world solutions for local businesses and the community.",
     },
     {
       id: 13,
       name: "Google Developer Group on Campus Universiti Sains Malaysia (GDGoC USM)",
-      logo: "/logos/MediaPartner2026/GDG On Campus USM.png",
-      
+      logo: "/logos/Organisation Logo  (png format & transparent background) (File responses)/GDG On Campus - Horizontal - Light -Trans - Navitha M.png",
+      description:
+        "GDG on Campus USM advances student development by providing a platform for peer learning, interpersonal growth, and hands-on experience with Google technologies.",
     },
     {
       id: 14,
       name: "IT Society MMU Cyberjaya (ITS)",
-      logo: "/logos/MediaPartner2026/ITS_logo.png",
-      
+      logo: "/logos/Organisation Logo  (png format & transparent background) (File responses)/ITS_logo - LAW CHIN XUAN.png",
+      description:
+        "IT Society MMU is a Cyberjaya-based student community dedicated to fostering passion for computer science through technical events and industry engagement.",
     },
     {
       id: 15,
       name: "UNIVERISITI MALAYA STUDENT UNION FACULTY OF ENGINEERING ",
-      logo: "/logos/MediaPartner2026/UMSU.png",
-      
+      logo: "/logos/Organisation Logo  (png format & transparent background) (File responses)/UMSU Faculty of Engineering - Lee Wen Qua.png",
+      description:
+        "KMUM is the official student voice at UM, dedicated to representing student interests in university governance and supporting student-led initiatives.",
     },
     {
       id: 16,
-      name: "SYNTECH Organization ",
-      logo: "/logos/MediaPartner2026/SYNTECH.png",
-      
+      name: "SYTNECH Organization",
+      logo: "/logos/Organisation Logo  (png format & transparent background) (File responses)/inbound7210120407090917791 - Th QL.png",
+      description:
+        "SYNTECH is a student-led community that empowers students to innovate and develop real-world skills through workshops, industry connections, and hands-on projects.",
     },
     {
       id: 17,
       name: "Universiti Malaya Shell Eco Marathon Team",
-      logo: "/logos/MediaPartner2026/UMSEM.png",
-      
+      logo: "/logos/Organisation Logo  (png format & transparent background) (File responses)/IMG_9671 - umsem.png",
+      description:
+        "UM-SEM is a student-led engineering team that represents Universiti Malaya in the global Shell Eco-marathon competition, focusing on automotive innovation and efficiency.",
     },
     {
       id: 18,
       name: "Society of Petroleum Engineer UiTM Students Chapter (SPE-UiTM SC)",
-      logo: "/logos/MediaPartner2026/SPE-UiTM.png",
-      
+      logo: "/logos/Organisation Logo  (png format & transparent background) (File responses)/SPE-UiTM SC LOGO NO BG - Zahiruddin Nazri.png",
+      description:
+        "SPE UiTM is an award-winning student chapter that bridges the gap between academia and the energy industry through technical workshops and professional networking.",
     },
     {
       id: 19,
       name: "Taylor's ADP Engineering Society",
-      logo: "/logos/MediaPartner2026/TES Logo.png",
-      
+      logo: "/logos/Organisation Logo  (png format & transparent background) (File responses)/TES Logo - Joel John Tan.png",
+      description:
+        "Taylor's ADP Engineering Society fosters a vibrant community for future engineers through practical projects, industry insights, and cross-disciplinary collaboration.",
     },
     {
       id: 20,
       name: "Google Developer Student Club Segi University (GDSC Segi)",
-      logo: "/logos/MediaPartner2026/GDSC Segi.png",
-      
+      logo: "/logos/Organisation Logo  (png format & transparent background) (File responses)/GDSC SEGi University Horizontal color - Ng Su Ying.png",
+      description:
+        "GDSC is an inclusive student tech community focused on Google developer tools, hands-on projects, and peer learning.",
     },
   ];
 
@@ -428,24 +449,15 @@ class MediaPartnersSlider extends React.Component {
           }
           
           .partner-logo-container {
-            background: linear-gradient(135deg, rgba(76, 90, 182, 0.25), rgba(30, 41, 59, 0.8)); 
-            background-filter: blur(12px);
-            filter: drop-shadow(0 0 12px rgba(76, 90, 182, 0.5));
+            background-color: white;
             border-radius: 1.5rem;
-            border:1px solid rgba(76, 90, 182, 0.5);
             padding: 1.5rem;
             width: 16rem;
             height: 12rem;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 
-                   0 0 20px rgba(76, 90, 182, 0.9);
-                   0 0 40px rgba(76, 90, 182, 0.7);
-                   0 0 80px rgba(76, 90, 182, 0.4);
-                   inset 0 0 25px rgba(255, 255, 255, 0.08);
-            transition:all 0.3s ease;
-            transform: scale(1.08);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
             margin-bottom: 2rem;
             opacity: 0;
           }
@@ -468,10 +480,7 @@ class MediaPartnersSlider extends React.Component {
         `}</style>
 
         <div style={{ 
-          background:`
-            radial-gradient(circle at center, rgba(76, 90, 182, 0.15), transparent 60%),
-            linear-gradient(135deg, #0f172a, #1e293b, #020617)
-            `,
+          backgroundColor: "black", 
           color: "white", 
           padding: "4rem 1rem",
           width: "100%",
