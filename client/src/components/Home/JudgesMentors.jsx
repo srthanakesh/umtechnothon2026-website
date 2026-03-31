@@ -56,6 +56,8 @@ const JudgesMentors = () => {
           src={person.image}
           alt={person.name}
           className="relative w-36 h-36 object-cover rounded-full border-4 border-blue-500 group-hover:border-cyan-400 transition duration-500"
+          loading="lazy"
+          decoding="async"
         />
       </div>
       <h3 className="mt-6 text-xl font-semibold text-white">{person.name}</h3>

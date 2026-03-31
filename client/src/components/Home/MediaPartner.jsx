@@ -565,6 +565,8 @@ class MediaPartnersSlider extends React.Component {
                       src={displayPartner.logo || "/placeholder.svg"}
                       alt={`${displayPartner.name} logo`}
                       className="partner-logo"
+                      loading="lazy"
+                      decoding="async"
                       style={
                         displayPartner.id === 10
                           ? { width: "150%", height: "150%", objectFit: "contain" }
