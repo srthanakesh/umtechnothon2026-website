@@ -66,7 +66,7 @@ const sponsorTiers = [
 
 const SponsorRow = ({ sponsors, direction, speed = 50 }) => {
   const [isPaused, setIsPaused] = useState(false)
-  const multipleSponsors = [...sponsors, ...sponsors, ...sponsors, ...sponsors, ...sponsors, ...sponsors]
+  const multipleSponsors = [...sponsors, ...sponsors, ...sponsors]
 
   return (
     <div className="relative w-full overflow-hidden">
@@ -93,6 +93,8 @@ const SponsorRow = ({ sponsors, direction, speed = 50 }) => {
                 src={sponsor.logo || "/placeholder.svg"} 
                 alt={sponsor.name} 
                 className="max-w-[85%] max-h-[85%] object-contain opacity-20 grayscale" 
+                loading="lazy"
+                decoding="async"
               />
             </div>
           ))}
