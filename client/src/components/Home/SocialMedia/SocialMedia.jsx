@@ -40,6 +40,7 @@ const SocialMedia = () => {
 
       setTimeout(() => {
         setIsTransitioning(false)
+        setActiveIndex(index)
       }, 500)
     }
   }
@@ -91,27 +92,29 @@ const SocialMedia = () => {
           >
             {socialLinks.map((account, index) => (
               <div
-                key={index}
+                key={account.instagram}
                 className="flex-shrink-0 w-full flex flex-col items-center justify-center snap-center p-8 backdrop-blur-sm"
                 style={{ height: "320px" }}
               >
                 <div className="w-48 h-48 mb-6 flex items-center justify-center">
                   <a
-                    href={account.instagram}
+                    href={socialLinks[activeIndex].instagram}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full h-full overflow-hidden hover:scale-110 transition-transform duration-300 flex items-center justify-center"
+                    className="mt-4 px-6 py-2 bg-[#4c5ab6] text-white rounded-full hover:bg-[#2e3b7f]"
                   >
+
                     <img
+                      key={account.imgSrc}
                       src={account.imgSrc || "/placeholder.svg"}
                       alt={account.name}
                       className="w-full h-full object-contain"
                     />
                   </a>
                 </div>
-                <p className="text-center text-lg font-semibold max-w-[250px] text-gray-200">{account.name}</p>
+                <p className="text-center text-lg font-semibold max-w-[250px] text-gray-200">{socialLinks[activeIndex].name}</p>
                 <a
-                  href={account.instagram}
+                  href={socialLinks[activeIndex].instagram}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="mt-4 px-6 py-2 bg-[#4c5ab6] text-white rounded-full hover:bg-[#2e3b7f] transition-colors duration-300 flex items-center justify-center"
@@ -161,7 +164,7 @@ const SocialMedia = () => {
       {/* Desktop Layout */}
       <div className="hidden md:flex md:flex-wrap md:justify-center md:gap-20">
         {socialLinks.map((account, index) => (
-          <div key={index} className="flex flex-col items-center group">
+          <div key={account.instagram} className="flex flex-col items-center group">
             <div className="w-48 h-48 mb-4 flex items-center justify-center overflow-hidden bg-[#1e293b] border border-white/10 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 group-hover:scale-105">
               <a
                 href={account.instagram}

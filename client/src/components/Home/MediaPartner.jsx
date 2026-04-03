@@ -15,24 +15,143 @@ class MediaPartnersSlider extends React.Component {
   mediaPartners = [
     {
       id: 1,
-      name: "name",
-      logo: "/logos/placeholder.jpeg",
+      name: "APU Forensics and Cyber Security Research Center - Student Section (FSeC-SS)",
+      logo: "/logos/Organisation Logo  (png format & transparent background) (File responses)/FSEC LOGO - Natasha Najwa.png",
       description:
-        "description",
+        "FSeC-SS connects students with industry experts to develop essential skills in cybersecurity and digital forensics through collaborative research and networking.",
     },
     {
       id: 2,
-      name: "name",
-      logo: "/logos/placeholder.jpeg",
+      name: "Chemical Engineering Undergraduate Club (CEUC)",
+      logo: "/logos/Organisation Logo  (png format & transparent background) (File responses)/CEUC Logo (4) - CEUC Universiti Malaya.png",
       description:
-        "description",
+        "CEUC is the official Chemical Engineering student club at UM, dedicated to supporting undergraduates through inclusive events, resources, and student-department communication.",
     },
     {
       id: 3,
-      name: "name",
-      logo: "/logos/placeholder.jpeg",
+      name: "Robotics Engineering Community (REC)",
+      logo: "/logos/Organisation Logo  (png format & transparent background) (File responses)/REC LOGO - TAN YIN JIE JACQLINE.png",
       description:
-        "description",
+        "REC is UM’s student-led robotics club, focusing on robot design and programming through competitive projects like Robocon.",
+    },
+    {
+      id: 4,
+      name: "ASHRAE UM Student Branch",
+      logo: "/logos/Organisation Logo  (png format & transparent background) (File responses)/ASHRAE - ASHRAE UM.PNG",
+      description:
+        "ASHRAE UM develops engineering talent in sustainable building technologies and HVAC&R through professional talks, competitions, and hands-on industry exposure.",
+    },
+    {
+      id: 5,
+      name: "Developer Student Clubs UniKL (DSC UNIKL)",
+      logo: "/logos/Organisation Logo  (png format & transparent background) (File responses)/DSC UNIKL LOGO copy - DSC UniKL.png",
+      description:
+        "DSC UniKL empowers students in AI and emerging technologies through hands-on workshops and industry-linked innovation projects.",
+    },
+    {
+      id: 6,
+      name: "IMechE UM Student Chapter",
+      logo: "/logos/Organisation Logo  (png format & transparent background) (File responses)/IMechE UMSC Logo - Transparent Bg - Cheah Ui Zhe.png",
+      description:
+        "IMechE UMSC is a large-scale student chapter at UM that prepares future mechanical engineers for global careers through industry networking and high-impact technical events.",
+    },
+    {
+      id: 7,
+      name: "UMHackathon 2026 (UMH2026)",
+      logo: "/logos/Organisation Logo  (png format & transparent background) (File responses)/UMH2026 LOGO - UMHackathon.png",
+      description:
+        "UMHackathon is a PEKOM-led competition where teams build data science and machine learning MVPs to solve technical challenges.",
+    },
+    {
+      id: 8,
+      name: "UM Cybersecurity Summit 2026",
+      logo: "/logos/Organisation Logo  (png format & transparent background) (File responses)/UMCS Logo Dark.png",
+      description:
+        "UMCS 2026 is a joint-effort cybersecurity event on May 16th at UM, featuring technical workshops and CTF competitions.",
+    },
+    {
+      id: 9,
+      name: "Nuclear Engineering Student Society Universiti Teknologi Malaysia (NESS UTM)",
+      logo: "/logos/Organisation Logo  (png format & transparent background) (File responses)/NESS (Transparent) - syahindah salikin.png",
+      description:
+        "NESS is a student-led nuclear engineering chapter at UTM that advances professional skills through global programs, industry visits, and technical debates.",
+    },
+    {
+      id: 10,
+      name: "The Institution of Engineers Malaysia Students Section UTHM (IEMSS UTHM)",
+      logo: "/logos/Organisation Logo  (png format & transparent background) (File responses)/SAVE_20260317_240041 - Ting En Koay.jpg",
+      description:
+        "IEM-SS UTHM is a student-led organization dedicated to professional growth and community engagement for future engineers.",
+    },
+    {
+      id: 11,
+      name: "UM Makersclub",
+      logo: "/logos/Organisation Logo  (png format & transparent background) (File responses)/Makers Club PNG - See x.png",
+      description:
+        "UM Makers Club is a student-led community that turns ideas into reality through rapid prototyping and digital fabrication workshops.",
+    },
+    {
+      id: 12,
+      name: "Developer Student Club UTeM",
+      logo: "/logos/Organisation Logo  (png format & transparent background) (File responses)/DSC UTeM Background Free - Haris Suresh.png",
+      description:
+        "DSC is a university-based community for students interested in developer technologies. It provides a peer-to-peer learning environment where members build real-world solutions for local businesses and the community.",
+    },
+    {
+      id: 13,
+      name: "Google Developer Group on Campus Universiti Sains Malaysia (GDGoC USM)",
+      logo: "/logos/Organisation Logo  (png format & transparent background) (File responses)/GDG On Campus - Horizontal - Light -Trans - Navitha M.png",
+      description:
+        "GDG on Campus USM advances student development by providing a platform for peer learning, interpersonal growth, and hands-on experience with Google technologies.",
+    },
+    {
+      id: 14,
+      name: "IT Society MMU Cyberjaya (ITS)",
+      logo: "/logos/Organisation Logo  (png format & transparent background) (File responses)/ITS_logo - LAW CHIN XUAN.png",
+      description:
+        "IT Society MMU is a Cyberjaya-based student community dedicated to fostering passion for computer science through technical events and industry engagement.",
+    },
+    {
+      id: 15,
+      name: "UNIVERISITI MALAYA STUDENT UNION FACULTY OF ENGINEERING ",
+      logo: "/logos/Organisation Logo  (png format & transparent background) (File responses)/UMSU Faculty of Engineering - Lee Wen Qua.png",
+      description:
+        "KMUM is the official student voice at UM, dedicated to representing student interests in university governance and supporting student-led initiatives.",
+    },
+    {
+      id: 16,
+      name: "SYTNECH Organization",
+      logo: "/logos/Organisation Logo  (png format & transparent background) (File responses)/inbound7210120407090917791 - Th QL.png",
+      description:
+        "SYNTECH is a student-led community that empowers students to innovate and develop real-world skills through workshops, industry connections, and hands-on projects.",
+    },
+    {
+      id: 17,
+      name: "Universiti Malaya Shell Eco Marathon Team",
+      logo: "/logos/Organisation Logo  (png format & transparent background) (File responses)/IMG_9671 - umsem.png",
+      description:
+        "UM-SEM is a student-led engineering team that represents Universiti Malaya in the global Shell Eco-marathon competition, focusing on automotive innovation and efficiency.",
+    },
+    {
+      id: 18,
+      name: "Society of Petroleum Engineer UiTM Students Chapter (SPE-UiTM SC)",
+      logo: "/logos/Organisation Logo  (png format & transparent background) (File responses)/SPE-UiTM SC LOGO NO BG - Zahiruddin Nazri.png",
+      description:
+        "SPE UiTM is an award-winning student chapter that bridges the gap between academia and the energy industry through technical workshops and professional networking.",
+    },
+    {
+      id: 19,
+      name: "Taylor's ADP Engineering Society",
+      logo: "/logos/Organisation Logo  (png format & transparent background) (File responses)/TES Logo - Joel John Tan.png",
+      description:
+        "Taylor's ADP Engineering Society fosters a vibrant community for future engineers through practical projects, industry insights, and cross-disciplinary collaboration.",
+    },
+    {
+      id: 20,
+      name: "Google Developer Student Club Segi University (GDSC Segi)",
+      logo: "/logos/Organisation Logo  (png format & transparent background) (File responses)/GDSC SEGi University Horizontal color - Ng Su Ying.png",
+      description:
+        "GDSC is an inclusive student tech community focused on Google developer tools, hands-on projects, and peer learning.",
     },
   ];
 
@@ -446,6 +565,8 @@ class MediaPartnersSlider extends React.Component {
                       src={displayPartner.logo || "/placeholder.svg"}
                       alt={`${displayPartner.name} logo`}
                       className="partner-logo"
+                      loading="lazy"
+                      decoding="async"
                       style={
                         displayPartner.id === 10
                           ? { width: "150%", height: "150%", objectFit: "contain" }

@@ -125,7 +125,7 @@ const FormAndSubmission = () => {
             </p>
             <button 
               onClick={() => {}} 
-              className="w-full text-lg font-bold px-4 py-3 rounded-2xl bg-gradient-to-r from-cyan-500 to-purple-600 text-white hover:opacity-90 transition-all uppercase tracking-tight"
+              className="w-full text-lg font-bold px-4 py-3 rounded-2xl bg-blue-600 hover:bg-blue-500 text-white transition-all uppercase tracking-tight"
             >
               Ready to Submit?
             </button>

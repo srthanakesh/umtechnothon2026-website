@@ -14,7 +14,7 @@ const getTeamById = async (team_id) => {
     const { data: team, error: teamError } = await supabase
       .from("teams")
       .select("*")
-      .eq("team_id", team_id)
+      .eq("team_name", team_id)
       .single();
 
     if (teamError) throw teamError;

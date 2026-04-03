@@ -52,14 +52,14 @@ export default function Footer() {
         </div>
 
         {/* Divider*/}
-        <div className="flex flex-col md:flex-row justify-end pt-9 border-t border-white/20">
+        <div className="flex flex-col md:flex-row justify-between items-center pt-9 border-t border-white/20">
           {/* Footer */}
-          {/* <Link
+          <Link
               to="/credits"
               className="text-sm text-gray-300 hover:text-white mb-2 transition-colors"
             >
               Meet our event website's awesome devs here!
-            </Link> */}
+            </Link>
           <p className="text-sm text-gray-300">
             © UMTECHNOTHON 2026. All rights reserved.
           </p>

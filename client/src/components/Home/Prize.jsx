@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState, useRef } from "react"
+import { useEffect, useState, useRef, useMemo } from "react"
 import { Trophy, Star } from "lucide-react"
 
 const Prize = () => {
@@ -8,7 +8,7 @@ const Prize = () => {
   const [showConfetti, setShowConfetti] = useState(false)
   const confettiRef = useRef(null)
   const prizeSectionRef = useRef(null)
-  const confettiCount = 150 // Number of confetti pieces
+  const confettiCount = 50 // Number of confetti pieces (reduced from 150 for performance)
   const hasTriggeredConfetti = useRef(false)
 
   // State for trophy rotation
@@ -231,9 +231,9 @@ const Prize = () => {
     })
   }
 
-  const confetti = generateConfetti()
-  const sparkles = generateSparkles(30)
-  const floatingElements = generateFloatingElements(15)
+  const confetti = useMemo(() => generateConfetti(), [])
+  const sparkles = useMemo(() => generateSparkles(12), [])
+  const floatingElements = useMemo(() => generateFloatingElements(6), [])
 
   return (
     <div className="relative bg-gradient-to-b from-[#0f172a] via-[#111827] to-[#0f172a] p-8 pt-12 pb-20 text-center flex flex-col items-center overflow-hidden min-h-screen">
@@ -393,7 +393,7 @@ const Prize = () => {
                   <Star
                     key={i}
                     className="text-yellow-300 mx-1 star-3d"
-                    size={i % 2 === 0 ? (window.innerWidth < 640 ? 12 : 16) : window.innerWidth < 640 ? 8 : 12}
+                    size={i % 2 === 0 ? (isMobile ? 12 : 16) : isMobile ? 8 : 12}
                   />
                 ))}
               </div>
@@ -470,7 +470,7 @@ const Prize = () => {
                     <Star
                       key={i}
                       className="text-gray-300 mx-1 star-3d"
-                      size={i % 2 === 0 ? (window.innerWidth < 640 ? 10 : 14) : window.innerWidth < 640 ? 6 : 10}
+                      size={i % 2 === 0 ? (isMobile ? 10 : 14) : isMobile ? 6 : 10}
                     />
                   ))}
                 </div>
@@ -545,7 +545,7 @@ const Prize = () => {
                     <Star
                       key={i}
                       className="text-red-400 mx-1 star-3d"
-                      size={i % 2 === 0 ? (window.innerWidth < 640 ? 10 : 14) : window.innerWidth < 640 ? 6 : 10}
+                      size={i % 2 === 0 ? (isMobile ? 10 : 14) : isMobile ? 6 : 10}
                     />
                   ))}
                 </div>
@@ -623,7 +623,7 @@ const Prize = () => {
                   <Star
                     key={i}
                     className="text-blue-200 mx-1 star-3d"
-                    size={i % 2 === 0 ? (window.innerWidth < 640 ? 8 : 12) : window.innerWidth < 640 ? 4 : 8}
+                    size={i % 2 === 0 ? (isMobile ? 8 : 12) : isMobile ? 4 : 8}
                   />
                 ))}
               </div>

@@ -1,9 +1,10 @@
 import React from "react";
 
 const TeamMember = ({ name, role, github }) => (
-	<div className="bg-white p-6 rounded-lg shadow-md w-full max-w-sm hover:shadow-xl transition-shadow">
-		<h3 className="text-xl font-semibold text-[#464c92] mb-1">{name}</h3>
-		<p className="text-gray-700 mb-3">{role}</p>
+	<div className="bg-white/5 backdrop-blur-md border border-white/10 p-6 
+	rounded-xl shadow-lg w-full max-w-sm hover:shadow-2xl transition-shadow">
+		<h3 className="text-xl font-semibold text-cyan-400 mb-1">{name}</h3>
+		<p className="text-gray-300 mb-3">{role}</p>
 		<a
 			href={github}
 			target="_blank"
@@ -19,7 +20,7 @@ const TeamMember = ({ name, role, github }) => (
 );
 
 const Credits = () => {
-	const teamMembers = [
+	const team2025 = [
 		{ name: "Jonas Chuan", role: "Dev Lead", github: "https://github.com/PoisonDarterz" },
 		{ name: "Saiket Das", role: "Vice Dev Lead", github: "https://github.com/saiket-das" },
 		{ name: "Lim Jia Le", role: "Frontend Lead", github: "https://github.com/Bonk1211" },
@@ -29,15 +30,62 @@ const Credits = () => {
 		{ name: "Poo Wei Shen", role: "Backend Member", github: "https://github.com/shaunn27" },
 		{ name: "Tang Yvone", role: "Backend Member", github: "https://github.com/Tyvone05" }
 	];
+	const team2026 = [
+		{
+			name: "Siow Jing Yu", 
+			role: "Frontend Lead", 
+			github: "https://github.com/SiowJingYuakaJonathan"
+		},
+		{
+			name:"Nik Muhammad Syakir", 
+			role:"Frontend Member", 
+			github:"https://github.com/niksyakir"
+		},
+		{
+			name:"Goh Ching Yee", 
+			role:"Backend Lead", 
+			github:"https://github.com/ChingYee1031"
+		},
+		{
+			name:"Thanakesh Sri Rau", 
+			role:"Content/UX Lead & Integration/QA Lead", 
+			github:" https://github.com/srthanakesh?tab=overview&from=2026-03-01&to=2026-03-12"
+		}
+
+	]
 
 	return (
-		<div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 py-12 px-4">
+		<div className="flex flex-col items-center justify-center min-h-screen 
+		 bg-gradient-to-b from-[#0f172a] via-[#111827] to-[#0f172a] py-12 px-4 pt-24 text-white">
 			<div className="w-full max-w-6xl mx-auto">
-				<h1 className="text-4xl font-bold mb-2 text-center text-[#1e2a4a]">Meet Our Development Team</h1>
-				<p className="text-center text-gray-600 mb-12">The awesome developers behind UM Technothon 2026's website</p>
+				<h1 className="text-4xl font-bold mb-2 text-center 
+				drop-shadow-[0_0_12px_rgba(34,211,238,0.8)] tracking-wide text-white">
+					Meet Our Development Team
+				</h1>
+                
+				{/* 2025 Team Members */}
+				<h2 className="text-2xl md:text-3xl font-semibold text-white text-center mt-24 mb-8 
+				drop-shadow[0_0_8px_rgba(34,211,238,0.6)]">
+					2025 Web Development Team
+				</h2>
 
 				<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-					{teamMembers.map((member, index) => (
+					{team2025.map((member, index) => (
+						<TeamMember key={index} {...member} />
+					))}
+				</div>
+               
+			   {/* Divider */}
+               <div className="my-16 w-full h-px bg-gradient-to-r from-transparent via-cyan-400/40 to-transparent"></div>
+                
+                {/* 2026 Team Members */}
+				<h3 className="text-2xl md:text-3xl font-semibold text-white text-center mt-14 mb-8 
+				drop-shadow[0_0_8px_rgba(34,211,238,0.6)]">
+					2026 Web Development Team
+				</h3>
+
+				<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+					{team2026.map((member, index) => (
 						<TeamMember key={index} {...member} />
 					))}
 				</div>

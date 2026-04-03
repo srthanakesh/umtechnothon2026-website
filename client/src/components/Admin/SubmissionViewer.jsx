@@ -66,7 +66,7 @@ const SubmissionViewer = ({
       )}
 
       {/* Submission Details */}
-      {submission ? (
+      {submission && (
         <div className="mt-6 p-4 bg-[#0b0e14] border border-[#2dcefb]/20 rounded-xl">
           <h3 className="text-[#2dcefb] font-bold mb-2 uppercase text-xs tracking-widest">Team's Submission</h3>
           <p className="mb-2 text-sm text-gray-500">
@@ -84,11 +84,7 @@ const SubmissionViewer = ({
             </a>
           </div>
         </div>
-      ) : selectedTeam && selectedTask ? (
-        <div className="text-center p-4 bg-yellow-50 rounded-md">
-          <p className="text-yellow-600">No submission found for this team and task.</p>
-        </div>
-      ) : null}
+      )}
     </div>
   );
 };

@@ -95,20 +95,13 @@ const SubmissionMarker = ({
 
           <button
             onClick={handleSubmit}
-            disabled={!submission}
-            className={`w-full py-4 rounded-xl font-black uppercase tracking-widest transition-all
-              ${submission 
-                ? 'bg-indigo-600 hover:bg-indigo-700' 
-                : 'bg-gray-400 cursor-not-allowed'}`}
-          >
+            
+            className="w-full py-4 rounded-xl font-black uppercase tracking-widest transition-all bg-indigo-600 hover:bg-indigo-700 text-white"
+>
             Submit Marks
           </button>
 
-          {!submission && selectedTask && (
-            <p className="mt-2 text-sm text-red-500 text-center">
-              Cannot submit marks without a team submission.
-            </p>
-          )}
+          
         </div>
       )}
     </div>
