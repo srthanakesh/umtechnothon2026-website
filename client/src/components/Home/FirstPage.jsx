@@ -119,8 +119,7 @@ const FirstPage = () => {
           </button>
         </div>
 
-        {/* Logo section - only visible on desktop */}
-        {!isMobile && (
+        {/* Logo section - visible on all devices */}
           <div
             className="flex items-center justify-end h-full flex-1 mr-12 md:mr-20"
             style={{
@@ -144,7 +143,6 @@ const FirstPage = () => {
               ></div>
             </div>
           </div>
-        )}
       </div>
     </>
   )
