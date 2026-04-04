@@ -7,7 +7,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react"
 const socialLinks = [
   {
     name: "UM Technothon", // First
-    imgSrc: "logos/technothon-2026-logov2.png",
+    imgSrc: "logos/technothon-2026-logov3.png",
     instagram: "https://www.instagram.com/umtechnothon?igsh=eXRhcmZsZng2Nnhl",
   },
   {
@@ -92,13 +92,13 @@ const SocialMedia = () => {
           >
             {socialLinks.map((account, index) => (
               <div
-                key={account.instagram}
+                key={index}
                 className="flex-shrink-0 w-full flex flex-col items-center justify-center snap-center p-8 backdrop-blur-sm"
                 style={{ height: "320px" }}
               >
                 <div className="w-48 h-48 mb-6 flex items-center justify-center">
                   <a
-                    href={socialLinks[activeIndex].instagram}
+                    href={account.instagram}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="mt-4 px-6 py-2 bg-[#4c5ab6] text-white rounded-full hover:bg-[#2e3b7f]"
@@ -112,9 +112,9 @@ const SocialMedia = () => {
                     />
                   </a>
                 </div>
-                <p className="text-center text-lg font-semibold max-w-[250px] text-gray-200">{socialLinks[activeIndex].name}</p>
+                <p className="text-center text-lg font-semibold max-w-[250px] text-gray-200">{account.name}</p>
                 <a
-                  href={socialLinks[activeIndex].instagram}
+                  href={account.instagram}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="mt-4 px-6 py-2 bg-[#4c5ab6] text-white rounded-full hover:bg-[#2e3b7f] transition-colors duration-300 flex items-center justify-center"
