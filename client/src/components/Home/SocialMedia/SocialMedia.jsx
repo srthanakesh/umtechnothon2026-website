@@ -26,6 +26,7 @@ const SocialMedia = () => {
   const scrollContainerRef = useRef(null)
   const [activeIndex, setActiveIndex] = useState(0)
   const [isTransitioning, setIsTransitioning] = useState(false)
+  const [isUserInteracting, setIsUserInteracting] = useState(false)
 
   const goToSlide = (index) => {
     if (scrollContainerRef.current && !isTransitioning && index !== activeIndex) {
@@ -40,7 +41,6 @@ const SocialMedia = () => {
 
       setTimeout(() => {
         setIsTransitioning(false)
-        setActiveIndex(index)
       }, 500)
     }
   }
@@ -63,6 +63,8 @@ const SocialMedia = () => {
 
   // Auto-advance slides every 5 seconds
   useEffect(() => {
+    if (isUserInteracting) return // Skip auto-advance if user is interacting
+
     const interval = setInterval(() => {
       if (!isTransitioning) {
         nextSlide()
@@ -70,7 +72,30 @@ const SocialMedia = () => {
     }, 5000)
 
     return () => clearInterval(interval)
-  }, [activeIndex, isTransitioning])
+  }, [activeIndex, isUserInteracting])
+  
+  //Scrolling sync
+  useEffect(() => {
+    const container = scrollContainerRef.current
+    if (!container) return
+
+    let timeout = null
+
+    const handleScroll = () => {
+      clearTimeout(timeout)
+
+      timeout = setTimeout(() => {
+        const { scrollLeft, clientWidth } = container
+        const newIndex = Math.round(scrollLeft / clientWidth)
+        setActiveIndex(newIndex)
+      }, 100) // Debounce scroll event
+    }
+
+    container.addEventListener("scroll", handleScroll)
+    return () => {
+      container.removeEventListener("scroll", handleScroll)
+      clearTimeout(timeout)}
+  }, [])
 
   return (
     <div className="flex flex-col items-center bg-gradient-to-b from-[#0f172a] via-[#111827] to-[#0f172a] py-20">
@@ -87,8 +112,13 @@ const SocialMedia = () => {
         <div className="overflow-hidden rounded-xl shadow-lg">
           <div
             ref={scrollContainerRef}
-            className="flex overflow-x-hidden snap-x snap-mandatory"
-            style={{ scrollBehavior: "smooth" }}
+            onTouchStart={() => setIsUserInteracting(true)}
+            onTouchEnd={() => setTimeout(() => setIsUserInteracting(false), 1000)}
+            className="flex overflow-x-auto snap-x snap-mandatory scrollbar-hide"
+            style={{ 
+              scrollBehavior: "smooth",
+              WebkitOverflowScrolling: "touch", 
+            }}
           >
             {socialLinks.map((account, index) => (
               <div
@@ -101,11 +131,10 @@ const SocialMedia = () => {
                     href={account.instagram}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="mt-4 px-6 py-2 bg-[#4c5ab6] text-white rounded-full hover:bg-[#2e3b7f]"
+                    className="w-full h-full flex items-center justify-center"
                   >
 
                     <img
-                      key={account.imgSrc}
                       src={account.imgSrc || "/placeholder.svg"}
                       alt={account.name}
                       className="w-full h-full object-contain"
