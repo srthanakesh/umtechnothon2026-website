@@ -13,7 +13,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2  mb-12">
           {/* Left Column - Logos and Info */}
           <div className="space-y-6">
-            <div className="flex space-x-4">
+            <div className="flex items-end space-x-4">
               <div className="w-36 h-20 flex items-center justify-center">
                 <img
                   src="/logos/um-logo-white.png"
@@ -21,7 +21,7 @@ export default function Footer() {
                   className="w-full h-full object-contain"
                 />
               </div>
-              <div className="w-20 h-20 flex items-center justify-center">
+              <div className="w-36 h-24 flex items-end justify-center">
                 <img
                   src="/logos/technothon-2026-logov3.png"
                   alt="Technothon Logo"
@@ -65,7 +65,7 @@ export default function Footer() {
           </p>
         </div>
 
-        <div className="flex gap-4">
+        <div className="flex gap-4 justify-center md:justify-start">
           <Link
             to="https://my.linkedin.com/in/um-technothon"
             target="_blank"
