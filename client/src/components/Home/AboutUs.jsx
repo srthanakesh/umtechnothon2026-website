@@ -17,7 +17,7 @@ const AboutUs = () => {
       <div className="max-w-3xl mx-auto bg-slate-900/50 backdrop-blur-md p-6 md:p-10 rounded-2xl border border-[#2dcefb]/30 shadow-[0_0_20px_rgba(45,206,251,0.1)] mb-10">
         {/* Text: Changed to Light Azure for readability on dark background */}
         <p className="text-base md:text-lg leading-relaxed text-[#fafdff] opacity-90">
-          Technothon is a unique competition that showcases the latest technology and innovations, inspired by Shark Tank and America's Got Talent. This flagship event empowers participants to pitch bold ideas and products to a panel of judges.
+          UM Technothon is a unique competition that showcases the latest technology and innovations, inspired by Shark Tank and America's Got Talent. This flagship event empowers participants to pitch bold ideas and products to a panel of judges.
         </p>
       </div>
     </div>

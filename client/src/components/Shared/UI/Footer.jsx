@@ -44,7 +44,7 @@ export default function Footer() {
             <div className="space-y-1">
               <p className="font-semibold">THEN FUNG MAYE</p>
               <p className="text-xs text-gray-300">DIRECTOR</p>
-              <p className="text-sm">011-51731170</p>
+              <p className="text-sm">011-5173 1770</p>
             </div>
 
 
@@ -67,7 +67,7 @@ export default function Footer() {
 
         <div className="flex gap-4">
           <Link
-            to="https://www.linkedin.com/company/gdg-university-of-malaya/posts/?feedView=all"
+            to="https://my.linkedin.com/in/um-technothon"
             target="_blank"
             className="text-white hover:text-gray-300 transition-colors"
           >

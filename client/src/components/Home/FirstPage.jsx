@@ -90,7 +90,7 @@ const FirstPage = () => {
         }
       `}</style>
       <div
-        className={`flex flex-col items-center justify-center min-h-screen bg-gradient-to-b from-[#0b0e14] to-[#1a1d23] p-4 md:p-10 ${!isMobile && "md:flex-row md:justify-between"
+        className={`relative flex flex-col items-center justify-center min-h-screen bg-gradient-to-b from-[#0b0e14] to-[#1a1d23] p-4 md:p-10 ${!isMobile && "md:flex-row md:justify-between"
           }`}
       >
         <div
@@ -121,7 +121,7 @@ const FirstPage = () => {
 
         {/* Logo section - visible on all devices*/}
           <div
-            className="flex items-center justify-end h-full flex-1 mr-12 md:mr-20"
+            className="flex items-center justify-center md:justify-end h-full flex-1 mr-0 md:mr-20"
             style={{
               filter: `blur(${blurAmount}px)`,
               opacity: opacity,
@@ -143,6 +143,64 @@ const FirstPage = () => {
               ></div>
             </div>
           </div>
+        {/* Participant Handbook Side Tab */}
+        <a
+          href="#"
+          className="absolute left-0 top-1/2 z-40 no-underline group"
+          style={{
+            transform: 'translateY(-50%) translateX(-48px)',
+            transition: 'transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.transform = 'translateY(-50%) translateX(0px)'
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.transform = 'translateY(-50%) translateX(-48px)'
+          }}
+          onClick={(e) => {
+            e.preventDefault()
+            // Link will be added later
+          }}
+        >
+          <div
+            className="flex items-center rounded-r-xl overflow-hidden"
+            style={{
+              background: 'linear-gradient(135deg, #4c5ab6, #3b47a0)',
+              border: '2px solid rgba(76, 90, 182, 0.6)',
+              borderLeft: 'none',
+              boxShadow: '0 4px 20px rgba(76, 90, 182, 0.35), 0 0 40px rgba(76, 90, 182, 0.1)',
+            }}
+          >
+            {/* Arrow section (hidden part - inside) */}
+            <div className="flex items-center justify-center px-3 md:px-4 py-3">
+              <span className="text-white text-lg md:text-xl transition-transform duration-300 group-hover:translate-x-1">
+                →
+              </span>
+            </div>
+
+            {/* Text section (visible part - outside) */}
+            <div
+              className="flex items-center justify-center px-2 md:px-3 py-4 md:py-5"
+              style={{
+                borderLeft: '1px solid rgba(255, 255, 255, 0.15)',
+              }}
+            >
+              <span
+                className="text-white font-semibold tracking-wider text-[10px] md:text-xs whitespace-nowrap"
+                style={{
+                  writingMode: 'vertical-rl',
+                  textOrientation: 'mixed',
+                  transform: 'rotate(180deg)',
+                  letterSpacing: '0.2em',
+                  opacity: 0.7,
+                  transition: 'opacity 0.3s ease',
+                }}
+              >
+                PARTICIPANT HANDBOOK
+              </span>
+            </div>
+          </div>
+        </a>
       </div>
     </>
   )

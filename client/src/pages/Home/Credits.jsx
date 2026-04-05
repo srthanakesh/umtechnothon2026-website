@@ -48,7 +48,7 @@ const Credits = () => {
 		},
 		{
 			name:"Thanakesh Sri Rau", 
-			role:"Content/UX Lead & Integration/QA Lead", 
+			role:"Dev Lead", 
 			github:" https://github.com/srthanakesh?tab=overview&from=2026-03-01&to=2026-03-12"
 		}
 
