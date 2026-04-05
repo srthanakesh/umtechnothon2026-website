@@ -16,7 +16,7 @@ const socialLinks = [
     instagram: "https://www.instagram.com/gdg.um?igsh=bjNuY3B1ZDFwdXQz",
   },
   {
-    name: "Robotic Engineering Community", 
+    name: "Robotics Engineering Community", 
     imgSrc: "logos/recLogo.png",
     instagram: "https://www.instagram.com/rec_um/?hl=en",
   },
@@ -124,7 +124,7 @@ const SocialMedia = () => {
               <div
                 key={index}
                 className="flex-shrink-0 w-full flex flex-col items-center justify-center snap-center p-8 backdrop-blur-sm"
-                style={{ height: "320px" }}
+                style={{ height: "400px" }}
               >
                 <div className="w-48 h-48 mb-6 flex items-center justify-center">
                   <a
@@ -148,7 +148,7 @@ const SocialMedia = () => {
                   rel="noopener noreferrer"
                   className="mt-4 px-6 py-2 bg-[#4c5ab6] text-white rounded-full hover:bg-[#2e3b7f] transition-colors duration-300 flex items-center justify-center"
                 >
-                  Read More
+                  Follow Us
                 </a>
               </div>
             ))}
