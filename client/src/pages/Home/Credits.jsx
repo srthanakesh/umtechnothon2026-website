@@ -1,4 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
+
+const usePageMeta = (title, description) => {
+	useEffect(() => {
+		const prevTitle = document.title;
+		const metaDesc = document.querySelector('meta[name="description"]');
+		const prevDesc = metaDesc?.getAttribute("content");
+
+		document.title = title;
+		if (metaDesc) metaDesc.setAttribute("content", description);
+
+		return () => {
+			document.title = prevTitle;
+			if (metaDesc && prevDesc) metaDesc.setAttribute("content", prevDesc);
+		};
+	}, [title, description]);
+};
 
 const TeamMember = ({ name, role, github }) => (
 	<div className="bg-white/5 backdrop-blur-md border border-white/10 p-6 
@@ -20,6 +36,11 @@ const TeamMember = ({ name, role, github }) => (
 );
 
 const Credits = () => {
+	usePageMeta(
+		"Credits — UM Technothon 2026 Development Team",
+		"Meet the development teams behind UM Technothon 2026's website. View our talented developers who built and maintain the platform."
+	);
+
 	const team2025 = [
 		{ name: "Jonas Chuan", role: "Dev Lead", github: "https://github.com/PoisonDarterz" },
 		{ name: "Saiket Das", role: "Vice Dev Lead", github: "https://github.com/saiket-das" },
