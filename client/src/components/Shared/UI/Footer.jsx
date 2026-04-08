@@ -36,7 +36,7 @@ export default function Footer() {
             </div>
 
             <div className="text-sm">
-              <p>umtechnothon@gmail.com</p>
+              <a href="mailto:contact@umtechnothon.com" className="hover:text-gray-300 transition-colors">contact@umtechnothon.com</a>
             </div>
           </div>
 
