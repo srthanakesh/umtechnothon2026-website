@@ -145,7 +145,9 @@ const FirstPage = () => {
           </div>
         {/* Participant Handbook Side Tab */}
         <a
-          href="#"
+          href="https://recondite-mango-81b.notion.site/UM-Technothon-2026-Participant-Handbook-97262c95cafb82478985019be713664c?source=copy_link"
+          target="_blank"
+          rel="noopener noreferrer"
           className="absolute left-0 top-1/2 z-40 no-underline group"
           style={{
             transform: 'translateY(-50%) translateX(-48px)',
@@ -156,10 +158,6 @@ const FirstPage = () => {
           }}
           onMouseLeave={(e) => {
             e.currentTarget.style.transform = 'translateY(-50%) translateX(-48px)'
-          }}
-          onClick={(e) => {
-            e.preventDefault()
-            // Link will be added later
           }}
         >
           <div
