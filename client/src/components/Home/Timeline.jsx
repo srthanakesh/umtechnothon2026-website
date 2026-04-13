@@ -32,22 +32,22 @@ export default function Timeline() {
     { date: "4 - 8 May 2026", description: "• Preliminary Round - Judging" },
     { date: "9 May 2026", description: "• Finalists Announcement & Final Round Briefing" },
     {
-      date: "9 May - 6 June 2026",
+      date: "9 May - 5 June 2026",
       description: "• Final Round - Prototype Building",
     },
     {
-      date: "1 - 6 June 2026",
+      date: "1 - 5 June 2026",
       description: "• Final Round - Submission",
     },
-    { date: "7 June 2026", description: "• Physical Final Day - Pitching Day" }
+    { date: "6 June 2026", description: "• Physical Final Day - Pitching Day" }
   ];
 
   return (
     <div className="bg-gradient-to-b from-[#0a0a0a] via-[#111111] to-[#0a0a0a] p-4 md:p-10 text-center font-sans min-h-screen">
-      
+
       {/* Divider - Now a subtle blue gradient matching the image */}
       <div className="w-full h-px bg-gradient-to-r from-transparent via-[#3b82f6] to-transparent mx-auto mb-8 md:mb-12 opacity-60"></div>
-      
+
       <motion.h2
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}

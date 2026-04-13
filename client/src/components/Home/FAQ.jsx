@@ -19,7 +19,7 @@ const faqs = [
   {
     question: "When will the competition take place?",
     answer:
-      "25th April - 7th June 2026. The competition runs across several phases, ending with the physical final round on 7th June 2026.",
+      "25th April - 6th June 2026. The competition runs across several phases, ending with the physical final round on 6th June 2026.",
   },
   {
     question: "Is UM Technothon 2026 free to join?",
@@ -79,10 +79,10 @@ const FAQ = () => {
     <section id="faq"
       className="py-28 px-6 md:px-20 bg-gradient-to-b from-[#111827] to-[#0f172a] text-white"
     >
-        {/* Divider */}
-        <div className="max-w-6xl mx-auto mb-20"> 
-            <div className="h-px bg-gradient-to-r from-transparent via-cyan-400/50 to-transparent"></div>
-        </div>
+      {/* Divider */}
+      <div className="max-w-6xl mx-auto mb-20">
+        <div className="h-px bg-gradient-to-r from-transparent via-cyan-400/50 to-transparent"></div>
+      </div>
 
       <div className="max-w-4xl mx-auto">
         <h2 className="text-4xl md:text-5xl font-bold text-center tracking-widest">
