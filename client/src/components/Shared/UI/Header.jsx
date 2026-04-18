@@ -305,7 +305,7 @@ const Header = ({ isMobile }) => {
 
       {/* Mobile menu, show/hide based on menu state */}
       {isMobile && menuOpen && (
-        <div className="bg-[#5d6cc7] shadow-lg">
+        <div className="bg-gradient-to-b from-[#0f172a] via-[#111827] to-[#0f172a] backdrop-blur-md border-white/10 shadow-2xl">
           <div className="px-2 pt-2 pb-3 space-y-1">
             {user ? (
               <>
