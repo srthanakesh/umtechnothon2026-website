@@ -60,17 +60,35 @@ const FormAndSubmission = () => {
       </h2>
       
       <div className="flex flex-col md:flex-row gap-4 mt-4 text-left">
-        <div 
-          className="w-full md:w-2/3 bg-[#161b33] border border-white/10 rounded-2xl shadow-lg p-4 md:p-6 flex flex-col"
-          style={{ overflow: 'auto' }}
-        >
+        
+        {/* LEFT COLUMN - BLURRED OVERLAY */}
+        <div className="relative isolate w-full md:w-2/3">
+          
+          <div className="absolute inset-0 z-50 flex items-center justify-center pointer-events-none rounded-2xl overflow-hidden">
+            <div className="absolute inset-0 bg-[#0a0c1b]/60 backdrop-blur-xl pointer-events-none" />
+            
+            <div className="relative z-50 bg-[#050914]/95 border border-cyan-500/30 p-10 md:p-14 rounded-2xl shadow-[0_0_60px_rgba(6,182,212,0.2)] pointer-events-auto text-center flex flex-col items-center transform hover:scale-105 transition-transform duration-500">
+               <span className="text-cyan-400 text-xs md:text-sm font-mono tracking-[0.4em] uppercase mb-4 block">Mentorship</span>
+               <h3 className="text-4xl md:text-5xl font-black text-white tracking-tighter leading-tight">
+                SLOT OPENING <br/> 
+                <span className="text-cyan-400 animate-pulse">SOON</span>
+              </h3>
+              <div className="mt-6 w-16 h-1 bg-gradient-to-r from-transparent via-cyan-400 to-transparent"></div>
+            </div>
+          </div>
+
+          {/* ORIGINAL TASKS CONTENT (Blurred) */}
+          <div 
+            className="w-full h-full bg-[#161b33] border border-white/10 rounded-2xl shadow-lg p-4 md:p-6 flex flex-col pointer-events-none select-none opacity-80"
+            style={{ overflow: 'hidden' }}
+          >
           {isLoading ? (
             <div className="flex items-center justify-center h-40">
               <p className="text-xl text-cyan-400 animate-pulse">Loading task details...</p>
             </div>
           ) : (
             <>
-              <h2 className="text-3xl md:text-4xl font-bold text-white text-center mb-4 md:mb-6 uppercase tracking-tighter">Task</h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-white text-center mb-4 md:mb-6 uppercase tracking-tighter">Dashboard</h2>
               
               <div className="mb-4 md:mb-6">
                 <p className="text-base md:text-lg text-cyan-400 font-semibold mb-2">Task Name:</p>
@@ -115,6 +133,7 @@ const FormAndSubmission = () => {
               )}
             </>
           )}
+        </div>
         </div>
         
         <div className="mt-4 md:mt-0 w-full md:w-1/3">

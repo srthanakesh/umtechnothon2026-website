@@ -93,19 +93,7 @@ const IndividualTeamDashboard = () => {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {/* Rank Display */}
-            <div className="bg-[#0b0e14] border border-white/5 rounded-xl p-6 text-center">
-              <p className="text-[#e151af] text-xs font-bold uppercase mb-2">Current Rank</p>
-              <div className="text-4xl font-black text-[#fafdff]">{getTeamRank()}</div>
-            </div>
 
-            {/* Score Display */}
-            <div className="bg-[#2dcefb]/5 border border-[#2dcefb]/20 rounded-xl p-6 text-center shadow-[0_0_15px_rgba(45,206,251,0.1)]">
-              <p className="text-[#2dcefb] text-xs font-bold uppercase mb-2">Total Points</p>
-              <div className="text-4xl font-black text-[#2dcefb]">{getTeamScore()}</div>
-            </div>
-          </div>
 
           {/* Team Members List */}
           <div className="mt-8">

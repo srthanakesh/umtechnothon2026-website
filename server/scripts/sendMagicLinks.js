@@ -173,9 +173,19 @@ async function main() {
   }
 
   console.log(
-    `📧 Found ${uniqueParticipants.length} participant(s) to email\n`
+    `📧 Found ${uniqueParticipants.length} participant(s) to email:`
   );
 
+  uniqueParticipants.forEach((p, i) => {
+    console.log(`   ${i + 1}. ${p.email} (${p.full_name || "No Name"})`);
+  });
+  console.log("\n");
+
+  // Dry run feature
+  if (process.argv.includes("--dry-run")) {
+    console.log("🛑 DRY RUN MODE: Exiting without sending emails.");
+    process.exit(0);
+  }
   // Verify Gmail connection
   try {
     await transporter.verify();
