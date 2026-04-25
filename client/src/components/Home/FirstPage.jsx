@@ -56,6 +56,8 @@ const FirstPage = () => {
         buttontext: "JOIN US NOW!",
         action: () => window.open("https://forms.gle/y8nRrq2j5xtosMTM8", "_blank")
       }
+    } else if (user.role === "admin") {
+      return null;
     } else if (!user.team_id) {
       return {
         buttontext: "REGISTER TEAM",
@@ -69,13 +71,14 @@ const FirstPage = () => {
     }
   }
 
-  const { buttontext, destination, action } = getButtonProps()
+  const buttonProps = getButtonProps()
 
   const handleButtonClick = () => {
-    if (action) {
-      action()
-    } else if (destination) {
-      navigate(destination)
+    if (!buttonProps) return;
+    if (buttonProps.action) {
+      buttonProps.action()
+    } else if (buttonProps.destination) {
+      navigate(buttonProps.destination)
     }
   }
 
@@ -110,13 +113,15 @@ const FirstPage = () => {
             <br />
             REALITY
           </h2>
-          <button
-            onClick={handleButtonClick}
-            className={`bg-[#2dcefb] text-[#0b0e14] border-none py-3 px-6 font-bold cursor-pointer rounded transition duration-300 ease-in-out transform hover:bg-[#5da4cf] hover:scale-105 ${isMobile ? "text-xl w-1/2 mt-4" : "text-lg"
-              }`}
-          >
-            {buttontext}
-          </button>
+          {buttonProps && (
+            <button
+              onClick={handleButtonClick}
+              className={`bg-[#2dcefb] text-[#0b0e14] border-none py-3 px-6 font-bold cursor-pointer rounded transition duration-300 ease-in-out transform hover:bg-[#5da4cf] hover:scale-105 ${isMobile ? "text-xl w-1/2 mt-4" : "text-lg"
+                }`}
+            >
+              {buttonProps.buttontext}
+            </button>
+          )}
         </div>
 
         {/* Logo section - visible on all devices*/}
