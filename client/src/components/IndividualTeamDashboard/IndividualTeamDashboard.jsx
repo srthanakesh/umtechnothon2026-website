@@ -20,7 +20,8 @@ const IndividualTeamDashboard = () => {
     const fetchData = async () => {
       try {
         // Fetch team data
-        const teamResponse = await axiosInstance.get(`/teams/${user.team_id}`);
+        const encodedTeamId = encodeURIComponent(user.team_id);
+        const teamResponse = await axiosInstance.get(`/teams/${encodedTeamId}`);
         setTeam(teamResponse.data);
 
         // Fetch leaderboard data
@@ -28,7 +29,7 @@ const IndividualTeamDashboard = () => {
         setLeaderboard(leaderboardResponse.data);
 
         // Fetch team members
-        const membersResponse = await axiosInstance.get(`/teams/${user.team_id}/members`);
+        const membersResponse = await axiosInstance.get(`/teams/${encodedTeamId}/members`);
         setTeamMembers(membersResponse.data);
 
         setError("");

@@ -69,7 +69,7 @@ function buildEmailHTML(participantName, passwordSetupLink) {
         </p>
 
         <p style="font-size: 15px; line-height: 1.6;">
-          You have been <strong>successfully registered</strong> for 
+          Your team has been <strong>successfully registered</strong> for 
           <strong>UM Technothon 2026</strong> 🎉
         </p>
 
