@@ -8,8 +8,27 @@ const FormAndSubmission = () => {
   const [criteria, setCriteria] = useState([]); 
   const [isLoading, setIsLoading] = useState(true);
   const { user } = useUser();
+  const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
 
   const API_URL = envConfig.serverBaseApi;
+
+  // Countdown to May 3, 2026 11:59 PM (GMT+8)
+  useEffect(() => {
+    const deadline = new Date('2026-05-03T23:59:00+08:00').getTime();
+    const tick = () => {
+      const now = Date.now();
+      const diff = Math.max(0, deadline - now);
+      setTimeLeft({
+        days: Math.floor(diff / (1000 * 60 * 60 * 24)),
+        hours: Math.floor((diff / (1000 * 60 * 60)) % 24),
+        minutes: Math.floor((diff / (1000 * 60)) % 60),
+        seconds: Math.floor((diff / 1000) % 60),
+      });
+    };
+    tick();
+    const id = setInterval(tick, 1000);
+    return () => clearInterval(id);
+  }, []);
 
   useEffect(() => {
     const fetchTaskAndCriteria = async () => {
@@ -55,14 +74,69 @@ const FormAndSubmission = () => {
 
   return (
     <div className="bg-[#0a0c1b] min-h-screen p-4 md:p-8 text-center relative text-white">
-      <h2 className="text-xl md:text-2xl text-cyan-400 font-bold my-4 uppercase tracking-wider">
-        Preliminary Round: 25 April - 3 May 2026
-      </h2>
+      {/* Submission Period — Minimal */}
+      <div className="my-6 md:my-8 mx-auto max-w-2xl">
+
+        {/* Live indicator */}
+        <div className="flex items-center justify-center gap-2 mb-3">
+          <span className="relative flex h-2 w-2">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
+          </span>
+          <span className="text-emerald-400 text-[10px] md:text-xs font-mono font-bold tracking-[0.3em] uppercase">Submission Open</span>
+        </div>
+
+        {/* Title */}
+        <h2 className="text-xl md:text-3xl font-black text-white tracking-tight mb-5 uppercase">
+          Preliminary Round
+        </h2>
+
+        {/* Date Range */}
+        <div className="flex items-center justify-center gap-4 md:gap-6 mb-6">
+          <div className="text-center">
+            <p className="text-3xl md:text-5xl font-black text-white leading-none">1</p>
+            <p className="text-[10px] md:text-xs text-cyan-400 font-semibold tracking-wider uppercase mt-1">May</p>
+            <p className="text-[10px] md:text-xs text-slate-400 font-mono mt-0.5">12:00 AM</p>
+          </div>
+
+          <div className="flex flex-col items-center gap-1">
+            <div className="w-10 md:w-16 h-px bg-cyan-400/30" />
+            <span className="text-[10px] text-slate-400 font-mono tracking-widest">TO</span>
+            <div className="w-10 md:w-16 h-px bg-cyan-400/30" />
+          </div>
+
+          <div className="text-center">
+            <p className="text-3xl md:text-5xl font-black text-white leading-none">3</p>
+            <p className="text-[10px] md:text-xs text-cyan-400 font-semibold tracking-wider uppercase mt-1">May</p>
+            <p className="text-[10px] md:text-xs text-slate-400 font-mono mt-0.5">11:59 PM</p>
+          </div>
+        </div>
+
+        {/* Countdown */}
+        <div className="flex items-center justify-center gap-3 md:gap-4">
+          {[
+            { value: timeLeft.days, label: 'Days' },
+            { value: timeLeft.hours, label: 'Hrs' },
+            { value: timeLeft.minutes, label: 'Min' },
+            { value: timeLeft.seconds, label: 'Sec' },
+          ].map((item, i) => (
+            <div key={item.label} className="flex items-center gap-3 md:gap-4">
+              <div className="text-center">
+                <p className="text-2xl md:text-4xl font-sans font-extrabold text-[#FFF8E7] leading-none tabular-nums">
+                  {String(item.value).padStart(2, '0')}
+                </p>
+                <p className="text-[9px] md:text-[10px] text-slate-400 font-sans uppercase tracking-wider mt-1">{item.label}</p>
+              </div>
+              {i < 3 && <span className="text-slate-400 text-lg md:text-2xl font-light -mt-3">:</span>}
+            </div>
+          ))}
+        </div>
+      </div>
       
       <div className="flex flex-col md:flex-row gap-4 mt-4 text-left">
         
         {/* LEFT COLUMN - BLURRED OVERLAY */}
-        <div className="relative isolate w-full md:w-2/3">
+        <div className="relative isolate w-full md:w-2/3 order-2 md:order-1">
           
           <div className="absolute inset-0 z-50 flex items-center justify-center pointer-events-none rounded-2xl overflow-hidden">
             <div className="absolute inset-0 bg-[#0a0c1b]/60 backdrop-blur-xl pointer-events-none" />
@@ -136,14 +210,14 @@ const FormAndSubmission = () => {
         </div>
         </div>
         
-        <div className="mt-4 md:mt-0 w-full md:w-1/3">
+        <div className="md:mt-0 w-full md:w-1/3 order-1 md:order-2">
           <div className="w-full transition-all duration-300 ease-in-out bg-[#161b33] border border-cyan-500/30 rounded-2xl shadow-lg p-4 md:p-6 text-center">
             <h3 className="text-xl md:text-2xl font-bold text-white mb-4 mt-2">Submission</h3>
             <p className="text-gray-400 mb-6 text-sm">
               Task submissions are handled via Google Forms. Click the button below to submit your deliverables.
             </p>
             <button 
-              onClick={() => {}} 
+              onClick={() => window.open('https://forms.gle/YLDYMktXTdN86bZf7', '_blank')} 
               className="w-full text-lg font-bold px-4 py-3 rounded-2xl bg-blue-600 hover:bg-blue-500 text-white transition-all uppercase tracking-tight"
             >
               Ready to Submit?
