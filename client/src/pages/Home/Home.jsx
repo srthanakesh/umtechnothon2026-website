@@ -1,10 +1,9 @@
 import React from "react";
 import FirstPage from "../../components/Home/FirstPage";
-
-// Synchronous imports to load everything at once
 import AboutUs from "../../components/Home/AboutUs";
 import Timeline from "../../components/Home/Timeline";
-import JudgesMentors from "../../components/Home/JudgesMentors";
+import JudgesSection from "../../components/Home/JudgesSection"; // Updated
+import MentorsSection from "../../components/Home/MentorsSection"; // Updated
 import Sponsor from "../../components/Home/Sponsor";
 import Prize from "../../components/Home/Prize";
 import SocialMedia from "../../components/Home/SocialMedia/SocialMedia";
@@ -21,8 +20,11 @@ const Home = () => {
       <div id="timeline">
         <Timeline />
       </div>
-      <div id="judges-mentors">
-        <JudgesMentors />
+      <div id="judges">
+        <JudgesSection />
+      </div>
+      <div id="mentors">
+        <MentorsSection />
       </div>
       <div id="sponsors">
         <Sponsor />
