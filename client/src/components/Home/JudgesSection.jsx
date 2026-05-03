@@ -2,12 +2,92 @@ import { useState } from "react";
 
 //Data
 const judgeData = {
-  preliminary: Array(12).fill({
-    name: "Marcus Vogel", 
-    role: "Blockchain Architect", 
-    org: "Decentralized Networks", 
-    image: "https://i.pravatar.cc/300?img=1" 
-  }),
+  preliminary: [
+    { 
+    name: "Hun Jia Chong", 
+    role: "Tech Lead", 
+    org: "Webby group", 
+    image: "/PrelimMentorProfile/Hun Jia Chong.jpg" 
+    },
+
+    { 
+    name: "Joshua Teh", 
+    role: "Tech Lead", 
+    org: "Webby group", 
+    image: "/PrelimMentorProfile/Joshua Teh.jpg" 
+    },
+
+    { 
+    name: "Jeffrey Chai", 
+    role: "Tech Lead", 
+    org: "Webby group", 
+    image: "/PrelimMentorProfile/Jeffrey Chai.jpg" 
+    },
+    
+    { 
+    name: "Nathan, Cheong Yuen Kiat", 
+    role: "Head, Product Management", 
+    org: "Innov8tif Solutions", 
+    image: "/PrelimMentorProfile/Nathan Cheong.png" 
+    },
+    
+    { 
+    name: "Tay Jun Ren", 
+    role: "Embedded Systems Engineer Team Lead ", 
+    org: "Inverta Systems Sdn Bhd", 
+    image: "/PrelimMentorProfile/Tay Jun Ren.jpg" 
+    },
+    
+    { 
+    name: "Jason Chiu Han Shen", 
+    role: "Software Engineer", 
+    org: "Payments Network Malaysia (PayNet)", 
+    image: "/PrelimMentorProfile/Jason Chiu.jpeg" 
+    },
+    
+    { 
+    name: "Hester Lim", 
+    role: "AI Product Manager", 
+    org: "MoneyLion", 
+    image: "/PrelimMentorProfile/Hester Lim.jpeg" 
+    },
+    
+    { 
+    name: "Karnan Shanmugam", 
+    role: "Embedded Software, BIOS and FW, Linux Driver, Pre-Si and Post-Si development, semiconductor manufacturing", 
+    org: "Intel", 
+    image: "/PrelimMentorProfile/Karnan Shanmugam.jpg" 
+    },
+    
+    { 
+    name: "Siti Aisyah Shamsaimun", 
+    role: "Embedded Systems Engineer specializing in system-level development, firmware design, and evaluation of reliable, real-world technical solutions", 
+    org: "Turkish Aerospace Malaysia (TUSAS)", 
+    image: "/PrelimMentorProfile/Siti Aisyah Shamsaimun.png" 
+    },
+    
+    { 
+    name: "Tee Tze Huat", 
+    role: "Senior Software Engineer", 
+    org: "Mercedes-Benz Tech Malaysia", 
+    image: "/PrelimMentorProfile/Tee Tze Huat.png" 
+    },
+    
+    { 
+    name: "Siti Syahirah binti Shahrul", 
+    role: "Software Testing/QA Engineer", 
+    org: "Payments Network Malaysia Sdn. Bhd(PayNet)", 
+    image: "/PrelimMentorProfile/Siti Syahirah_Image.JPG" 
+    },
+    
+    { 
+    name: "John Tay", 
+    role: "IoT/ Founder and President", 
+    org: "ChangeMaker Association", 
+    image: "/PrelimMentorProfile/John Tay.png" 
+    },
+    
+],
   final: [
     { name: "TBA", role: "Specialist", org: "Organization", image: "https://i.pravatar.cc/300?img=3" },
     { name: "TBA", role: "Specialist", org: "Organization", image: "https://i.pravatar.cc/300?img=4" },
@@ -18,18 +98,18 @@ const PersonCard = ({ person }) => (
   <div className="group relative bg-white/5 border border-white/10 rounded-2xl p-6 transition-all duration-500 hover:bg-white/10 hover:border-cyan-500/50 hover:-translate-y-2 shadow-xl">
     <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-cyan-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
     <div className="relative flex flex-col items-center text-center">
-      <div className="relative mb-4">
+      <div className="relative mb-6">
         <div className="absolute inset-0 rounded-full border-2 border-dashed border-cyan-500/30 group-hover:rotate-180 transition-transform duration-1000"></div>
         <img
           src={person.image}
           alt={person.name}
-          className="relative w-28 h-28 object-cover rounded-full border-2 border-blue-500 p-1 bg-[#0b1121]"
+          className="relative w-36 h-36 md:w-40 md:h-40 object-cover rounded-full border-2 border-blue-500 p-1 bg-[#0b1121] shadow-[0_0_15px_rgba(45,206,251,0.5)]"
         />
       </div>
-      <h3 className="text-lg font-bold text-white group-hover:text-cyan-400 transition-colors">{person.name}</h3>
-      <p className="text-cyan-400 text-xs font-mono uppercase tracking-tighter mt-1">{person.role}</p>
+      <h3 className="text-lg md:text-xl font-semibold text-white group-hover:text-[#2dcefb] transition-colors">{person.name}</h3>
+      <p className="text-[#2dcefb] text-sm md:text-base font-medium tracking-wide mt-1 leading-snug">{person.role}</p>
       <div className="mt-4 pt-4 border-t border-white/5 w-full">
-        <p className="text-gray-400 text-xs font-medium uppercase tracking-widest opacity-80">{person.org}</p>
+        <p className="text-gray-300 text-sm md:text-base font-medium tracking-wide opacity-90">{person.org}</p>
       </div>
     </div>
   </div>
