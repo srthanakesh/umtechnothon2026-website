@@ -52,12 +52,6 @@ const judgeData = {
     image: "/PrelimMentorProfile/Hester Lim.jpeg" 
     },
     
-    { 
-    name: "Karnan Shanmugam", 
-    role: "Embedded Software, BIOS and FW, Linux Driver, Pre-Si and Post-Si development, semiconductor manufacturing", 
-    org: "Intel", 
-    image: "/PrelimMentorProfile/Karnan Shanmugam.jpg" 
-    },
     
     { 
     name: "Siti Aisyah Shamsaimun", 
