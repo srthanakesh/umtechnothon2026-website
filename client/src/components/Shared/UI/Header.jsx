@@ -94,11 +94,13 @@ const Header = ({ isMobile }) => {
   ];
 
   const participantItems = [
+    { label: "Leaderboard", path: "/Leaderboard" },
     { label: "Workspace", path: "/tasks" },
     // { label: "Leaderboard", action: () => scrollToLeaderboard("leaderboard") },
     { label: "Profile", path: "/team" },
     // Only show "Register Team" if user doesn't have a team_id 
     // ...(user && !user.team_id ? [{ label: "Register Team", path: "/register-team" }] : []) (hide it first to avoid confusion, can add back later if needed)
+    
   ];
 
   const adminItems = [
