@@ -9,6 +9,7 @@ const FormAndSubmission = () => {
   const [isLoading, setIsLoading] = useState(true);
   const { user } = useUser();
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+  const [isClosed, setIsClosed] = useState(false);
 
   const API_URL = envConfig.serverBaseApi;
 
@@ -18,6 +19,9 @@ const FormAndSubmission = () => {
     const tick = () => {
       const now = Date.now();
       const diff = Math.max(0, deadline - now);
+      
+      setIsClosed(diff === 0);
+
       setTimeLeft({
         days: Math.floor(diff / (1000 * 60 * 60 * 24)),
         hours: Math.floor((diff / (1000 * 60 * 60)) % 24),
@@ -79,11 +83,22 @@ const FormAndSubmission = () => {
 
         {/* Live indicator */}
         <div className="flex items-center justify-center gap-2 mb-3">
-          <span className="relative flex h-2 w-2">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
-          </span>
-          <span className="text-emerald-400 text-[10px] md:text-xs font-mono font-bold tracking-[0.3em] uppercase">Submission Open</span>
+          {!isClosed ? (
+            <>
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
+              </span>
+              <span className="text-emerald-400 text-[10px] md:text-xs font-mono font-bold tracking-[0.3em] uppercase">Submission Open</span>
+            </>
+          ) : (
+            <>
+              <span className="relative flex h-2 w-2">
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-red-500" />
+              </span>
+              <span className="text-red-500 text-[10px] md:text-xs font-mono font-bold tracking-[0.3em] uppercase">Submission Closed</span>
+            </>
+          )}
         </div>
 
         {/* Title */}
