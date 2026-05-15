@@ -6,31 +6,36 @@ const mentors = [
     name: "Tay Jun Ren",
     role: "Embedded Systems Engineer Team Lead",
     org: "Invertra Systems Sdn Bhd",
-    image: "/PrelimMentorProfile/Tay Jun Ren.jpg"
+    image: "/PrelimMentorProfile/Tay Jun Ren.jpg",
+    bookingUrl: "https://cal.com/um-technothon-2026-mentoringsession/tayjunren"
   },
   {
     name: "John Tay",
     role: "IoT/ Founder and President",
     org: "ChangeMaker Association",
-    image: "/PrelimMentorProfile/John Tay.png"
+    image: "/PrelimMentorProfile/John Tay.png",
+    bookingUrl: "https://cal.com/um-technothon-2026/mentoring-session-with-johntay"
   },
   {
     name: "Jeffrey Chai",
     role: "Tech Lead",
     org: "Webby Group",
-    image: "/PrelimMentorProfile/Jeffrey Chai.jpg"
+    image: "/PrelimMentorProfile/Jeffrey Chai.jpg",
+    bookingUrl: "https://cal.com/umtechnothon2026/mentoring-session-with-jefferychai"
   },
   {
     name: "Hun Jia Cong",
     role: "Tech Lead",
     org: "Webby Group",
-    image: "/PrelimMentorProfile/Hun Jia Chong.jpg"
+    image: "/PrelimMentorProfile/Hun Jia Chong.jpg",
+    bookingUrl: "https://cal.com/jasmine-4g8twj/mentoring-session-with-hunjiacong"
   },
   {
     name: "Karnan Shanmugam",
     role: "Director of Engineering - Embedded Software, BIO",
     org: "Intel",
-    image: "/PrelimMentorProfile/Karnan Shanmugam.jpg"
+    image: "/PrelimMentorProfile/Karnan Shanmugam.jpg",
+    bookingUrl: null
   },
 ];
 
@@ -78,7 +83,7 @@ const FormAndSubmission = () => {
     116, "FEI",
     173, "XM.UM.com",
     94, "8 HOURS OF SLEEP",
-    "5", "18", "11", "16", "8", "22", "62", "54", "84", "17", "58", "57", "10", "56", "41",
+    "163", "115", "114", "122", "145", "88", "126", "131", "155", "103", "118", "109", "116", "173", "94",
     "test", 179, "179"
   ];
 
@@ -149,7 +154,7 @@ const FormAndSubmission = () => {
           <div className="text-center">
             <p className="text-3xl md:text-5xl font-black text-white leading-none">9</p>
             <p className="text-[10px] md:text-xs text-cyan-400 font-semibold tracking-wider uppercase mt-1">May</p>
-            <p className="text-[10px] md:text-xs text-slate-400 font-mono mt-0.5">12:00 AM</p>
+            <p className="text-[10px] md:text-xs text-slate-400 font-mono mt-0.5">12:00 PM</p>
           </div>
 
           <div className="flex flex-col items-center gap-1">
@@ -241,12 +246,21 @@ const FormAndSubmission = () => {
                       <p className="text-gray-300 text-sm max-w-xs">{mentor.role}</p>
                     </td>
                     <td className="p-4 text-center align-middle">
-                      <button
-                        className="bg-cyan-500/10 hover:bg-cyan-500 text-cyan-400 hover:text-[#0a0c1b] border border-cyan-500/50 transition-all duration-300 px-3 md:px-6 py-1.5 md:py-2 rounded-lg text-xs font-bold tracking-wide uppercase shadow-[0_0_15px_rgba(6,182,212,0.15)] hover:shadow-[0_0_20px_rgba(6,182,212,0.5)] whitespace-nowrap"
-                        onClick={() => alert(`Booking functionality for ${mentor.name} coming soon!`)}
-                      >
-                        Book
-                      </button>
+                      {mentor.bookingUrl ? (
+                        <button
+                          className="bg-cyan-500/10 hover:bg-cyan-500 text-cyan-400 hover:text-[#0a0c1b] border border-cyan-500/50 transition-all duration-300 px-3 md:px-6 py-1.5 md:py-2 rounded-lg text-xs font-bold tracking-wide uppercase shadow-[0_0_15px_rgba(6,182,212,0.15)] hover:shadow-[0_0_20px_rgba(6,182,212,0.5)] whitespace-nowrap"
+                          onClick={() => window.open(mentor.bookingUrl, '_blank')}
+                        >
+                          Book
+                        </button>
+                      ) : (
+                        <button
+                          disabled
+                          className="bg-gray-800/50 text-gray-600 border border-gray-700/50 px-3 md:px-6 py-1.5 md:py-2 rounded-lg text-xs font-bold tracking-wide uppercase whitespace-nowrap cursor-not-allowed"
+                        >
+                          Book
+                        </button>
+                      )}
                     </td>
                   </tr>
                 ))}
