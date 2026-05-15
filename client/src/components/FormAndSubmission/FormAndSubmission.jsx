@@ -7,28 +7,28 @@ const mentors = [
     role: "Embedded Systems Engineer Team Lead",
     org: "Invertra Systems Sdn Bhd",
     image: "/PrelimMentorProfile/Tay Jun Ren.jpg",
-    bookingUrl: "https://cal.com/um-technothon-2026-mentoringsession/tayjunren"
+    bookingUrl: null // "https://cal.com/um-technothon-2026-mentoringsession/tayjunren"
   },
   {
     name: "John Tay",
     role: "IoT/ Founder and President",
     org: "ChangeMaker Association",
     image: "/PrelimMentorProfile/John Tay.png",
-    bookingUrl: "https://cal.com/um-technothon-2026/mentoring-session-with-johntay"
+    bookingUrl: null // "https://cal.com/um-technothon-2026/mentoring-session-with-johntay"
   },
   {
     name: "Jeffrey Chai",
     role: "Tech Lead",
     org: "Webby Group",
     image: "/PrelimMentorProfile/Jeffrey Chai.jpg",
-    bookingUrl: "https://cal.com/umtechnothon2026/mentoring-session-with-jefferychai"
+    bookingUrl: null // "https://cal.com/umtechnothon2026/mentoring-session-with-jefferychai"
   },
   {
     name: "Hun Jia Cong",
     role: "Tech Lead",
     org: "Webby Group",
     image: "/PrelimMentorProfile/Hun Jia Chong.jpg",
-    bookingUrl: "https://cal.com/jasmine-4g8twj/mentoring-session-with-hunjiacong"
+    bookingUrl: null // "https://cal.com/jasmine-4g8twj/mentoring-session-with-hunjiacong"
   },
   {
     name: "Karnan Shanmugam",
@@ -129,10 +129,10 @@ const FormAndSubmission = () => {
           {!isClosed ? (
             <>
               <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-yellow-400 opacity-75" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-yellow-500" />
               </span>
-              <span className="text-emerald-400 text-[10px] md:text-xs font-mono font-bold tracking-[0.3em] uppercase">Mentorship Slots Open</span>
+              <span className="text-yellow-400 text-[10px] md:text-xs font-mono font-bold tracking-[0.3em] uppercase">Mentorship Slot Opening Soon</span>
             </>
           ) : (
             <>
@@ -212,8 +212,8 @@ const FormAndSubmission = () => {
               <li>Mentoring booking sessions will be conducted on a first-come, first-served basis.</li>
               <li>Rescheduling or cancellation of slots is prohibited within <span className="font-bold italic text-yellow-400">12 hours</span> before the session.</li>
               <li>Teams that enter the mentoring session more than <span className="font-bold italic text-yellow-400">5 minutes late</span> will be disqualified from the session.</li>
-              <li>The mentoring session must not exceed <span className="font-bold italic text-yellow-400">25 minutes</span>. Any session that exceeds the time limit will be stopped by the moderator.</li>
-              <li>For any questions, please contact the PIC of the respective mentor.</li>
+              <li>The mentoring session must not exceed <span className="font-bold italic text-yellow-400">25 minutes</span>. Any session that exceeds the time limit will be stopped by the moderator. If you need more time, you may schedule additional sessions with the mentors.</li>
+              <li>If you face any issues or have any inquiries, please contact the PICs of the mentor provided in the description of each mentor's booking link.</li>
             </ul>
           </div>
 
