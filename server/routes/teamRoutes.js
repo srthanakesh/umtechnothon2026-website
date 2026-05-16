@@ -8,5 +8,6 @@ router.get('/', teamController.getAllTeams);
 router.get('/:team_id', teamController.getTeamById);
 router.post('/', verifyToken, teamController.createTeam);
 router.get('/:team_id/members', teamController.getTeamMembers);
+router.get('/:team_id/feedback', teamController.getTeamFeedback);
 
 module.exports = router;

@@ -80,9 +80,21 @@ const getTeamMembers = async (req, res) => {
   }
 };
 
+const getTeamFeedback = async (req, res) => {
+  try {
+    const feedback = await teamModel.getTeamFeedback(req.params.team_id);
+    
+    res.status(200).json(feedback);
+  } catch (error) {
+    console.error('Error fetching team feedback:', error);
+    res.status(500).json({ error: error.message });
+  }
+};
+
 module.exports = {
   getAllTeams,
   getTeamById,
   createTeam,
   getTeamMembers,
+  getTeamFeedback
 };

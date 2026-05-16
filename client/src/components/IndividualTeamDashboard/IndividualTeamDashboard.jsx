@@ -2,126 +2,67 @@ import React, { useEffect, useState } from "react";
 import { useUser } from "../../context/UserProvider";
 import axiosInstance from "../../lib/AxiosInstance";
 
-const round1FeedbackData = [
-  {
-    teamName: "Indecisive",
-    feedbacks: [
-      {
-        judge: "Judge 1",
-        comment: "Clever repurposing of Wi-Fi as occupancy sensor."
-      },
-      {
-        judge: "Judge 2",
-        comment: "CSI processing algorithm needs clearer explanation."
-      }
-    ]
-  },
-  {
-    teamName: "test",
-    feedbacks: [
-      {
-        judge: "Judge 1",
-        comment: ""
-      },
-      {
-        judge: "Judge 2",
-        comment: ""
-      }
-    ]
-  }
-];
-
-const round2FeedbackData = [
-  {
-    teamName: "test",
-    feedbacks: [
-      {
-        judge: "Judge 1",
-        comment: "Excellent improvements from Round 1."
-      },
-      {
-        judge: "Judge 2",
-        comment: "Excellent improvements from Round 1."
-      },
-      {
-        judge: "Judge 3",
-        comment: "Excellent improvements from Round 1."
-      },
-      {
-        judge: "Judge 4",
-        comment: "Excellent improvements from Round 1."
-      },
-      {
-        judge: "Judge 5",
-        comment: "Excellent improvements from Round 1."
-      },
-      {
-        judge: "Judge 6",
-        comment: "Excellent improvements from Round 1."
-      },
-      {
-        judge: "Judge 7",
-        comment: "Excellent improvements from Round 1."
-      },
-      {
-        judge: "Judge 8",
-        comment: "Excellent improvements from Round 1."
-      },
-      {
-        judge: "Judge 9",
-        comment: "Excellent improvements from Round 1."
-      },
-    ]
-  }
-];
-
 const IndividualTeamDashboard = () => {
-const [team, setTeam] = useState(null);
-const [leaderboard, setLeaderboard] = useState([]);
-const [teamMembers, setTeamMembers] = useState([]);
-const [activeRound, setActiveRound] = useState("round1");
-const [error, setError] = useState("");
-const [loading, setLoading] = useState(true);
-const { user } = useUser();
+  const [team, setTeam] = useState(null);
+  const [leaderboard, setLeaderboard] = useState([]);
+  const [teamMembers, setTeamMembers] = useState([]);
+  const [feedbacks, setFeedbacks] = useState([]); 
+  const [activeRound, setActiveRound] = useState("round1");
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(true);
+  const { user } = useUser();
 
-const currentRound1Feedback =
-round1FeedbackData.find(
-  item => item.teamName === team?.team_name
-)||{ feedbacks:[]};  
+  // Find positioning index context natively matching database string keys
+  const currentTeamName = team?.team_name || "";
+  const calculatedRank = localLeaderboardData.findIndex(
+    (t) => t.team_name.toLowerCase() === currentTeamName.toLowerCase()
+  ) + 1;
 
-const currentRound2Feedback =
-round2FeedbackData.find(
-  item => item.teamName === team?.team_name
-)||{ feedbacks:[]};  
+  // Enforce Top 25 parameter rule bounds (Rank 1 to 25)
+  const isTop25 = calculatedRank > 0 && calculatedRank <= 25;
 
-const finalistTeams = [
-  "test",
-];
+  // Helper utility to check if the current active round contains an invalid/no submission flag
+  const targetRoundNumber = activeRound === "round1" ? 1 : 2;
+  const currentRoundRows = feedbacks.filter((f) => Number(f.round) === targetRoundNumber);
+  const isInvalidOrNoSubmission = currentRoundRows.some((row) => Number(row.ranking) === -1);
 
-const isFinalist = finalistTeams.includes(team?.team_name);
-const hasRound2 = !!currentRound2Feedback.feedbacks.length || isFinalist;
+  // Parse feedback text blocks cleanly by matching against the table integers (1 or 2)
+  const getCurrentRoundFeedback = () => {
+    if (!feedbacks || feedbacks.length === 0 || isInvalidOrNoSubmission) return [];
 
-useEffect(() => {
-    // Only proceed with fetch when user data is available
-    if (!user || !user.team_id) {
-      return;
-    }
+    if (currentRoundRows.length === 0) return [];
 
-    // Fetch the team, leaderboard, and members data
+    return currentRoundRows.map((row, index) => ({
+      judge: `Judge ${index + 1}`,
+      comment: row.judges_feedback ? row.judges_feedback.trim() : "No feedback given"
+    }));
+  };
+
+  const currentRoundFeedback = getCurrentRoundFeedback();
+
+  useEffect(() => {
+    if (!user || !user.team_id) return;
+
     const fetchData = async () => {
       try {
-        // Fetch team data
         const encodedTeamId = encodeURIComponent(user.team_id);
+        
         const teamResponse = await axiosInstance.get(`/teams/${encodedTeamId}`);
         setTeam(teamResponse.data);
 
-        // Fetch leaderboard data
         const leaderboardResponse = await axiosInstance.get(`/scores/leaderboard`);
         setLeaderboard(leaderboardResponse.data);
 
-        // Fetch team members
         const membersResponse = await axiosInstance.get(`/teams/${encodedTeamId}/members`);
         setTeamMembers(membersResponse.data);
+
+        try {
+          const feedbackResponse = await axiosInstance.get(`/teams/${encodedTeamId}/feedback`);
+          setFeedbacks(feedbackResponse.data);
+        } catch (feedbackErr) {
+          console.warn("Feedback endpoint missing or returned an error:", feedbackErr);
+          setFeedbacks([]); 
+        }
 
         setError("");
       } catch (err) {
@@ -133,50 +74,40 @@ useEffect(() => {
     };
 
     fetchData();
-}, [user]);
+  }, [user]);
 
-// Find the team's rank in the leaderboard
-const getTeamRank = () => {
-    if (!team || !leaderboard.length) return "Not ranked yet";
-
-    const teamIndex = leaderboard.findIndex(item => item.team_name === team.team_name);
-    return teamIndex !== -1 ? `#${teamIndex + 1}` : "Not ranked yet";
-};
-
-// Get the team's score from the leaderboard
-const getTeamScore = () => {
-  if (!team || !leaderboard.length) return "No score yet";
-  const teamEntry = leaderboard.find(item => item.team_name === team.team_name);
-  return teamEntry ? teamEntry.total_score : "No score yet";
-};
-
-if (!user) {
-    return <p className="text-center text-lg mt-8 text-white">Loading user data...</p>;
-  }
-
+  if (!user) return <p className="text-center text-lg mt-8 text-white">Loading user data...</p>;
   if (!user.team_id) {
-    return <p className="text-center text-lg mt-8 text-white">You are not assigned to any team. <br></br>
-      If you just registered a team, <br></br>
-      you may need to log out and re-login again.</p>;
+    return (
+      <p className="text-center text-lg mt-8 text-white">
+        You are not assigned to any team. <br />
+        If you just registered a team, you may need to log out and re-login again.
+      </p>
+    );
   }
+  if (loading) return <p className="text-center text-lg mt-8 text-white">Loading team data...</p>;
+  if (error) return <p className="text-red-500 text-center mt-8">{error}</p>;
 
-  if (loading) {
-    return <p className="text-center text-lg mt-8 text-white">Loading team data...</p>;
-  }
-
-  if (error) {
-    return <p className="text-red-500 text-center mt-8">{error}</p>;
-}
-
-return (
+  return (
     <div className="flex flex-col items-center">
+      {/* Embedded Style Injector for neon pulsing keyframes */}
+      <style>{`
+        .neon-lock-glow {
+          animation: lockPulse 1.5s infinite alternate;
+        }
+        @keyframes lockPulse {
+          from { text-shadow: 0 0 2px #e151af, 0 0 8px #e151af; opacity: 0.7; }
+          to { text-shadow: 0 0 6px #e151af, 0 0 16px #e151af; opacity: 1; }
+        }
+      `}</style>
+
       <h2 className="text-3xl font-black text-[#fafdff] mb-6 uppercase tracking-tighter italic">
         Team Dashboard
       </h2>
 
       <div className="bg-[#111827] border border-white/10 shadow-2xl rounded-2xl p-8 w-full">
         <div className="space-y-6">
-          {/* Team Name */}
+          {/* Team Identity */}
           <div>
             <p className="text-[#2dcefb] text-xs font-bold uppercase tracking-widest mb-2">Team Identity</p>
             <div className="bg-[#0b0e14] border border-white/5 rounded-xl p-4 text-white text-xl font-bold italic tracking-tight">
@@ -221,94 +152,110 @@ return (
           <div className="mt-10">
             <div className="flex justify-between items-center mb-4">
               <p className="text-[#2dcefb] text-xs font-bold uppercase tracking-widest">
-               Judges Feedback
+                Judges Feedback
               </p>
-             <div className="flex bg-[#0b0e14] rounded-xl p-1 border border-white/10">
+              <div className="flex bg-[#0b0e14] rounded-xl p-1 border border-white/10">
+                <button
+                  type="button"
+                  onClick={() => setActiveRound("round1")}
+                  className={`px-4 py-2 rounded-lg text-sm font-bold transition-all ${
+                    activeRound === "round1" ? "bg-[#2dcefb] text-black" : "text-white/50 hover:text-white"
+                  }`}
+                >
+                  ROUND 1
+                </button>
+                
+                {/* TOP 25 EVALUATION ROUND 2 BUTTON CONTROLLER */}
+                <button
+                  type="button"
+                  onClick={() => isTop25 && setActiveRound("round2")}
+                  disabled={!isTop25}
+                  className={`px-4 py-2 rounded-lg text-sm font-bold transition-all flex items-center gap-2 relative group ${
+                    activeRound === "round2" ? "bg-[#2dcefb] text-black" : "text-white/50 hover:text-white"
+                  } ${!isTop25 ? "opacity-40 cursor-not-allowed" : ""}`}
+                >
+                  {!isTop25 && (
+                    <span className="text-[#e151af] neon-lock-glow font-bold">
+                      🔒
+                    </span>
+                  )}
+                  ROUND 2
 
-             {/* ROUND 1 BUTTON */}
-             <button
-                onClick={() => setActiveRound("round1")}
-                className={`px-4 py-2 rounded-lg text-sm font-bold transition-all ${
-                activeRound === "round1"
-                 ? "bg-[#2dcefb] text-black"
-                 : "text-white/50 hover:text-white"
-                }`}               
-              >
-              ROUND 1
-              </button>
- 
-             {/* ROUND 2 BUTTON */}
-             <button
-               onClick={() => isFinalist && setActiveRound("round2")}
-               disabled={!isFinalist}
-               className={`px-4 py-2 rounded-lg text-sm font-bold transition-all flex items-center gap-2 ${
-               activeRound === "round2"
-                ? "bg-[#2dcefb] text-black"
-                : "text-white/50 hover:text-white"
-               } ${!isFinalist ? "opacity-40 cursor-not-allowed" : ""}`}
-             >
-             {!isFinalist && "🔒"}
-             ROUND 2
-             </button>
+                  {/* Accessible Informational Tooltip Block on Hover */}
+                  {!isTop25 && (
+                    <div className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 hidden group-hover:block bg-[#1f2937] border border-white/10 text-white text-[10px] font-medium py-1.5 px-3 rounded-lg shadow-xl whitespace-nowrap z-50">
+                      Only Top 25 teams can view Round 2 feedback
+                    </div>
+                  )}
+                </button>
+              </div>
+            </div>
+
+            {/* Content Container (Table view OR Status Message view) */}
+            <div className="bg-[#0b0e14] border border-white/5 rounded-xl overflow-hidden">
+              {isInvalidOrNoSubmission ? (
+                /* CONDITIONAL RENDER: Direct text display when ranking is -1 */
+                <div className="px-6 py-12 text-center text-white/60 font-medium tracking-wide italic leading-relaxed">
+                  {currentRoundRows[0]?.judges_feedback || "No submission records found."}
+                </div>
+              ) : (
+                /* STANDARD RENDER: Detailed Judges Table mapping */
+                <div className="max-h-[400px] overflow-y-auto overflow-x-auto relative">
+                  <table className="w-full">
+                    <thead className="sticky top-0 z-20 bg-[#131c2f]/95 backdrop-blur-md">
+                      <tr>
+                        <th className="px-6 py-4 text-left text-[#2dcefb] text-xs uppercase tracking-widest bg-[#131c2f]/95">
+                          Entry
+                        </th>
+                        <th className="px-6 py-4 text-left text-[#2dcefb] text-xs uppercase tracking-widest bg-[#131c2f]/95">
+                          Judges Comments
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {currentRoundFeedback.length > 0 ? (
+                        currentRoundFeedback.map((item, index) => (
+                          <tr key={index} className="border-t border-white/5 hover:bg-white/5 transition-colors">
+                            <td className="px-6 py-4 text-white font-semibold whitespace-nowrap">
+                              {item.judge}
+                            </td>
+                            <td className="px-6 py-4 text-white/80 whitespace-pre-wrap leading-relaxed">
+                              {item.comment}
+                            </td>
+                          </tr>
+                        ))
+                      ) : (
+                        <tr>
+                          <td colSpan="2" className="px-6 py-12 text-center text-white/40 italic">
+                            No feedback for {activeRound === "round1" ? "Round 1" : "Round 2"} yet.
+                          </td>
+                        </tr>
+                      )}
+                    </tbody>
+                  </table>
+                </div>
+              )}
             </div>
           </div>
 
-          {/* TABLE */}
-          <div className="bg-[#0b0e14] border border-white/5 rounded-xl overflow-hidden">
-           
-           <div className="max-h-[400px] overflow-y-auto overflow-x-auto relative">
-             <table className="w-full">
-                <thead className="sticky top-0 z-20 bg-[#131c2f]/95 backdrop-blur-md">
-                 <tr>
-                    <th className="px-6 py-4 text-left text-[#2dcefb] text-xs uppercase tracking-widest bg-[#131c2f]/95">
-                     Entry
-                    </th>
-                   <th className="px-6 py-4 text-left text-[#2dcefb] text-xs uppercase tracking-widest bg-[#131c2f]/95">
-                     Judges Comments
-                    </th>
-                 </tr>
-               </thead>
-
-               <tbody>
-                 {(activeRound === "round1"
-                   ? currentRound1Feedback?.feedbacks
-                   : currentRound2Feedback?.feedbacks
-                  )?.length > 0 ? (
-                   (activeRound === "round1"
-                     ? currentRound1Feedback?.feedbacks
-                     : currentRound2Feedback?.feedbacks
-                    ).map((item, index) => (
-                     <tr
-                       key={index}
-                       className="border-t border-white/5 hover:bg-white/5 transition-colors"
-                      >
-                       <td className="px-6 py-4 text-white font-semibold whitespace-nowrap">
-                         {item.judge}
-                        </td>
-                       <td className="px-6 py-4 text-white/80 whitespace-pre-wrap leading-relaxed">
-                         {item.comment || "No feedback given"}
-                        </td>
-                     </tr>
-                    ))
-                  ) : (
-                        <tr>
-                         <td
-                           colSpan="2"
-                           className="px-6 py-12 text-center text-white/40 italic"
-                          >
-                           No feedback for {activeRound === "round1" ? "Round 1" : "Round 2"} yet.
-                         </td>
-                        </tr>
-                       )}
-               </tbody>
-             </table>
-            </div>
-           </div>
-         </div>
-       </div>
-     </div>
+        </div>
+      </div>
     </div>
   );
 };
+
+// Local leaderboard state to calculate the Top 25 eligibility manually
+const localLeaderboardData = [
+  { team_name: "UM EE Innovators" }, { team_name: "EyeScream" }, { team_name: "Engincs" },
+  { team_name: "Indecisive" }, { team_name: "sudo rm-rf /" }, { team_name: "#roadtoidp" },
+  { team_name: "Learn And Hustle" }, { team_name: "NEW SPACE" }, { team_name: "Terminators" },
+  { team_name: "Circuit Guardians" }, { team_name: "Hail Mary" }, { team_name: "Da adah" },
+  { team_name: "FEI" }, { team_name: "XM.UM.com" }, { team_name: "8 HOURS OF SLEEP" },
+  { team_name: "The Boys" }, { team_name: "The Winning Team" }, { team_name: "shhhhshesh" },
+  { team_name: "Cynthesise" }, { team_name: "Full Nibble" }, { team_name: "cocodenut" },
+  { team_name: "Chemingos" }, { team_name: "WO DOU BU ZHI DAO" }, { team_name: "The Forecaster" },
+  { team_name: "The Fantastic Five" }, // Top 25 Boundary
+  { team_name: "test" }
+];
 
 export default IndividualTeamDashboard;

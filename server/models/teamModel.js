@@ -1,3 +1,4 @@
+const { get } = require('../routes/teamRoutes');
 const supabase = require('../supabaseConfig');
 
 const getAllTeams = async () => {
@@ -8,13 +9,13 @@ const getAllTeams = async () => {
   return data;
 };
 
-const getTeamById = async (team_id) => {
+const getTeamById = async (team_name) => {
   try {
     // Fetch team details
     const { data: team, error: teamError } = await supabase
       .from("teams")
       .select("*")
-      .eq("team_name", team_id)
+      .eq("team_name", team_name)
       .single();
 
     if (teamError) throw teamError;
@@ -23,7 +24,7 @@ const getTeamById = async (team_id) => {
     const { data: scores, error: scoreError } = await supabase
       .from("scores")
       .select("points_awarded, deliverable:deliverable_id(task_id)")
-      .eq("deliverable.team_id", team_id);
+      .eq("deliverable.team_id", team_name);
 
     if (scoreError) throw scoreError;
 
@@ -142,9 +143,25 @@ const getTeamMembers = async (teamId) => {
   return data;
 };
 
+const getTeamFeedback = async (team_name) => {
+  try {
+    const { data: feedbackData, error: feedbackError } = await supabase
+      .from('teams_feedback')
+      .select('*') // Fetches everything that actually exists safely
+      .eq('team_name', team_name);
+
+    if (feedbackError) throw feedbackError;
+    return feedbackData;
+  } catch (error) {
+    console.error("Error fetching team feedback from model:", error);
+    throw error;
+  }
+};
+
 module.exports = {
   getAllTeams,
   getTeamById,
   createTeam,
-  getTeamMembers
+  getTeamMembers,
+  getTeamFeedback
 };
