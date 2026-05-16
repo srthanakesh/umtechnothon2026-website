@@ -15,6 +15,19 @@ const round1FeedbackData = [
         comment: "CSI processing algorithm needs clearer explanation."
       }
     ]
+  },
+  {
+    teamName: "test",
+    feedbacks: [
+      {
+        judge: "Judge 1",
+        comment: ""
+      },
+      {
+        judge: "Judge 2",
+        comment: ""
+      }
+    ]
   }
 ];
 
