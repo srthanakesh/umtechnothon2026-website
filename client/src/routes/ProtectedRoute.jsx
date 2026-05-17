@@ -1,7 +1,7 @@
 import { Navigate } from "react-router-dom";
 import { useUser } from "../context/UserProvider";
 
-const ProtectedRoute = ({ role, children }) => {
+const ProtectedRoute = ({ roles, children }) => {
   const { user, isLoading, logout } = useUser();
 
   // Wait for user to load before making a decision
@@ -15,7 +15,7 @@ const ProtectedRoute = ({ role, children }) => {
   }
 
   // If role is defined and doesn't match user's role
-  if (role && user.role !== role) {
+  if (roles && !roles.includes(user.role)) {
     logout(); // 👈 call logout from context
     return <Navigate to="/login" replace />;
   }

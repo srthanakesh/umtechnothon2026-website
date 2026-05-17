@@ -64,7 +64,7 @@ export const routesConfig = [
   {
     path: "/admin/add-task",
     element: (
-      <ProtectedRoute role={USER_ROLE.admin}>
+      <ProtectedRoute role={[USER_ROLE.admin, USER_ROLE.user]}>
         <AddTask />
       </ProtectedRoute>
     ),
