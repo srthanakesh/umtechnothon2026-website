@@ -6,7 +6,7 @@ const IndividualTeamDashboard = () => {
   const [team, setTeam] = useState(null);
   const [leaderboard, setLeaderboard] = useState([]);
   const [teamMembers, setTeamMembers] = useState([]);
-  const [feedbacks, setFeedbacks] = useState([]); 
+  const [feedbacks, setFeedbacks] = useState([]);
   const [activeRound, setActiveRound] = useState("round1");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(true);
@@ -24,13 +24,23 @@ const IndividualTeamDashboard = () => {
   // Helper utility to check if the current active round contains an invalid/no submission flag
   const targetRoundNumber = activeRound === "round1" ? 1 : 2;
   const currentRoundRows = feedbacks.filter((f) => Number(f.round) === targetRoundNumber);
-  const isInvalidOrNoSubmission = currentRoundRows.some((row) => Number(row.ranking) === -1);
+
+  // Determine submission status for this round
+  const roundStatus = (() => {
+    if (currentRoundRows.length === 0) return "no_submission";
+    const statuses = currentRoundRows.map((r) => r.submission_status || "valid");
+    if (statuses.includes("no_submission")) return "no_submission";
+    if (statuses.includes("invalid")) return "invalid";
+    return "valid";
+  })();
+
+  const invalidRemark = roundStatus === "invalid"
+    ? currentRoundRows.find(r => r.submission_status === "invalid")?.judges_feedback || "Submission invalid."
+    : "";
 
   // Parse feedback text blocks cleanly by matching against the table integers (1 or 2)
   const getCurrentRoundFeedback = () => {
-    if (!feedbacks || feedbacks.length === 0 || isInvalidOrNoSubmission) return [];
-
-    if (currentRoundRows.length === 0) return [];
+    if (roundStatus !== "valid") return [];
 
     return currentRoundRows.map((row, index) => ({
       judge: `Judge ${index + 1}`,
@@ -46,7 +56,7 @@ const IndividualTeamDashboard = () => {
     const fetchData = async () => {
       try {
         const encodedTeamId = encodeURIComponent(user.team_id);
-        
+
         const teamResponse = await axiosInstance.get(`/teams/${encodedTeamId}`);
         setTeam(teamResponse.data);
 
@@ -61,7 +71,7 @@ const IndividualTeamDashboard = () => {
           setFeedbacks(feedbackResponse.data);
         } catch (feedbackErr) {
           console.warn("Feedback endpoint missing or returned an error:", feedbackErr);
-          setFeedbacks([]); 
+          setFeedbacks([]);
         }
 
         setError("");
@@ -152,87 +162,115 @@ const IndividualTeamDashboard = () => {
           <div className="mt-10">
             <div className="flex justify-between items-center mb-4">
               <p className="text-[#2dcefb] text-xs font-bold uppercase tracking-widest">
-                Judges Feedback
+                {roundStatus === "valid" ? "Judges Feedback" : "Remark"}
               </p>
-              <div className="flex bg-[#0b0e14] rounded-xl p-1 border border-white/10">
-                <button
-                  type="button"
-                  onClick={() => setActiveRound("round1")}
-                  className={`px-4 py-2 rounded-lg text-sm font-bold transition-all ${
-                    activeRound === "round1" ? "bg-[#2dcefb] text-black" : "text-white/50 hover:text-white"
-                  }`}
-                >
-                  ROUND 1
-                </button>
-                
-                {/* TOP 25 EVALUATION ROUND 2 BUTTON CONTROLLER */}
-                <button
-                  type="button"
-                  onClick={() => isTop25 && setActiveRound("round2")}
-                  disabled={!isTop25}
-                  className={`px-4 py-2 rounded-lg text-sm font-bold transition-all flex items-center gap-2 relative group ${
-                    activeRound === "round2" ? "bg-[#2dcefb] text-black" : "text-white/50 hover:text-white"
-                  } ${!isTop25 ? "opacity-40 cursor-not-allowed" : ""}`}
-                >
-                  {!isTop25 && (
-                    <span className="text-[#e151af] neon-lock-glow font-bold">
-                      🔒
-                    </span>
-                  )}
-                  ROUND 2
+              {roundStatus === "valid" && (
+                <div className="flex bg-[#0b0e14] rounded-xl p-1 border border-white/10">
+                  <button
+                    type="button"
+                    onClick={() => setActiveRound("round1")}
+                    className={`px-4 py-2 rounded-lg text-sm font-bold transition-all ${activeRound === "round1" ? "bg-[#2dcefb] text-black" : "text-white/50 hover:text-white"
+                      }`}
+                  >
+                    ROUND 1
+                  </button>
 
-                  {/* Accessible Informational Tooltip Block on Hover */}
-                  {!isTop25 && (
-                    <div className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 hidden group-hover:block bg-[#1f2937] border border-white/10 text-white text-[10px] font-medium py-1.5 px-3 rounded-lg shadow-xl whitespace-nowrap z-50">
-                      Only Top 25 teams can view Round 2 feedback
-                    </div>
-                  )}
-                </button>
-              </div>
+                  {/* TOP 25 EVALUATION ROUND 2 BUTTON CONTROLLER */}
+                  <button
+                    type="button"
+                    onClick={() => isTop25 && setActiveRound("round2")}
+                    disabled={!isTop25}
+                    className={`px-4 py-2 rounded-lg text-sm font-bold transition-all flex items-center gap-2 relative group ${activeRound === "round2" ? "bg-[#2dcefb] text-black" : "text-white/50 hover:text-white"
+                      } ${!isTop25 ? "opacity-40 cursor-not-allowed" : ""}`}
+                  >
+                    {!isTop25 && (
+                      <span className="text-[#e151af] neon-lock-glow font-bold">
+                        🔒
+                      </span>
+                    )}
+                    ROUND 2
+
+                    {/* Accessible Informational Tooltip Block on Hover */}
+                    {!isTop25 && (
+                      <div className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 hidden group-hover:block bg-[#1f2937] border border-white/10 text-white text-[10px] font-medium py-1.5 px-3 rounded-lg shadow-xl whitespace-nowrap z-50">
+                        Only Top 25 teams can view Round 2 feedback
+                      </div>
+                    )}
+                  </button>
+                </div>
+              )}
             </div>
 
             {/* Content Container (Table view OR Status Message view) */}
             <div className="bg-[#0b0e14] border border-white/5 rounded-xl overflow-hidden">
-              {isInvalidOrNoSubmission ? (
-                /* CONDITIONAL RENDER: Direct text display when ranking is -1 */
+              {roundStatus === "no_submission" && (
                 <div className="px-6 py-12 text-center text-white/60 font-medium tracking-wide italic leading-relaxed">
-                  {currentRoundRows[0]?.judges_feedback || "No submission records found."}
+                  No submission made
                 </div>
-              ) : (
-                /* STANDARD RENDER: Detailed Judges Table mapping */
-                <div className="max-h-[400px] overflow-y-auto overflow-x-auto relative">
-                  <table className="w-full">
-                    <thead className="sticky top-0 z-20 bg-[#131c2f]/95 backdrop-blur-md">
-                      <tr>
-                        <th className="px-6 py-4 text-left text-[#2dcefb] text-xs uppercase tracking-widest bg-[#131c2f]/95">
-                          Entry
-                        </th>
-                        <th className="px-6 py-4 text-left text-[#2dcefb] text-xs uppercase tracking-widest bg-[#131c2f]/95">
-                          Judges Comments
-                        </th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {currentRoundFeedback.length > 0 ? (
-                        currentRoundFeedback.map((item, index) => (
-                          <tr key={index} className="border-t border-white/5 hover:bg-white/5 transition-colors">
-                            <td className="px-6 py-4 text-white font-semibold whitespace-nowrap">
-                              {item.judge}
-                            </td>
-                            <td className="px-6 py-4 text-white/80 whitespace-pre-wrap leading-relaxed">
-                              {item.comment}
+              )}
+
+              {roundStatus === "invalid" && (
+                <div className="flex flex-col">
+                  {/* Warning message container */}
+                  <div className="bg-red-500/10 border-b border-red-500/30 p-6 text-red-200 text-sm leading-relaxed text-justify">
+                    <span className="font-bold text-red-400 uppercase tracking-widest block mb-2 text-center">Important Notice</span>
+                    Kindly note that all invalid submissions are determined after careful consideration and multiple rounds of checking, based on the clear guidelines and instructions outlined in the submission form, particularly where the required instructions or requirements were not followed by the team.<br /><br />
+                    As such, appeals or repeated requests for reconsideration regarding the validity of submissions will <strong className="text-red-400">NOT</strong> be entertained.
+                  </div>
+
+                  {/* Remark display */}
+                  <div className="px-6 py-8">
+                    <div className="bg-black/30 border border-white/10 rounded-xl p-5 text-gray-300 font-light whitespace-pre-wrap leading-relaxed font-mono text-sm shadow-[0_0_15px_rgba(255,255,255,0.05)]">
+                      {invalidRemark}
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {roundStatus === "valid" && (
+                <div className="flex flex-col">
+                  {/* Warning message container for valid submission */}
+                  <div className="bg-[#2dcefb]/10 border-b border-[#2dcefb]/30 p-6 text-white/90 text-sm leading-relaxed text-justify">
+                    <span className="font-bold text-white uppercase tracking-widest block mb-2 text-center">Important Notice</span>
+                    Important: All marks and rankings have been finalised. Marks will not be disclosed, and no appeals will be entertained.<br /><br />
+                    The rankings and feedback provided are intended for learning purposes and to give teams a clearer overview of their performance during the preliminary round, as evaluated by our panel of judges.
+                  </div>
+
+                  {/* STANDARD RENDER: Detailed Judges Table mapping */}
+                  <div className="max-h-[400px] overflow-y-auto overflow-x-auto relative">
+                    <table className="w-full">
+                      <thead className="sticky top-0 z-20 bg-[#131c2f]/95 backdrop-blur-md">
+                        <tr>
+                          <th className="px-6 py-4 text-left text-[#2dcefb] text-xs uppercase tracking-widest bg-[#131c2f]/95">
+                            Entry
+                          </th>
+                          <th className="px-6 py-4 text-left text-[#2dcefb] text-xs uppercase tracking-widest bg-[#131c2f]/95">
+                            Judges Comments
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {currentRoundFeedback.length > 0 ? (
+                          currentRoundFeedback.map((item, index) => (
+                            <tr key={index} className="border-t border-white/5 hover:bg-white/5 transition-colors">
+                              <td className="px-6 py-4 text-white font-semibold whitespace-nowrap">
+                                {item.judge}
+                              </td>
+                              <td className="px-6 py-4 text-white/80 whitespace-pre-wrap leading-relaxed">
+                                {item.comment}
+                              </td>
+                            </tr>
+                          ))
+                        ) : (
+                          <tr>
+                            <td colSpan="2" className="px-6 py-12 text-center text-white/40 italic">
+                              No feedback for {activeRound === "round1" ? "Round 1" : "Round 2"} yet.
                             </td>
                           </tr>
-                        ))
-                      ) : (
-                        <tr>
-                          <td colSpan="2" className="px-6 py-12 text-center text-white/40 italic">
-                            No feedback for {activeRound === "round1" ? "Round 1" : "Round 2"} yet.
-                          </td>
-                        </tr>
-                      )}
-                    </tbody>
-                  </table>
+                        )}
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
               )}
             </div>
@@ -255,7 +293,7 @@ const localLeaderboardData = [
   { team_name: "Cynthesise" }, { team_name: "Full Nibble" }, { team_name: "cocodenut" },
   { team_name: "Chemingos" }, { team_name: "WO DOU BU ZHI DAO" }, { team_name: "The Forecaster" },
   { team_name: "The Fantastic Five" }, // Top 25 Boundary
-  { team_name: "test" }
+  // { team_name: "test" } // testing 
 ];
 
 export default IndividualTeamDashboard;

@@ -152,7 +152,7 @@ const Leaderboard = () => {
                     <td className="px-8 py-6 text-center text-[#fafdff] text-xl font-black italic tracking-tighter w-24">
                       {index + 1}
                     </td>
-                    <td className="px-6 py-6 text-left text-[#fafdff] text-xl font-black italic tracking-tighter uppercase">
+                    <td className="px-6 py-6 text-left text-[#fafdff] text-xl font-black italic tracking-tighter">
                       {team.team_name}
                     </td>
                   </tr>
@@ -169,7 +169,7 @@ const Leaderboard = () => {
             <div className="space-y-3">
               {invalidSubmissions.map((team, idx) => (
                 <div key={idx} className="bg-[#111827]/40 border border-red-500/20 rounded-xl px-8 py-4 flex justify-between items-center">
-                  <span className="text-white/40 text-lg font-bold italic uppercase">{team.team_name}</span>
+                  <span className="text-white/40 text-lg font-bold italic">{team.team_name}</span>
                   <span className="text-red-500 text-[10px] font-black uppercase tracking-widest">Disqualified</span>
                 </div>
               ))}
@@ -184,7 +184,7 @@ const Leaderboard = () => {
             <div className="space-y-3">
               {noSubmissions.map((team, idx) => (
                 <div key={idx} className="bg-[#111827]/40 border border-red-500/20 rounded-xl px-8 py-4 flex justify-between items-center">
-                  <span className="text-white/40 text-lg font-bold italic uppercase">{team.team_name}</span>
+                  <span className="text-white/40 text-lg font-bold italic">{team.team_name}</span>
                   <span className="text-red-500 text-[10px] font-black uppercase tracking-widest">N/A</span>
                 </div>
               ))}
