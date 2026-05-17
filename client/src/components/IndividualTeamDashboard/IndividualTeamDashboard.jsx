@@ -10,6 +10,7 @@ const IndividualTeamDashboard = () => {
   const [activeRound, setActiveRound] = useState("round1");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(true);
+  const [showTooltip, setShowTooltip] = useState(false);
   const { user } = useUser();
 
   // Find positioning index context natively matching database string keys
@@ -49,6 +50,15 @@ const IndividualTeamDashboard = () => {
   };
 
   const currentRoundFeedback = getCurrentRoundFeedback();
+
+  const handleRound2Click = () => {
+    if (!isTop25) {
+      setShowTooltip(true);
+      setTimeout(() => setShowTooltip(false), 3000);
+    } else {
+      setActiveRound("round2");
+    }
+  };
 
   useEffect(() => {
     if (!user || !user.team_id) return;
@@ -178,8 +188,9 @@ const IndividualTeamDashboard = () => {
                   {/* TOP 25 EVALUATION ROUND 2 BUTTON CONTROLLER */}
                   <button
                     type="button"
-                    onClick={() => isTop25 && setActiveRound("round2")}
-                    disabled={!isTop25}
+                    onClick={handleRound2Click}
+                    onMouseEnter={() => !isTop25 && setShowTooltip(true)}
+                    onMouseLeave={() => !isTop25 && setShowTooltip(false)}
                     className={`px-4 py-2 rounded-lg text-sm font-bold transition-all flex items-center gap-2 relative group ${activeRound === "round2" ? "bg-[#2dcefb] text-black" : "text-white/50 hover:text-white"
                       } ${!isTop25 ? "opacity-40 cursor-not-allowed" : ""}`}
                   >
@@ -190,9 +201,9 @@ const IndividualTeamDashboard = () => {
                     )}
                     ROUND 2
 
-                    {/* Accessible Informational Tooltip Block on Hover */}
+                    {/* Accessible Informational Tooltip Block */}
                     {!isTop25 && (
-                      <div className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 hidden group-hover:block bg-[#1f2937] border border-white/10 text-white text-[10px] font-medium py-1.5 px-3 rounded-lg shadow-xl whitespace-nowrap z-50">
+                      <div className={`absolute bottom-full mb-2 right-0 sm:left-1/2 sm:-translate-x-1/2 sm:right-auto bg-[#1f2937] border border-white/10 text-gray-300 text-xs font-medium py-2 px-3 rounded-lg shadow-xl whitespace-nowrap z-50 pointer-events-none transition-opacity duration-300 ${showTooltip ? "opacity-100" : "opacity-0"}`}>
                         Only Top 25 teams can view Round 2 feedback
                       </div>
                     )}
