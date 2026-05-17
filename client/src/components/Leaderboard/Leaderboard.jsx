@@ -104,10 +104,14 @@ const Leaderboard = () => {
   const invalidSubmissions = leaderboard.filter(t => t.is_valid === false);
   const noSubmissions = leaderboard.filter(t => t.none === true);
 
-  const SectionTitle = ({ title }) => (
-    <div className="mt-12 mb-6 flex items-center gap-4">
-      <h3 className="text-[#2dcefb] text-xs font-bold uppercase tracking-[0.3em] pl-2">{title}</h3>
-      <div className="flex-1 h-px bg-white/10"></div>
+  const SectionTitle = ({ title, note }) => (
+    <div className="mt-12 mb-6">
+      <div className="flex items-center gap-4">
+        <h3 className="text-[#2dcefb] text-xs font-bold uppercase tracking-[0.3em] pl-2 whitespace-nowrap">{title}</h3>
+        {note && <span className="text-white/50 text-xs italic hidden sm:block whitespace-nowrap">{note}</span>}
+        <div className="flex-1 h-px bg-white/10"></div>
+      </div>
+      {note && <div className="mt-2 pl-2 sm:hidden"><span className="text-white/50 text-[10px] italic">{note}</span></div>}
     </div>
   );
 
@@ -165,7 +169,10 @@ const Leaderboard = () => {
         {/* INVALID SECTION */}
         {invalidSubmissions.length > 0 && (
           <>
-            <SectionTitle title="Invalid" />
+            <SectionTitle 
+              title="Invalid" 
+              note="* You may check for further details in your Profile Page" 
+            />
             <div className="space-y-3">
               {invalidSubmissions.map((team, idx) => (
                 <div key={idx} className="bg-[#111827]/40 border border-red-500/20 rounded-xl px-8 py-4 flex justify-between items-center">
