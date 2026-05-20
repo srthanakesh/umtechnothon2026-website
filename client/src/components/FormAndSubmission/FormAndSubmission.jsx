@@ -29,14 +29,7 @@ const mentors = [
     org: "Webby Group",
     image: "/PrelimMentorProfile/Hun Jia Chong.jpg",
     bookingUrl: "https://cal.com/jasmine-4g8twj/mentoring-session-with-hunjiacong"
-  },
-  {
-    name: "Karnan Shanmugam",
-    role: "Director of Engineering - Embedded Software, BIO",
-    org: "Intel",
-    image: "/PrelimMentorProfile/Karnan Shanmugam.jpg",
-    bookingUrl: null
-  },
+  }
 ];
 
 const FormAndSubmission = () => {

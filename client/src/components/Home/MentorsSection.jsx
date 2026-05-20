@@ -22,13 +22,7 @@ const mentors = [
     role: "Tech Lead", 
     org: "Webby Group", 
     image: "/PrelimMentorProfile/Hun Jia Chong.jpg" 
-  },
-  { 
-    name: "Karnan Shanmugam", 
-    role: "Director of Engineering - Embedded Software, BIO", 
-    org: "Intel", 
-    image: "/PrelimMentorProfile/Karnan Shanmugam.jpg" 
-  },
+  }
 ];
 
 const PersonCard = ({ person }) => (
