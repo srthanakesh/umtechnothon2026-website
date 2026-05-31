@@ -125,7 +125,7 @@ const FormAndSubmission = () => {
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
               </span>
-              <span className="text-emerald-400 text-[10px] md:text-xs font-mono font-bold tracking-[0.3em] uppercase">Mentorship Slots Open</span>
+              <span className="text-emerald-400 text-[10px] md:text-xs font-mono font-bold tracking-[0.3em] uppercase">Final Round Submission Open</span>
             </>
           ) : (
             <>
@@ -186,7 +186,28 @@ const FormAndSubmission = () => {
 
       <div className="flex flex-col md:flex-row gap-6 mt-4 text-left max-w-7xl mx-auto">
 
-        {/* LEFT COLUMN - MENTORSHIP BOOKING TABLE */}
+        {/* SUBMISSION */}
+        <div className="w-full md:w-1/3 md:order-last">
+          <div className="w-full transition-all duration-300 ease-in-out bg-[#161b33] border border-cyan-500/30 rounded-2xl shadow-lg p-6 text-center sticky top-8">
+            <div className="w-16 h-16 mx-auto mb-4 bg-blue-500/10 rounded-full flex items-center justify-center border border-blue-500/30">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
+              </svg>
+            </div>
+            <h3 className="text-xl md:text-2xl font-bold text-white mb-4">Submission</h3>
+            <p className="text-gray-400 mb-8 text-sm leading-relaxed">
+              Task submissions are handled via Google Forms. Make sure you have all your deliverables ready before clicking the button below.
+            </p>
+            <button
+              onClick={() => window.open('https://forms.gle/Zq7BnzNkzuzEfZCD7', '_blank')}
+              className="w-full text-base font-bold px-4 py-4 rounded-xl bg-blue-600 hover:bg-blue-500 text-white border border-blue-500/50 cursor-pointer transition-all uppercase tracking-wider"
+            >
+              Ready to Submit
+            </button>
+          </div>
+        </div>
+
+        {/* MENTORSHIP BOOKING TABLE */}
         <div className="w-full md:w-2/3 bg-[#161b33] border border-cyan-500/30 rounded-2xl shadow-lg p-4 md:p-6 flex flex-col">
           <div className="mb-6">
             <h3 className="text-2xl md:text-3xl font-bold text-white tracking-tighter uppercase">Mentorship Booking</h3>
@@ -259,28 +280,6 @@ const FormAndSubmission = () => {
                 ))}
               </tbody>
             </table>
-          </div>
-        </div>
-
-        {/* RIGHT COLUMN - SUBMISSION */}
-        <div className="w-full md:w-1/3">
-          <div className="w-full transition-all duration-300 ease-in-out bg-[#161b33] border border-cyan-500/30 rounded-2xl shadow-lg p-6 text-center sticky top-8">
-            <div className="w-16 h-16 mx-auto mb-4 bg-blue-500/10 rounded-full flex items-center justify-center border border-blue-500/30">
-              <svg xmlns="http://www.w3.org/-2000/svg" className="h-8 w-8 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
-              </svg>
-            </div>
-            <h3 className="text-xl md:text-2xl font-bold text-white mb-4">Submission</h3>
-            <p className="text-gray-400 mb-8 text-sm leading-relaxed">
-              Task submissions are handled via Google Forms. Make sure you have all your deliverables ready before clicking the button below.
-            </p>
-            <button
-              disabled
-              onClick={() => window.open('https://forms.gle/YLDYMktXTdN86bZf7', '_blank')}
-              className="w-full text-base font-bold px-4 py-4 rounded-xl bg-gray-800 text-gray-500 border border-gray-700 cursor-not-allowed transition-all uppercase tracking-wider"
-            >
-              Ready to Submit
-            </button>
           </div>
         </div>
       </div>
