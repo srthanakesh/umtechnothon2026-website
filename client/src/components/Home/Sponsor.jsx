@@ -1,76 +1,70 @@
 "use client"
 
-import { useEffect, useState } from "react"
-import { ExternalLink } from "lucide-react"
-
-// SET THIS TO FALSE TO HIDE THE OVERLAY
-const SHOW_OVERLAY = true;
+import { useState } from "react"
 
 const sponsorTiers = [
   {
-    title: "Platinum Sponsors",
+    title: "Diamond Sponsor",
     direction: "ltr",
     sponsors: [
-      { name: "Sponsor name", logo: "/logos/placeholder.jpeg", url: "" },
-      { name: "Sponsor name", logo: "/logos/placeholder.jpeg", url: "" },
+      { name: "Webby Group", logo: "/logos/Diamond/Webby Group Full Logo - Black@3x-1.png", url: "" },
     ],
     speed: 60,
-    titleColor: "#2dcefb", 
-    fontWeight: "font-bold",
-    bgColor: "bg-[#2dcefb]/10", 
-    borderColor: "border-[#2dcefb]/50"
+    titleColor: "#b9f2ff",
+    fontWeight: "font-black",
+    bgColor: "bg-[#2dcefb]/15",
+    borderColor: "border-[#2dcefb]/60"
   },
   {
-    title: "Gold Sponsors",
+    title: "Platinum Sponsors",
     direction: "rtl",
     sponsors: [
-      { name: "Sponsor name", logo: "/logos/placeholder.jpeg", url: "" },
-      { name: "Sponsor name", logo: "/logos/placeholder.jpeg", url: "" },
-      { name: "Sponsor name", logo: "/logos/placeholder.jpeg", url: "" },
+      { name: "Chin Hin Group", logo: "/logos/Platinum/Chin Hin Blue Font.png", url: "" },
+      { name: "Mi Equipment", logo: "/logos/Platinum/MiEquipment_Logo_RGB-Rounded-v2.1.svg", url: "" },
     ],
-    speed: 50,
-    titleColor: "#fafdff",
-    fontWeight: "font-semibold",
-    bgColor: "bg-white/5",
-    borderColor: "border-white/20"
+    speed: 60,
+    titleColor: "#e5e7eb",
+    fontWeight: "font-bold",
+    bgColor: "bg-white/10",
+    borderColor: "border-white/30"
   },
   {
-    title: "Silver Sponsors",
+    title: "Gold Sponsor",
     direction: "ltr",
     sponsors: [
-      { name: "Sponsor name", logo: "/logos/placeholder.jpeg", url: "" },
-      { name: "Sponsor name", logo: "/logos/placeholder.jpeg", url: "" },
-      { name: "Sponsor name", logo: "/logos/placeholder.jpeg", url: "" },
-      { name: "Sponsor name", logo: "/logos/placeholder.jpeg", url: "" },
+      { name: "SEEK", logo: "/logos/Gold/seek logo-black.png", url: "" },
     ],
-    speed: 55,
-    titleColor: "#fafdff",
+    speed: 60,
+    titleColor: "#fbbf24",
     fontWeight: "font-semibold",
-    bgColor: "bg-white/5",
-    borderColor: "border-white/10"
+    bgColor: "bg-[#fbbf24]/10",
+    borderColor: "border-[#fbbf24]/40"
   },
   {
     title: "Benefit-in-Kind",
     direction: "rtl",
     sponsors: [
-      { name: "Sponsor name", logo: "/logos/placeholder.jpeg", url: "" },
-      { name: "Sponsor name", logo: "/logos/placeholder.jpeg", url: "" },
+      { name: "Coca-Cola", logo: "/logos/Benefit inkind/Coca-Cola SIMA_Logo (Latest)-01.png", url: "" },
+      { name: "Favoriot", logo: "/logos/Benefit inkind/Favoriot - New Logo.png", url: "" },
+      { name: "Good Morning", logo: "/logos/Benefit inkind/Good Morning.png", url: "" },
+      { name: "Zus Coffee", logo: "/logos/Benefit inkind/Zus.png", url: "" },
+      { name: "Dell Technologies", logo: "/logos/Benefit inkind/delltech-logo-stk-blue-rgb-1280x1280.jpeg", url: "" },
     ],
-    speed: 65,
+    speed: 120,
     titleColor: "#9ca3af",
     fontWeight: "font-normal",
     bgColor: "bg-white/5",
-    borderColor: "border-white/5"
+    borderColor: "border-white/10"
   },
 ]
 
 const SponsorRow = ({ sponsors, direction, speed = 50 }) => {
   const [isPaused, setIsPaused] = useState(false)
-  const multipleSponsors = [...sponsors, ...sponsors, ...sponsors]
+  const multipleSponsors = Array(8).fill(sponsors).flat()
 
   return (
     <div className="relative w-full overflow-hidden">
-      <div className="relative py-10">
+      <div className="relative py-8">
         <div className="absolute inset-y-0 left-0 w-24 md:w-40 bg-gradient-to-r from-[#0b0e14] via-[#0b0e14]/90 to-transparent z-30 pointer-events-none" />
         <div className="absolute inset-y-0 right-0 w-24 md:w-40 bg-gradient-to-l from-[#0b0e14] via-[#0b0e14]/90 to-transparent z-30 pointer-events-none" />
 
@@ -87,12 +81,12 @@ const SponsorRow = ({ sponsors, direction, speed = 50 }) => {
           {multipleSponsors.map((sponsor, index) => (
             <div
               key={index}
-              className="flex items-center justify-center bg-white p-3 rounded-xl min-w-[140px] md:min-w-[220px] h-[70px] md:h-[110px] transition-all duration-500 hover:scale-110 group relative z-10 shadow-sm"
+              className="flex items-center justify-center bg-white p-3 rounded-xl min-w-[140px] md:min-w-[220px] h-[70px] md:h-[110px] transition-all duration-500 hover:scale-110 shadow-sm"
             >
               <img 
                 src={sponsor.logo || "/placeholder.svg"} 
                 alt={sponsor.name} 
-                className="max-w-[85%] max-h-[85%] object-contain opacity-20 grayscale" 
+                className="max-w-[85%] max-h-[85%] object-contain" 
                 loading="lazy"
                 decoding="async"
               />
@@ -118,22 +112,6 @@ const SponsorSlider = () => {
         </div>
 
         <div className="relative">
-          {/* THE OVERLAY BOX */}
-          {SHOW_OVERLAY && (
-            <div className="absolute inset-0 z-50 flex items-center justify-center p-4">
-              {/* Blur Layer */}
-              <div className="absolute inset-0 bg-[#0b0e14]/40 backdrop-blur-md" />
-              
-              {/* Floating Badge */}
-              <div className="relative px-10 py-6 rounded-2xl border border-[#2dcefb]/30 bg-[#0b0e14]/80 shadow-[0_0_50px_rgba(45,206,251,0.2)]">
-                <h3 className="text-2xl md:text-3xl font-bold text-white tracking-tighter text-center">
-                  SPONSORS <br/> 
-                  <span className="text-[#2dcefb] animate-pulse">REVEALING SOON</span>
-                </h3>
-              </div>
-            </div>
-          )}
-
           <div className="space-y-12">
             {sponsorTiers.map((tier, index) => (
               <div key={index} className="relative">
@@ -147,27 +125,15 @@ const SponsorSlider = () => {
             ))}
           </div>
         </div>
-
-        <div className="mt-28 max-w-3xl mx-auto px-6">
-          <div className="flex items-center justify-center p-10 rounded-3xl bg-white/5 border border-white/10 backdrop-blur-xl group min-h-[160px]">
-            <p className="text-[#fafdff] text-lg md:text-xl font-medium relative z-10 max-w-xl text-center">
-              We are currently seeking sponsorship opportunities. <br className="hidden md:block" /> 
-              If you are interested, please contact us for more details: <br className="hidden md:block" />
-              <a href="mailto:contact@umtechnothon.com" className="text-[#2dcefb] hover:text-white transition-colors">
-                contact@umtechnothon.com
-              </a>
-            </p>
-          </div>
-        </div>
       </div>
 
       <style jsx global>{`
         @keyframes scrollLeft {
           from { transform: translateX(0); }
-          to { transform: translateX(-33.333%); }
+          to { transform: translateX(-50%); }
         }
         @keyframes scrollRight {
-          from { transform: translateX(-33.333%); }
+          from { transform: translateX(-50%); }
           to { transform: translateX(0); }
         }
       `}</style>
