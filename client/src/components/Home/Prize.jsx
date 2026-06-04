@@ -346,7 +346,7 @@ const Prize = () => {
         <div className="text-lg md:text-2xl font-medium mb-2 text-white relative">
           Total prize pool:
           <span className="relative inline-block ml-2">
-            <span className="text-yellow-400 font-extrabold text-3xl md:text-5xl tracking-wide relative z-10">RM ?</span>
+            <span className="text-yellow-400 font-extrabold text-3xl md:text-5xl tracking-wide relative z-10">RM 5,200</span>
             <span className="absolute -inset-2 bg-yellow-400 bg-opacity-10 blur-md -z-10 rounded-lg pulse-glow"></span>
           </span>
         </div>
@@ -422,7 +422,7 @@ const Prize = () => {
                 style={{ transform: "translateZ(10px)" }}
               >
                 <div className="ribbon-blue-3d w-full h-full flex items-center justify-center">
-                  <span className="text-white font-bold text-xl sm:text-2xl">RM?</span>
+                  <span className="text-white font-bold text-xl sm:text-2xl">RM 2,000</span>
                 </div>
               </div>
             </div>
@@ -499,7 +499,7 @@ const Prize = () => {
                   style={{ transform: "translateZ(10px)" }}
                 >
                   <div className="ribbon-blue-3d w-full h-full flex items-center justify-center">
-                    <span className="text-white font-bold text-xl sm:text-2xl">RM?</span>
+                    <span className="text-white font-bold text-xl sm:text-2xl">RM 1,500</span>
                   </div>
                 </div>
               </div>
@@ -574,7 +574,7 @@ const Prize = () => {
                   style={{ transform: "translateZ(10px)" }}
                 >
                   <div className="ribbon-blue-3d w-full h-full flex items-center justify-center">
-                    <span className="text-white font-bold text-xl sm:text-2xl">RM?</span>
+                    <span className="text-white font-bold text-xl sm:text-2xl">RM 1,000</span>
                   </div>
                 </div>
               </div>
@@ -643,7 +643,7 @@ const Prize = () => {
                 className="absolute -left-2 sm:-left-4 -bottom-2 sm:-bottom-4 w-10 h-10 sm:w-14 sm:h-14 rounded-full bg-gradient-to-br from-orange-300 to-orange-500 border-4 border-orange-500 flex items-center justify-center z-20 badge-3d"
                 style={{ transform: "translateZ(25px)" }}
               >
-                <span className="text-white font-bold text-base sm:text-lg">#4</span>
+                <span className="text-white font-bold text-xs sm:text-sm">#4</span>
               </div>
 
               {/* Prize Amount Ribbon with 3D effect */}
@@ -652,7 +652,7 @@ const Prize = () => {
                 style={{ transform: "translateZ(10px)" }}
               >
                 <div className="ribbon-blue-3d w-full h-full flex items-center justify-center">
-                  <span className="text-white font-bold text-lg sm:text-xl">RM?</span>
+                  <span className="text-white font-bold text-lg sm:text-xl">RM 500</span>
                 </div>
               </div>
             </div>
@@ -660,8 +660,23 @@ const Prize = () => {
         </div>
       </div>
 
+      {/* Consolation Prize */}
+      <div className="flex justify-center mt-8 sm:mt-12 relative z-10">
+        <div
+          className={`transition-all duration-1000 ${
+            isLoaded ? "opacity-100 transform-none" : "opacity-0 -translate-y-10"
+          }`}
+          style={{ transitionDelay: "800ms" }}
+        >
+          <div className="bg-white/5 backdrop-blur-lg px-10 py-6 rounded-2xl border border-white/10 shadow-lg text-center">
+            <p className="text-gray-400 text-xs font-mono tracking-[0.3em] uppercase mb-2">Consolation</p>
+            <p className="text-white font-bold text-2xl sm:text-3xl">RM 100 <span className="text-cyan-400 text-lg">×2</span></p>
+          </div>
+        </div>
+      </div>
+
       {/* Additional Info */}
-      <div className="max-w-2xl mx-auto bg-white/5 backdrop-blur-lg p-6 rounded-2xl border border-white/10 shadow-lg mt-20 relative z-10">
+      <div className="max-w-2xl mx-auto bg-white/5 backdrop-blur-lg p-6 rounded-2xl border border-white/10 shadow-lg mt-12 relative z-10">
         <p className="text-lg font-medium text-white">Join our competition for a chance to win these amazing prizes!</p>
       </div>
 

@@ -89,13 +89,29 @@ const judgeData = {
     
 ],
   final: [
-    { name: "TBA", role: "Specialist", org: "Organization", image: "https://i.pravatar.cc/300?img=3" },
-    { name: "TBA", role: "Specialist", org: "Organization", image: "https://i.pravatar.cc/300?img=4" },
+    { 
+      name: "Joshua Teh", 
+      role: "Tech Lead", 
+      org: "Webby Group", 
+      image: "/PrelimMentorProfile/Joshua Teh.jpg" 
+    },
+    { 
+      name: "Abel Saw Ze Chuen", 
+      role: "Group Chief Transformation Officer", 
+      org: "Chin Hin Group Berhad", 
+      image: "/PrelimMentorProfile/Abel Saw.jpeg" 
+    },
+    { 
+      name: "Siti Aisyah Shamsaimun", 
+      role: "Embedded Systems Engineer specializing in system-level development, firmware design, and evaluation of reliable, real-world technical solutions", 
+      org: "Turkish Aerospace Malaysia (TUSAS)", 
+      image: "/PrelimMentorProfile/Siti Aisyah Shamsaimun.png" 
+    },
   ]
 };
 
 const PersonCard = ({ person }) => (
-  <div className="group relative bg-white/5 border border-white/10 rounded-2xl p-6 transition-all duration-500 hover:bg-white/10 hover:border-cyan-500/50 hover:-translate-y-2 shadow-xl">
+  <div className="group relative bg-white/5 border border-white/10 rounded-2xl p-6 transition-all duration-500 hover:bg-white/10 hover:border-cyan-500/50 hover:-translate-y-2 shadow-xl w-full max-w-[280px]">
     <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-cyan-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
     <div className="relative flex flex-col items-center text-center">
       <div className="relative mb-6">
@@ -117,7 +133,6 @@ const PersonCard = ({ person }) => (
 
 const JudgesSection = () => {
   const [activeTab, setActiveTab] = useState("preliminary");
-  const isFinal = activeTab === "final";
 
   return (
     <section className="relative pt-20 pb-10 px-6 md:px-20 bg-[#0b1121] text-center isolate z-10 border-none">
@@ -149,19 +164,7 @@ const JudgesSection = () => {
       </div>
 
       <div className="relative min-h-[400px]">
-        {isFinal && (
-          <div className="absolute -inset-10 z-50 flex items-center justify-center pointer-events-none">
-            <div className="absolute inset-0 bg-[#0b1121]/60 backdrop-blur-xl pointer-events-none" />
-            <div className="relative z-50 bg-[#050914]/95 border border-cyan-500/30 p-10 md:p-14 rounded-2xl shadow-[0_0_60px_rgba(6,182,212,0.2)] pointer-events-auto">
-              <span className="text-cyan-400 text-xs font-mono tracking-[0.4em] uppercase mb-4 block">Final Round</span>
-              <h3 className="text-4xl md:text-6xl font-black text-white tracking-tighter leading-tight text-center">
-                REVEALING <br/> <span className="text-cyan-400 animate-pulse">SOON</span>
-              </h3>
-            </div>
-          </div>
-        )}
-
-        <div className={`grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 max-w-7xl mx-auto pb-10 transition-all duration-500 ${isFinal ? 'opacity-20 blur-sm' : 'opacity-100'}`}>
+        <div className={`flex flex-wrap justify-center gap-8 max-w-7xl mx-auto pb-10 transition-all duration-500 opacity-100`}>
           {judgeData[activeTab].map((person, index) => (
             <PersonCard key={index} person={person} />
           ))}
